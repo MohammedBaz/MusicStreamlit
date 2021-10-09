@@ -18,3 +18,4 @@ if uploaded_file is not None:
         for note in instrument.notes:
             Trainingdataset.append(note.pitch)
   result=Prediction(Trainingdataset=Trainingdataset,modelname='StreamlitModel.h5',TrainingStep=1,PredicitonHorizontal=1)
+  st.write(result)
