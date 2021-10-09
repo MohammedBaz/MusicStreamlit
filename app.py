@@ -19,3 +19,6 @@ if uploaded_file is not None:
             Trainingdataset.append(note.pitch)
   result=Prediction(Trainingdataset=Trainingdataset,modelname='StreamlitModel.h5',TrainingStep=1,PredicitonHorizontal=1)
   st.write(result)
+  st.write("## Audio file example")
+  audio_file = open(result, "rb")
+  st.audio(audio_file.read())
