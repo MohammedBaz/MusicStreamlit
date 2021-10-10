@@ -35,7 +35,7 @@ def parsemidfile(midfile):
 
 if uploaded_file is not None:
   midi_file = uploaded_file
-  st.write(parsemidfile(midi_file)[2])
+  st.write(parsemidfile(midi_file)['pitch'])
   #Trainingdataset=np.array(parsemidfile(midi_file)[2])
   #midi_data = pretty_midi.PrettyMIDI(midi_file)
   #st.write( midi_data.estimate_tempo())
