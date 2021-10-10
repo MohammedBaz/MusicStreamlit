@@ -47,6 +47,7 @@ if uploaded_file is not None:
   results=Prediction(Trainingdataset=Trainingdataset,modelname='StreamlitModel.h5',TrainingStep=1,PredicitonHorizontal=1) 
   #Generate midi file from the results:
   NewMid=GenerateMidFile(Trainingdataset+results)
+  st.write(NewMid)
   NewMid.write('newMid.mid')
   
  #https://discuss.streamlit.io/t/how-to-add-a-download-excel-csv-function-to-a-button/4474/6
