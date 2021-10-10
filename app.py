@@ -46,7 +46,7 @@ if uploaded_file is not None:
   
   Fs = 22050
   audio_data = NewMid.synthesize(fs=Fs)
-  st.audio(audio_data, format=‘mid’)
+  st.audio(audio_data, format='mid')
 
 
  
