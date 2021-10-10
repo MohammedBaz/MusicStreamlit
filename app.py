@@ -32,8 +32,7 @@ if uploaded_file is not None:
   NewMid=GenerateMidFile(Trainingdataset+results)
   NewMid.write('newMid.mid')
   
-  st.download_button(
-    label="DOWNLOAD!",file_name="newMid.mid",data="mid",mime="application/octet-stream")
+ 
   import os
   import base64
   def get_binary_file_downloader_html(bin_file, file_label='File'):
