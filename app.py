@@ -19,7 +19,7 @@ def GenerateMidFile(OriginalandResult):
   return(midi)
 
 def parsemidfile(midfile):
-  InputFile= pretty_midi.PrettyMIDI(filename)
+  InputFile= pretty_midi.PrettyMIDI(midfile)
   ArrayedInputFile=[]
   for instrument in InputFile.instruments:
     for note in instrument.notes:
