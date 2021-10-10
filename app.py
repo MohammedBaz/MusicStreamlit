@@ -34,5 +34,5 @@ if uploaded_file is not None:
   
   st.download_button(
     label="DOWNLOAD!",
-    file_name="newMid.mid",mime="application/octet-stream") 
+    file_name="newMid.mid",data="application/octet-stream") 
 
