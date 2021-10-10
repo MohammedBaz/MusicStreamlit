@@ -1,5 +1,6 @@
-streamlit==0.89.0
-keras==2.6.0
-tensorflow==2.6.0
-numpy==1.19.5
+streamlit
+keras
+tensorflow
+numpy
 pretty_midi
+pyfluidsynth
