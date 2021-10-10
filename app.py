@@ -29,7 +29,8 @@ if uploaded_file is not None:
             Trainingdataset.append(note.pitch)
   results=Prediction(Trainingdataset=Trainingdataset,modelname='StreamlitModel.h5',TrainingStep=1,PredicitonHorizontal=1) 
   #Generate midi file from the results:
-  NewMid=GenerateMidFile(results+Trainingdataset)
+  x=numpy.array([1,2,3,4,5,6,7])
+  NewMid=GenerateMidFile(x)
   NewMid.write('newMid.mid')
   
   st.download_button(
