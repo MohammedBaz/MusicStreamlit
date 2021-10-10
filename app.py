@@ -18,16 +18,32 @@ def GenerateMidFile(OriginalandResult):
     instrument.notes.append(notex)
   return(midi)
 
+def parsemidfile(midfile):
+  InputFile= pretty_midi.PrettyMIDI(filename)
+  ArrayedInputFile=[]
+  for instrument in InputFile.instruments:
+    for note in instrument.notes:
+      Start=note.start
+      End=note.end
+      Pitch=note.pitch
+      Velocity=note.velocity
+      ArrayedInputFile.append([Start,End,Pitch,Velocity, instrument.program])
+  ArrayedInputFile = sorted(ArrayedInputFile, key=lambda x: (x[0], x[2]))# sorted the list based on the start and then pitch fields
+  import pandas
+  Allinformationdf=pandas.DataFrame(ArrayedInputFile, columns=['Start','duration','pitch','velocity','InstrumentNo'])
+  return Allinformationdf
+
 
 if uploaded_file is not None:
   midi_file = uploaded_file
-  midi_data = pretty_midi.PrettyMIDI(midi_file)
-  st.write( midi_data.estimate_tempo())
-  for instrument in midi_data.instruments:
+  Trainingdataset=parsemidfile(midi_file)[2]
+  #midi_data = pretty_midi.PrettyMIDI(midi_file)
+  #st.write( midi_data.estimate_tempo())
+  #for instrument in midi_data.instruments:
     # Don't want to shift drum notes
-    if not instrument.is_drum:
-        for note in instrument.notes:
-            Trainingdataset.append(note.pitch)
+    #if not instrument.is_drum:
+        #for note in instrument.notes:
+            #Trainingdataset.append(note.pitch)
   results=Prediction(Trainingdataset=Trainingdataset,modelname='StreamlitModel.h5',TrainingStep=1,PredicitonHorizontal=1) 
   #Generate midi file from the results:
   NewMid=GenerateMidFile(Trainingdataset+results)
@@ -43,7 +59,7 @@ if uploaded_file is not None:
     href = f'<a href="data:application/octet-stream;base64,{bin_str}" download="{os.path.basename(bin_file)}">Download {file_label}</a>'
     return href
   st.markdown(get_binary_file_downloader_html('newMid.mid', 'Audio'), unsafe_allow_html=True)
-  
+  #No way to play mid file!!
   from midi2audio import FluidSynth
   fs = FluidSynth()
   fs.midi_to_audio('newMid.mid', 'output.wav')
