@@ -32,7 +32,7 @@ if uploaded_file is not None:
   NewMid=GenerateMidFile(Trainingdataset+results)
   NewMid.write('newMid.mid')
   
- 
+ #https://discuss.streamlit.io/t/how-to-add-a-download-excel-csv-function-to-a-button/4474/6
   import os
   import base64
   def get_binary_file_downloader_html(bin_file, file_label='File'):
