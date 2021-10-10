@@ -1,7 +1,7 @@
 import streamlit as st
 import pretty_midi
 import numpy as np 
-
+import pandas
 
 st.title("AIMC")
 st.header("Artificial Intelligence Music Composer")
@@ -29,7 +29,6 @@ def parsemidfile(midfile):
       Velocity=note.velocity
       ArrayedInputFile.append([Start,End,Pitch,Velocity, instrument.program])
   ArrayedInputFile = sorted(ArrayedInputFile, key=lambda x: (x[0], x[2]))# sorted the list based on the start and then pitch fields
-  import pandas
   Allinformationdf=pandas.DataFrame(ArrayedInputFile, columns=['Start','duration','pitch','velocity','InstrumentNo'])
   return (Allinformationdf)
 
