@@ -66,7 +66,7 @@ if uploaded_file is not None:
     with open(FileName, 'rb') as f:
         data = f.read()
     bin_str = base64.b64encode(data).decode()
-    return(bin_str)
+    return({bin_str})
   
   
   #audio_file = open('newMid.mid', 'rb')
