@@ -44,11 +44,11 @@ if uploaded_file is not None:
     return href
   st.markdown(get_binary_file_downloader_html('newMid.mid', 'Audio'), unsafe_allow_html=True)
   
-  
-  
-  import IPython.display as ipd
   Fs = 22050
   audio_data = NewMid.synthesize(fs=Fs)
-  ipd.Audio(audio_data, rate=Fs)
+  st.audio(audio_data, format=‘mid’)
+
+
+ 
 
  
