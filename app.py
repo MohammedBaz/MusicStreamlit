@@ -62,11 +62,11 @@ if uploaded_file is not None:
   st.markdown(get_binary_file_downloader_html('newMid.mid', 'Audio'), unsafe_allow_html=True)
   #No way to play mid file!!
   
-  def GetParametersofMidforAudio(FileName):
-    with open(FileName, 'rb') as f:
-        data = f.read()
-    bin_str = base64.b64encode(data).decode()
-    return(bin_str)
+  #def GetParametersofMidforAudio(FileName):
+  #  with open(FileName, 'rb') as f:
+  #      data = f.read()
+  #  bin_str = base64.b64encode(data).decode()
+   # return(bin_str)
   
   #xxx=GetParametersofMidforAudio('newMid.mid')
   #audio_file = open('newMid.mid', 'rb')
