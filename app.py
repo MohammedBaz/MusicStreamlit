@@ -15,6 +15,7 @@ def GenerateMidFile(OriginalandResult):
   midi.instruments.append(instrument) #add this instrument to the mid file 
   for i in range(len(OriginalandResult)):
     notex = pretty_midi.Note(velocity=127,pitch=OriginalandResult[i],start=i, end=i+1)
+    st.write(notex.pitch)
     instrument.notes.append(notex)
   return(midi)
 
@@ -47,7 +48,6 @@ if uploaded_file is not None:
   results=Prediction(Trainingdataset=Trainingdataset,modelname='StreamlitModel.h5',TrainingStep=1,PredicitonHorizontal=1) 
   #Generate midi file from the results:
   NewMid=GenerateMidFile(Trainingdataset+results)
-  st.write(NewMid)
   NewMid.write('newMid.mid')
   
  #https://discuss.streamlit.io/t/how-to-add-a-download-excel-csv-function-to-a-button/4474/6
