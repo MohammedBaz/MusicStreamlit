@@ -31,6 +31,6 @@ if uploaded_file is not None:
   #Generate midi file from the results:
   NewMid=GenerateMidFile(results+Trainingdataset)
   NewMid.write('newMid.mid')
-  linko= f'<a href="data:application/octet-stream;{mid}" download="newMid.mid">Download midi file with save as</a>' 
+  linko= f'<a href="data:application/octet-stream" download="newMid.mid">Download midi file with save as</a>' 
   st.markdown(linko, unsafe_allow_html=True) 
 
