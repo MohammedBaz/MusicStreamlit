@@ -34,6 +34,7 @@ def parsemidfile(midfile):
 
 
 if uploaded_file is not None:
+  x=[]
   x=parsemidfile(uploaded_file)['pitch']
   
   Trainingdataset=np.array(parsemidfile(uploaded_file)['pitch'])
