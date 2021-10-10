@@ -14,8 +14,7 @@ def GenerateMidFile(OriginalandResult):
   instrument = pretty_midi.Instrument(0) #use a single instrument for this instrument
   midi.instruments.append(instrument) #add this instrument to the mid file 
   for i in range(len(OriginalandResult)):
-    notex = pretty_midi.Note(velocity=127,pitch=OriginalandResult[i],start=i, end=i+1)
-    st.write(notex.pitch)
+    notex = pretty_midi.Note(velocity=127,pitch=max(OriginalandResult[i],127),start=i, end=i+1)
     instrument.notes.append(notex)
   return(midi)
 
@@ -49,7 +48,6 @@ if uploaded_file is not None:
   #Generate midi file from the results:
   st.write(len(Trainingdataset),len(results))
   NewMid=GenerateMidFile(Trainingdataset+results)
-  NewMid.write('newMid.mid')
   
  #https://discuss.streamlit.io/t/how-to-add-a-download-excel-csv-function-to-a-button/4474/6
   import os
