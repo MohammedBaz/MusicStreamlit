@@ -2,5 +2,5 @@ streamlit
 keras
 tensorflow
 numpy
-pyfluidsynth
+midi2audio
 pretty_midi
