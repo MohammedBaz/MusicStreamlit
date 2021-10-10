@@ -37,7 +37,6 @@ with st.spinner(f"Transcribing to FluidSynth"):
 
         virtualfile = io.BytesIO()
         wavfile.write(virtualfile, 44100, audio_data)
-
-    st.audio(virtualfile)
-    st.markdown("Download the audio by right-clicking on the media player")
+st.audio(virtualfile)
+st.markdown("Download the audio by right-clicking on the media player")
 
