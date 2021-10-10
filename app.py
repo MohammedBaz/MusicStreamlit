@@ -60,13 +60,10 @@ if uploaded_file is not None:
     return href
   st.markdown(get_binary_file_downloader_html('newMid.mid', 'Audio'), unsafe_allow_html=True)
   #No way to play mid file!!
-  from midi2audio import FluidSynth
-  fs = FluidSynth()
-  fs.midi_to_audio('newMid.mid', 'output.wav')
   
-  audio_file = open('output.wav', 'rb')
+  audio_file = open('newMid.mid', 'rb')
   audio_bytes = audio_file.read()
-  st.audio(audio_bytes, format='audio/wav')
+  st.audio(audio_bytes, format='audio/mid')
 
 
  
