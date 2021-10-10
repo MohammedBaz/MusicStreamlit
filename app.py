@@ -24,7 +24,7 @@ def GenerateMidFile(OriginalandResult):
   midi.instruments.append(instrument) #add this instrument to the mid file 
   for i in range(len(OriginalandResult)):
     notex = pretty_midi.Note(velocity=127,pitch=OriginalandResult[i],start=i, end=i+1)
-      instrument.notes.append(notex)
+    instrument.notes.append(notex)
   return(midi)
 NewMid=GenerateMidFile(Trainingdataset+Trainingdataset)
 
