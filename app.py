@@ -68,9 +68,9 @@ if uploaded_file is not None:
     bin_str = base64.b64encode(data).decode()
     return(bin_str)
   
-  xxx=GetParametersofMidforAudio('newMid.mid')
-  audio_file = open(xxx, 'rb')
-  audio_bytes = audio_file.read()
+  #xxx=GetParametersofMidforAudio('newMid.mid')
+  audio_file = open('newMid.mid', 'rb')
+  audio_bytes = GetParametersofMidforAudio('newMid.mid')
   st.audio(audio_bytes, format='audio/midi')
   #st.audio(data=GetParametersofMidforAudio('newMid.mid'), format='application/octet-stream', start_time=0)
 
