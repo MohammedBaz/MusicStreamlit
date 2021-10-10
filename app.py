@@ -72,7 +72,7 @@ if uploaded_file is not None:
   #audio_file = open('newMid.mid', 'rb')
   #audio_bytes = audio_file.read()
   #st.audio(audio_bytes, format='audio/midi')
-  streamlit.audio(data=GetParametersofMidforAudio('newMid.mid'), format='audio/wav', start_time=0)
+  st.audio(data=GetParametersofMidforAudio('newMid.mid'), format='audio/wav', start_time=0)
 
 
  
