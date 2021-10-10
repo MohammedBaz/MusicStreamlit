@@ -1,7 +1,8 @@
 import streamlit as st
 import pretty_midi
 import numpy as np 
-import fluidsynth
+import pyfluidsynth
+
 st.title("AIMC")
 st.header("Artificial Intelligence Music Composer")
 from BackEndPrediction import Prediction
