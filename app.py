@@ -29,8 +29,7 @@ if uploaded_file is not None:
   results=Prediction(Trainingdataset=Trainingdataset,modelname='StreamlitModel.h5',TrainingStep=1,PredicitonHorizontal=1) 
   #Generate midi file from the results:
   NewMid=GenerateMidFile(results+Trainingdataset)
-
-with st.spinner(f"Transcribing to FluidSynth"):
+  with st.spinner(f"Transcribing to FluidSynth"):
         midi_data = pretty_midi.PrettyMIDI(NewMid)
         audio_data = midi_data.fluidsynth()
         audio_data = np.int16(
@@ -39,6 +38,6 @@ with st.spinner(f"Transcribing to FluidSynth"):
 
         virtualfile = io.BytesIO()
         wavfile.write(virtualfile, 44100, audio_data)
-st.audio(virtualfile)
-st.markdown("Download the audio by right-clicking on the media player")
+  st.audio(virtualfile)
+  st.markdown("Download the audio by right-clicking on the media player")
 
