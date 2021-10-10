@@ -28,7 +28,6 @@ def parsemidfile(midfile):
       Pitch=note.pitch
       Velocity=note.velocity
       ArrayedInputFile.append([Start,End,Pitch,Velocity, instrument.program])
-      st.write(Pitch)
   ArrayedInputFile = sorted(ArrayedInputFile, key=lambda x: (x[0], x[2]))# sorted the list based on the start and then pitch fields
   Allinformationdf=pandas.DataFrame(ArrayedInputFile, columns=['Start','duration','pitch','velocity','InstrumentNo'])
   return (Allinformationdf)
@@ -36,7 +35,7 @@ def parsemidfile(midfile):
 
 if uploaded_file is not None:
   midi_file = uploaded_file
-  st.write(np.array(parsemidfile(midi_file)[2]))
+  st.write(parsemidfile(midi_file))
   #Trainingdataset=np.array(parsemidfile(midi_file)[2])
   #midi_data = pretty_midi.PrettyMIDI(midi_file)
   #st.write( midi_data.estimate_tempo())
