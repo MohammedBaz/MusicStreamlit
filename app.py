@@ -63,10 +63,13 @@ if uploaded_file is not None:
   st.markdown(get_binary_file_downloader_html('newMid.mid', 'Audio'), unsafe_allow_html=True)
   
   import io
-  encode_string = base64.b64encode(open('newMid.mid', 'rb').read())
-  st.audio(io.BytesIO(encode_string), format='audio/ogg', start_time=0)
-  
-  
+  #encode_string = base64.b64encode(open('newMid.mid', 'rb').read())
+  #st.audio(io.BytesIO(encode_string), format='audio/ogg', start_time=0)
+  bytestream = io.BytesIO('newMid.mid')
+  midi.writeFile(bytestream)
+  temp = io.BytesIO(bytestream.getvalue())
+  #pygame.mixer.music.load(temp)
+  st.audio(temp, format='audio/ogg', start_time=0)
  
 
 
