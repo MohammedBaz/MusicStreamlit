@@ -30,6 +30,7 @@ if uploaded_file is not None:
   results=Prediction(Trainingdataset=Trainingdataset,modelname='StreamlitModel.h5',TrainingStep=1,PredicitonHorizontal=1) 
   #Generate midi file from the results:
   NewMid=GenerateMidFile(results+Trainingdataset)
+  NewMid.write('newMid.mid')
   st.markdown(f'<a href="data:application/octet-stream;{mid}" download="NewMid">Download midi file with save as</a>', unsafe_allow_html=True)
    
 
