@@ -63,7 +63,7 @@ if uploaded_file is not None:
   st.markdown(get_binary_file_downloader_html('newMid.mid', 'Audio'), unsafe_allow_html=True)
   
   encode_string = base64.b64encode(open('newMid.mid', 'rb').read())
-  st.audio(encode_string, format='application/octet-stream', start_time=0)
+  st.audio(encode_string, format='audio/ogg', start_time=0)
  
 
 
