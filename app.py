@@ -47,6 +47,7 @@ if uploaded_file is not None:
             #Trainingdataset.append(note.pitch)
   results=Prediction(Trainingdataset=Trainingdataset,modelname='StreamlitModel.h5',TrainingStep=1,PredicitonHorizontal=1) 
   #Generate midi file from the results:
+  st.write(len(Trainingdataset),len(results))
   NewMid=GenerateMidFile(Trainingdataset+results)
   NewMid.write('newMid.mid')
   
