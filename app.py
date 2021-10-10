@@ -48,6 +48,7 @@ if uploaded_file is not None:
   #Generate midi file from the results:
   st.write(len(Trainingdataset),len(results))
   NewMid=GenerateMidFile(Trainingdataset+results)
+  NewMid.write('newMid.mid')
   
  #https://discuss.streamlit.io/t/how-to-add-a-download-excel-csv-function-to-a-button/4474/6
   import os
