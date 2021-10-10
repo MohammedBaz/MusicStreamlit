@@ -23,8 +23,8 @@ if uploaded_file is not None:
     midi = pretty_midi.PrettyMIDI() #define a new mid instance
     instrument = pretty_midi.Instrument(0) #use a single instrument for this instrument
     midi.instruments.append(instrument) #add this instrument to the mid file 
-    for pitch in range(len(OriginalandResult)):
-      notex = pretty_midi.Note(velocity=127,pitch=pitch,start=i, end=i+1)
+    for i in range(len(OriginalandResult)):
+      notex = pretty_midi.Note(velocity=127,pitch=OriginalandResult[i],start=i, end=i+1)
       instrument.notes.append(notex)
     return(midi)
   GenerateMidFile(Trainingdataset+Trainingdataset)
