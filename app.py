@@ -4,10 +4,10 @@ import pretty_midi
 st.title("AIMC")
 st.header("Artificial Intelligence Music Composer")
 from BackEndPrediction import Prediction
-
+Trainingdataset=[]
 uploaded_file = st.file_uploader("upload your mid file or leave blank for random startup", type="mid") #Add file uploader to take the user's input. limited to .png files only
+
 if uploaded_file is not None:
-  Trainingdataset=[]
   midi_file = uploaded_file
   midi_data = pretty_midi.PrettyMIDI(midi_file)
   st.write( midi_data.estimate_tempo())
