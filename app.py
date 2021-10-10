@@ -66,13 +66,13 @@ if uploaded_file is not None:
     with open(FileName, 'rb') as f:
         data = f.read()
     bin_str = base64.b64encode(data).decode()
-    return("application/octet-stream;base64,{bin_str}")
+    return(bin_str)
   
   
   #audio_file = open('newMid.mid', 'rb')
   #audio_bytes = audio_file.read()
   #st.audio(audio_bytes, format='audio/midi')
-  st.audio(data=GetParametersofMidforAudio('newMid.mid'), format='audio/wav', start_time=0)
+  st.audio(data=GetParametersofMidforAudio('newMid.mid'), format='application/octet-stream', start_time=0)
 
 
  
