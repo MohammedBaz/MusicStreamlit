@@ -44,9 +44,9 @@ if uploaded_file is not None:
     return href
   st.markdown(get_binary_file_downloader_html('newMid.mid', 'Audio'), unsafe_allow_html=True)
   
-  Fs = 22050
-  audio_data = NewMid.synthesize(fs=Fs)
-  st.audio(audio_data, format='mid')
+  audio_file = open('newMid.mid', 'rb')
+  audio_bytes = audio_file.read()
+  st.audio(audio_bytes, format='audio/ogg')
 
 
  
