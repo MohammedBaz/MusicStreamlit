@@ -62,8 +62,11 @@ if uploaded_file is not None:
  #https://discuss.streamlit.io/t/how-to-add-a-download-excel-csv-function-to-a-button/4474/6
   st.markdown(get_binary_file_downloader_html('newMid.mid', 'Audio'), unsafe_allow_html=True)
   
+  import io
   encode_string = base64.b64encode(open('newMid.mid', 'rb').read())
-  st.audio(encode_string, format='audio/ogg', start_time=0)
+  st.audio(io.BytesIO(encode_string), format='audio/ogg', start_time=0)
+  
+  
  
 
 
