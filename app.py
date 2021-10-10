@@ -46,7 +46,7 @@ if uploaded_file is not None:
   
   audio_file = open('newMid.mid', 'rb')
   audio_bytes = audio_file.read()
-  st.audio(audio_bytes, format='mid')
+  st.audio(audio_bytes, format='midi')
 
 
  
