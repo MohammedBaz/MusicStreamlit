@@ -69,9 +69,9 @@ if uploaded_file is not None:
     return(bin_str)
   
   #xxx=GetParametersofMidforAudio('newMid.mid')
-  audio_file = open('newMid.mid', 'rb')
-  audio_bytes = GetParametersofMidforAudio('newMid.mid')
-  st.audio(audio_bytes, format='audio/midi')
+  #audio_file = open('newMid.mid', 'rb')
+  #audio_bytes = GetParametersofMidforAudio('newMid.mid')
+  #st.audio(audio_bytes, format='audio/midi')
   #st.audio(data=GetParametersofMidforAudio('newMid.mid'), format='application/octet-stream', start_time=0)
 
 
