@@ -16,7 +16,7 @@ if uploaded_file is not None:
     if not instrument.is_drum:
         for note in instrument.notes:
             Trainingdataset.append(note.pitch)
-Trainingdataset=Prediction(Trainingdataset=Trainingdataset,modelname='StreamlitModel.h5',TrainingStep=1,PredicitonHorizontal=1)
+  Trainingdataset=Prediction(Trainingdataset=Trainingdataset,modelname='StreamlitModel.h5',TrainingStep=1,PredicitonHorizontal=1)
 #Generate midi file from the results:
 def GenerateMidFile(OriginalandResult):
   midi = pretty_midi.PrettyMIDI() #define a new mid instance
