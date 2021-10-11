@@ -78,8 +78,10 @@ with st.sidebar.expander("Add your personal touch, if wish:"):
 with st.sidebar.expander("Takeout your art piece"):
   st.write("Notthing tillnow")
   #st.download_button(label="DOWNLOAD!",data="trees",file_name=FileLocation,mime='audio/.'+FileType)
-st.sidebar.write("About")
-st.write('This is a simple apps demoenstrates for the user how advanved artifical intellgience techniques can be readily adopted')
+with st.beta_container():
+  st.write("About")
+  st.write("This is a simple apps demoenstrates for the user how advanved artifical intellgience techniques can be readily adopted")
+
 
 
 #st.markdown(get_binary_file_downloader_html('newMid.mid', 'Audio'), unsafe_allow_html=True)
