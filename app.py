@@ -18,7 +18,7 @@ def UploadedFileHandler(uploaded_file):
     else:
       audio = pretty_midi.PrettyMIDI(uploaded_file)
       fileType=('mid')         
-  return (audio,fileType)
+    return (audio,fileType)
 
 st.title("AIMC")
 st.header("Artificial Intelligence Music Composer")
