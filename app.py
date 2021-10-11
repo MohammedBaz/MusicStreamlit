@@ -53,6 +53,13 @@ def PlayBackMusicFile(FileLocation,FileType):
   audio_bytes = audio_file.read()
   st.audio(audio_bytes, format='audio/'+FileType)
 
+def get_binary_file_downloader_html(bin_file, file_label='File'):
+  with open(bin_file, 'rb') as f:
+    data = f.read()
+  bin_str = base64.b64encode(data).decode()
+  href = f'<a href="data:application/octet-stream;base64,{bin_str}" download="{os.path.basename(bin_file)}">Download {file_label}</a>'
+  return (href)
+  
 #uploaded_file = st.file_uploader("Uplod AudioFile Here or leave it blank for random starting", type=['wav','mp3','mid'], accept_multiple_files=False, key=123456) 
 # Create new file uploader instance and let it accept audio files
 #add_selectbox = st.sidebar.selectbox("How to prefer to strat with",("Load some audio files", "Use some random Notes", "Use pretrainned Audios"))
@@ -65,4 +72,4 @@ if(add_selectbox=="Load some audio files"):
       PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1]) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
 PredictionHorizontal = st.sidebar.number_input("Select the Prediction Horizonal, in seconds",min_value=60, max_value =300,value=120,step=10)
 st.sidebar.slider("Select the Inputshape, in sec",0,300,120) #here should be changed in accordnace with the inputs 
-
+st.markdown(get_binary_file_downloader_html('newMid.mid', 'Audio'), unsafe_allow_html=True)
