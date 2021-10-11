@@ -16,7 +16,7 @@ import pydub
 from pathlib import Path
 uploaded_files = st.file_uploader("upload", type=['wav'], accept_multiple_files=False, key=123456)
 if uploaded_files is not None:
-    audio = pydub.AudioSegment.from_wav(uploaded_file)
+    audio = pydub.AudioSegment.from_wav(uploaded_files)
     audio.export("/temp/path/file.wav", format="wav")
     audio_bytes = open("/temp/path/file.wav", 'rb').read()
 
