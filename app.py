@@ -15,7 +15,7 @@ Trainingdataset=[]
 import pydub
 from pathlib import Path
 
-def upload_and_save_wavfiles(save_dir: str):
+def upload_and_save_wavfiles(save_dir: str) -> List[Path]:
     """ limited 200MB, you could increase by `streamlit run foo.py --server.maxUploadSize=1024` """
     uploaded_files = st.file_uploader("upload", type=['wav', 'mp3'], accept_multiple_files=True, key=123456)
     save_paths = []
