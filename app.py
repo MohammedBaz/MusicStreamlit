@@ -55,3 +55,4 @@ if uploaded_file is not None:                               # Just to check that
     PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1]) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
 st.slider("Select the Prediction Horizonal, in sec",0,300,120)
 st.slider("Select the Inputshape, in sec",0,300,120) #here should be changed in accordnace with the inputs 
+color = st.select_slider('Select a color of the rainbow',options=['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'])
