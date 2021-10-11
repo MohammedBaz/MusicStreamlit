@@ -9,6 +9,12 @@ import wave
 
 st.title("AIMC")
 st.header("Interactive Music Composition Using Transfer Learning and GAN")
+st.markdown(""" <style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+</style> """, unsafe_allow_html=True)
+
+
 
 def GetParametersofWav(wavfile):
   wav_file=wave.open(wavfile, "rb")
