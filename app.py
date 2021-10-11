@@ -9,6 +9,9 @@ import wave
 
 st.title("AIMC")
 st.header("Artificial Intelligence Music Composer")
+import os
+st.write(os.getcwd())
+
 
 def GetParametersofWav(wavfile):
   WaveFile=wave.open(wavfile, "rb")
