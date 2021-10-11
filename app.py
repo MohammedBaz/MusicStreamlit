@@ -47,7 +47,7 @@ def PlayBackMusicFile(FileLocation,FileType):
   audio_bytes = audio_file.read()
   st.audio(audio_bytes, format='audio/'+FileType)
 
-uploaded_file = st.file_uploader("upload", type=['wav','mp3','mid'], accept_multiple_files=False, key=123456) # Create new file uploader instance and let it accept audio files
+uploaded_file = st.file_uploader("Uplod AudioFile Here or leave it blank for random starting", type=['wav','mp3','mid'], accept_multiple_files=False, key=123456) # Create new file uploader instance and let it accept audio files
 if uploaded_file is not None:                               # Just to check that the user has its own input to the filed_uploader
   if not (uploaded_file.name.endswith('mid')):              # if the file is not mid, i.e., it is .wav or.mp3 then
     FileLocation=StoretheUpoldedFile(uploaded_file)         # Store the file and get its location information 
