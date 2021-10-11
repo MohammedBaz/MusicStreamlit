@@ -9,31 +9,9 @@ import wave
 
 st.title("AIMC")
 st.header("Artificial Intelligence Music Composer")
-import os
-st.write(os.getcwd())
-with open('myfile.txt', 'w') as fp:
-    pass
-print
-
-
-def GetParametersofWav(wavfile):
-  wav_file=wave.open(wavfile, "rb")
-  n_channels = wav_file.getnchannels()      # Number of channels. (1=Mono, 2=Stereo).
-  sample_width = wav_file.getsampwidth()    # Sample width in bytes.
-  framerate = wav_file.getframerate()       # Frame rate.
-  n_frames = wav_file.getnframes()          # Number of frames.
-  comp_type = wav_file.getcomptype()        # Compression type (only supports "NONE").
-  comp_name = wav_file.getcompname()        # Compression name.
-  st.write(n_channels)
-  st.write(sample_width)
-  st.write(framerate)
-  st.write(n_frames)
-  st.write(comp_type)
-  st.write(comp_name)
-
 
 def StoretheUpoldedFile(Filename):
-   with open(os.path.join(os.getcwd(),uploaded_file.name),"wb") as f:
+  with open(os.path.join(os.getcwd(),uploaded_file.name),"wb") as f:
       f.write(uploaded_file.getbuffer())
   return (os.path.join(os.getcwd(),uploaded_file.name))
 
