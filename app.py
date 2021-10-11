@@ -8,7 +8,7 @@ from typing import List
 import wave
 
 st.title("AIMC")
-st.header("Utilising Transfer Learning and GAN to reach ne")
+st.header("interactive music composition using transfer learning and GAN")
 
 def GetParametersofWav(wavfile):
   wav_file=wave.open(wavfile, "rb")
