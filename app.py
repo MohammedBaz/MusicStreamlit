@@ -44,7 +44,7 @@ files = upload_and_save_wavfiles('temp')
 for wavpath in files:
     display_wavfile(wavpath)
 
-upload_and_save_wavfiles("/")
+
 
 
 
