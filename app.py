@@ -45,7 +45,7 @@ def StoretheUpoldedFile(Filename):
       f.write(uploaded_file.getbuffer())
   return (os.path.join(os.getcwd(),uploaded_file.name))
 
-def PlayBackMusicFile(FileLocation FileType):
+def PlayBackMusicFile(FileLocation,FileType):
   # This function generate audio widget, replay the contents found in FileLocation
   # full specficaion for this widget can be found https://docs.streamlit.io/en/stable/api.html
   # This function requires file locaton and its type
