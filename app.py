@@ -18,7 +18,7 @@ uploaded_files = st.file_uploader("upload", type=['wav'], accept_multiple_files=
 if uploaded_file is not None:
     audio = pydub.AudioSegment.from_wav(uploaded_file)
     audio.export("/temp/path/file.wav", format="wav")
-    audio_bytes = open("/temp/path/file.wav, 'rb').read()
+    audio_bytes = open("/temp/path/file.wav", 'rb').read()
 
     st.audio(audio_bytes, format=f'audio/wav', start_time=0)
 
