@@ -78,7 +78,7 @@ with st.sidebar.expander("Add your personal touch, if wish:"):
 with st.sidebar.expander("Takeout your art piece"):
   st.write("Notthing tillnow")
   #st.download_button(label="DOWNLOAD!",data="trees",file_name=FileLocation,mime='audio/.'+FileType)
-with st.beta_container():
+with st.sidebar.container():
   st.write("About")
   st.write("This is a simple apps demoenstrates for the user how advanved artifical intellgience techniques can be readily adopted")
 
