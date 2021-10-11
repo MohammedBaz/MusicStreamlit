@@ -32,31 +32,21 @@ def GetParametersofWav(wavfile):
   st.write(comp_name)
 
 
-
-uploaded_file = st.file_uploader("upload", type=['wav','mp3','mid'], accept_multiple_files=False, key=123456)
-if uploaded_file is not None:
-  if uploaded_file.name.endswith('wav'):
-    audio = uploaded_file.read()
-    fileType=('wav')
-    st.audio(audio, format='audio/wav')
-    with open(os.path.join(os.getcwd(),uploaded_file.name),"wb") as f:
+def StoretheUpoldedFile(Filename):
+   with open(os.path.join(os.getcwd(),uploaded_file.name),"wb") as f:
       f.write(uploaded_file.getbuffer())
-    GetParametersofWav(os.path.join(os.getcwd(),uploaded_file.name))         
-   # from pydub import AudioSegment
-   # file_var = AudioSegment.from_ogg(uploaded_file)
-   # file_var.export('filename.wav', format='wav')
-   # GetParametersofWav(file_var)
-  elif uploaded_file.name.endswith('mp3'):
-    audio = uploaded_file.read()
-    fileType=('mp3')
-    st.audio(audio, format='audio/mp3')
-    with open(os.path.join(os.getcwd(),uploaded_file.name),"wb") as f:
-         f.write(uploaded_file.getbuffer())
-  elif uploaded_file.name.endswith('mid'):
-    audio = pretty_midi.PrettyMIDI(uploaded_file)
-    fileType=('mid')
-    st.write("replay of mid is not supported currently")
- 
+  return (os.path.join(os.getcwd(),uploaded_file.name))
+
+def PlayBackMusicFile(FileLocation FileType):
+  audio_file = open(FileLocation, 'rb')
+  audio_bytes = audio_file.read()
+  st.audio(audio_bytes, format='audio/'+FileType)
+
+uploaded_file = st.file_uploader("upload", type=['wav','mp3','mid'], accept_multiple_files=False, key=123456) #Create new file uploader instance and let it accept audio files
+if uploaded_file is not None:                     # Just to check that the user has its own input to the filed_uploader
+  if not (uploaded_file.name.endswith('wav')):
+    FileLocation=StoretheUpoldedFile(uploaded_file)
+    PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1])
   
     
 
