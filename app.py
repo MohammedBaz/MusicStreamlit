@@ -39,14 +39,16 @@ if uploaded_file is not None:
     audio = uploaded_file.read()
     fileType=('wav')
     st.audio(audio, format='audio/wav')
-    from pydub import AudioSegment
-    file_var = AudioSegment.from_ogg(uploaded_file)
-    file_var.export('filename.wav', format='wav')
-    GetParametersofWav(file_var)
+   # from pydub import AudioSegment
+   # file_var = AudioSegment.from_ogg(uploaded_file)
+   # file_var.export('filename.wav', format='wav')
+   # GetParametersofWav(file_var)
   elif uploaded_file.name.endswith('mp3'):
     audio = uploaded_file.read()
     fileType=('mp3')
     st.audio(audio, format='audio/mp3')
+    with open(os.path.join(os.getcwd(),uploadedfile.name),"wb") as f:
+         f.write(uploadedfile.getbuffer())
   elif uploaded_file.name.endswith('mid'):
     audio = pretty_midi.PrettyMIDI(uploaded_file)
     fileType=('mid')
