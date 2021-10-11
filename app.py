@@ -33,6 +33,7 @@ if uploaded_file is not None:
     audio = uploaded_file.read()
     fileType=('wav')
     st.audio(audio, format='audio/wav')
+    from pydub import AudioSegment
     file_var = AudioSegment.from_ogg(uploaded_file)
     file_var.export('filename.wav', format='wav')
     GetParametersofWav(file_var)
