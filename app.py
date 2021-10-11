@@ -33,7 +33,9 @@ if uploaded_file is not None:
     audio = uploaded_file.read()
     fileType=('wav')
     st.audio(audio, format='audio/wav')
-    GetParametersofWav(audio)
+    file_var = AudioSegment.from_ogg(uploaded_file)
+    file_var.export('filename.wav', format='wav')
+    GetParametersofWav(file_var)
   elif uploaded_file.name.endswith('mp3'):
     audio = uploaded_file.read()
     fileType=('mp3')
