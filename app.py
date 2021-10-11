@@ -17,7 +17,7 @@ print
 
 
 def GetParametersofWav(wavfile):
-  WaveFile=wave.open(wavfile, "rb")
+  wav_file=wave.open(wavfile, "rb")
   n_channels = wav_file.getnchannels()      # Number of channels. (1=Mono, 2=Stereo).
   sample_width = wav_file.getsampwidth()    # Sample width in bytes.
   framerate = wav_file.getframerate()       # Frame rate.
