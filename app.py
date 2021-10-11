@@ -17,5 +17,5 @@ from pathlib import Path
 uploaded_file = st.file_uploader("upload", type=['mp3'], accept_multiple_files=False, key=123456)
 if uploaded_file is not None:
     audio = uploaded_file.read()
-    st.audio(audio_bytes, format='audio/mp3')
+    st.audio(audio, format='audio/mp3')
 
