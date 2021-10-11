@@ -1,4 +1,3 @@
-!pip install streamlit
 import streamlit as st
 import pretty_midi
 import numpy as np 
