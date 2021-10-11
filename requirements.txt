@@ -6,3 +6,4 @@ pretty_midi
 pandas
 pydub
 pathlib
+wave
