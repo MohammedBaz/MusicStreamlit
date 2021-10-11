@@ -10,7 +10,7 @@ import wave
 st.title("AIMC")
 st.header("Artificial Intelligence Music Composer")
 
-def GetParametersofWav(wavfile=filenamewav):
+def GetParametersofWav(wavfile):
   WaveFile=wave.open(wavfile, "rb")
   n_channels = wav_file.getnchannels()      # Number of channels. (1=Mono, 2=Stereo).
   sample_width = wav_file.getsampwidth()    # Sample width in bytes.
