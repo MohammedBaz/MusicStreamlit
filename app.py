@@ -4,7 +4,7 @@ import numpy as np
 import pandas
 import os
 import base64
-
+from typing import List
 
 st.title("AIMC")
 st.header("Artificial Intelligence Music Composer")
