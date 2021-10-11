@@ -14,11 +14,9 @@ Trainingdataset=[]
 
 import pydub
 from pathlib import Path
-uploaded_files = st.file_uploader("upload", type=['wav'], accept_multiple_files=False, key=123456)
+uploaded_files = st.file_uploader("upload", type=['mp3'], accept_multiple_files=False, key=123456)
 if uploaded_files is not None:
     audio = pydub.AudioSegment.from_wav(uploaded_files)
-    audio.export("/temp/path/file.wav", format="wav")
-    audio_bytes = open("/temp/path/file.wav", 'rb').read()
-
-    st.audio(audio_bytes, format=f'audio/wav', start_time=0)
+    audio_bytes = uploaded_files.read()
+    st.audio(audio_bytes, format='audio/mp3')
 
