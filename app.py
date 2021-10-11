@@ -15,7 +15,7 @@ def StoretheUpoldedFile(Filename):
       f.write(uploaded_file.getbuffer())
   return (os.path.join(os.getcwd(),uploaded_file.name))
 
-def PlayBackMusicFile(FileLocation FileType):
+def PlayBackMusicFile(FileLocation,FileType):
   audio_file = open(FileLocation, 'rb')
   audio_bytes = audio_file.read()
   st.audio(audio_bytes, format='audio/'+FileType)
