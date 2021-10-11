@@ -76,6 +76,7 @@ with st.sidebar.expander("Add your personal touch, if wish:"):
   PredictionHorizontal = st.number_input("Select the Prediction Horizonal, in seconds",min_value=60, max_value =300,value=120,step=10)
   st.slider("Select the Inputshape, in sec",0,300,120) #here should be changed in accordnace with the inputs 
 with st.sidebar.expander("Takeout your art piece"):
+  st.write("Notthing tillnow")
   #st.download_button(label="DOWNLOAD!",data="trees",file_name=FileLocation,mime='audio/.'+FileType)
   
 
