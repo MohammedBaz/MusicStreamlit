@@ -11,6 +11,9 @@ st.title("AIMC")
 st.header("Artificial Intelligence Music Composer")
 import os
 st.write(os.getcwd())
+with open('myfile.txt', 'w') as fp:
+    pass
+print
 
 
 def GetParametersofWav(wavfile):
