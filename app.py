@@ -47,8 +47,8 @@ if uploaded_file is not None:
     audio = uploaded_file.read()
     fileType=('mp3')
     st.audio(audio, format='audio/mp3')
-    with open(os.path.join(os.getcwd(),uploadedfile.name),"wb") as f:
-         f.write(uploadedfile.getbuffer())
+    with open(os.path.join(os.getcwd(),uploaded_file.name),"wb") as f:
+         f.write(uploaded_file.getbuffer())
   elif uploaded_file.name.endswith('mid'):
     audio = pretty_midi.PrettyMIDI(uploaded_file)
     fileType=('mid')
