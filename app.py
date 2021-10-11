@@ -57,6 +57,6 @@ if(add_selectbox=="Load some audio files"):
     if not (uploaded_file.name.endswith('mid')):              # if the file is not mid, i.e., it is .wav or.mp3 then
       FileLocation=StoretheUpoldedFile(uploaded_file)         # Store the file and get its location information 
       PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1]) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
-st.sidebar.slider("Select the Prediction Horizonal, in sec",0,300,120)
+PredictionHorizontal = st.number_input("Select the Prediction Horizonal")
 st.sidebar.slider("Select the Inputshape, in sec",0,300,120) #here should be changed in accordnace with the inputs 
 
