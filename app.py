@@ -15,7 +15,7 @@ def UploadedFileHandler(uploaded_file):
     elif uploaded_file.name.endswith('mp3'):
       audio = uploaded_file.read()
       fileType=('mp3')
-    else:
+    elif uploaded_file.name.endswith('mid'):
       audio = pretty_midi.PrettyMIDI(uploaded_file)
       fileType=('mid')         
   return (audio,fileType)
