@@ -53,9 +53,9 @@ add_selectbox = st.sidebar.selectbox("How to prefer to strat with",("Load some a
 if(add_selectbox=="Load some audio files"):
   uploaded_file = st.sidebar.file_uploader("Uplod AudioFile Here or leave it blank for random starting", type=['wav','mp3','mid'], accept_multiple_files=False, key=123456) 
   if uploaded_file is not None:                               # Just to check that the user has its own input to the filed_uploader
-  if not (uploaded_file.name.endswith('mid')):              # if the file is not mid, i.e., it is .wav or.mp3 then
-    FileLocation=StoretheUpoldedFile(uploaded_file)         # Store the file and get its location information 
-    PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1]) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
+    if not (uploaded_file.name.endswith('mid')):              # if the file is not mid, i.e., it is .wav or.mp3 then
+      FileLocation=StoretheUpoldedFile(uploaded_file)         # Store the file and get its location information 
+      PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1]) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
 st.sidebar.slider("Select the Prediction Horizonal, in sec",0,300,120)
 st.sidebar.slider("Select the Inputshape, in sec",0,300,120) #here should be changed in accordnace with the inputs 
 
