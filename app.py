@@ -66,7 +66,7 @@ def get_binary_file_downloader_html(bin_file, file_label='File'):
 with st.sidebar.expander("How to prefer to strat with:"):
   add_selectbox=st.radio("How to prefer to strat with:", ("Load some audio files", "Use some random Notes", "Use pretrainned Audios"))
   if(add_selectbox=="Load some audio files"):
-    uploaded_file = st.sidebar.file_uploader("Uplod AudioFile Here or leave it blank for random starting", type=['wav','mp3','mid'], accept_multiple_files=False, key=123456) 
+    uploaded_file = st.file_uploader("Uplod AudioFile Here or leave it blank for random starting", type=['wav','mp3','mid'], accept_multiple_files=False, key=123456) 
     if uploaded_file is not None:                               # Just to check that the user has its own input to the filed_uploader
       if not (uploaded_file.name.endswith('mid')):              # if the file is not mid, i.e., it is .wav or.mp3 then
         FileLocation=StoretheUpoldedFile(uploaded_file)         # Store the file and get its location information 
