@@ -49,7 +49,7 @@ def PlayBackMusicFile(FileLocation,FileType):
 
 #uploaded_file = st.file_uploader("Uplod AudioFile Here or leave it blank for random starting", type=['wav','mp3','mid'], accept_multiple_files=False, key=123456) 
 # Create new file uploader instance and let it accept audio files
-£add_selectbox = st.sidebar.selectbox("How to prefer to strat with",("Load some audio files", "Use some random Notes", "Use pretrainned Audios"))
+#add_selectbox = st.sidebar.selectbox("How to prefer to strat with",("Load some audio files", "Use some random Notes", "Use pretrainned Audios"))
 add_selectbox=st.sidebar..radio("How to prefer to strat with:", ("Load some audio files", "Use some random Notes", "Use pretrainned Audios"))
 if(add_selectbox=="Load some audio files"):
   uploaded_file = st.sidebar.file_uploader("Uplod AudioFile Here or leave it blank for random starting", type=['wav','mp3','mid'], accept_multiple_files=False, key=123456) 
