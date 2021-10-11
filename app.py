@@ -9,12 +9,6 @@ import wave
 
 st.title("AIMC")
 st.header("Artificial Intelligence Music Composer")
-import os
-st.write(os.getcwd())
-with open('myfile.txt', 'w') as fp:
-    pass
-print
-
 
 def GetParametersofWav(wavfile):
   wav_file=wave.open(wavfile, "rb")
@@ -32,7 +26,6 @@ def GetParametersofWav(wavfile):
   st.write(comp_name)
 
 def StoretheUpoldedFile(Filename):
-
   # This funciton is defined to store the file uploded by the user into temporary file.
   # This is required as some librarys and functions requies to pass the file location instead of its contents, 
   # However,  file_uploader reads the file as a file-like Byte IO type : more can be found on 
