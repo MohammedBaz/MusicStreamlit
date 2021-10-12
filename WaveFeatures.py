@@ -41,4 +41,15 @@ def GetWavFeatures(wav_file):
 
   FourierFrequencySpectrumAllChannels= numpy.abs(numpy.fft.rfft(NormalisedSoundArray))
   FrequencyPointArrayAllhannels = numpy.fft.rfftfreq(NormalisedSoundArray.size, d=1./SampleFrequecy)
-  return(SampleFrequecy,SoundArray,NormalisedSoundArray,NumberofSamples,NumberofChannel,DurationinSecond,TimePointArray,FourierFrequencySpectrumAllChannels,FrequencyPointArrayAllhannels)
+  Allinformationdf = dict()
+  Allinformationdf['SampleFrequecy'] = SampleFrequecy
+  Allinformationdf['SoundArray'] = SoundArray
+  Allinformationdf['NormalisedSoundArray'] = NormalisedSoundArray
+  Allinformationdf['NumberofSamples'] = NumberofSamples
+  Allinformationdf['NumberofChannel'] = NumberofChannel
+  Allinformationdf['DurationinSecond'] = DurationinSecond
+  Allinformationdf['TimePointArray'] = TimePointArray
+  Allinformationdf['FourierFrequencySpectrumAllChannels'] = FourierFrequencySpectrumAllChannels
+  Allinformationdf['FrequencyPointArrayAllhannels'] = FrequencyPointArrayAllhannels
+  return (Allinformationdf)
+ 
