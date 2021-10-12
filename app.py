@@ -6,21 +6,7 @@ PrevoiusNextFooter=st.empty()
 if 'PageNumebr' not in st.session_state:
     st.session_state['PageNumebr'] = '1'
     
-def InitalMove():
-    st.session_state.PageNumebr='2'
-    SubtitleofThePage.write("The fist step is to listen to you")
-    add_selectbox=DescriptionofThePage.radio("you can upload your audio samples or use ours:",
-                                             ("Upload some audio files", "Use some random Notes", "Use pretrainned Audios"),index=1)    
-    with PrevoiusNextFooter:
-        col1, col2, col3,col4, col5, col6,col7, col8, col9,col10 = st.columns(10)
-        col10.button('Next',key="next")
-        col1.button('Prevoius',key="Prevoius")
-        
-        #col10.button('Next',key="next", on_click=IncreasePageNumber)
-        #col1.button('Prevoius',key="Prevoius", on_click=DecreasePageNumber)
-    
-    
-    
+  
 SubtitleofThePage.write("Warm Welcome from our app!")
 DescriptionofThePage.write("""This is a beta version for an ambitious project aiming to promote the interactivity of 
           generate some musical pieces using Artificial Intelligence (AI) algorithms.
@@ -31,8 +17,19 @@ DescriptionofThePage.write("""This is a beta version for an ambitious project ai
          """)
 with PrevoiusNextFooter:
     col1, col2, col3,col4, col5, col6,col7, col8, col9,col10 = st.columns(10)
-    col10.button('Go!',key="Go", on_click=InitalMove)
-
+    col10.button('Go!',key="Go")
+    if st.button('Go'):
+        st.session_state.PageNumebr='2'
+        SubtitleofThePage.write("The fist step is to listen to you")
+        add_selectbox=DescriptionofThePage.radio("you can upload your audio samples or use ours:",
+                                             ("Upload some audio files", "Use some random Notes", "Use pretrainned Audios"),index=1)    
+        with PrevoiusNextFooter:
+            col1, col2, col3,col4, col5, col6,col7, col8, col9,col10 = st.columns(10)
+            col10.button('Next',key="next")
+            col1.button('Prevoius',key="Prevoius")
+        
+        #col10.button('Next',key="next", on_click=IncreasePageNumber)
+        #col1.button('Prevoius',key="Prevoius", on_click=DecreasePageNumber)
   
         
     
