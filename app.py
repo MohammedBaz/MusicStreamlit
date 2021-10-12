@@ -25,7 +25,7 @@ if(add_selectbox=="Upload some audio files"):
             FileType=FileLocation.split(".")[-1]
             #PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1])
 
- def PageControl():
+def PageControl():
     st.write(st.session_state.PageNumebr+1)
             
             
