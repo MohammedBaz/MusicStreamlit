@@ -54,6 +54,7 @@ def get_binary_file_downloader_html(bin_file, file_label='File'):
 #add_selectbox = st.sidebar.selectbox("How to prefer to strat with",("Load some audio files", "Use some random Notes", "Use pretrainned Audios"))
 
 with st.sidebar.expander("How to prefer to strat with:"):
+    MainPageDescription .empty() 
   add_selectbox=st.radio("you can upload your audio samples or use ours:", ("Upload some audio files", "Use some random Notes", "Use pretrainned Audios"),index=1)
 if(add_selectbox=="Upload some audio files"):
   MainPageDescription .empty()       
@@ -72,7 +73,12 @@ if(add_selectbox=="Upload some audio files"):
         FileLocation=StoretheUpoldedFile(uploaded_file)
         FileType=FileLocation.split(".")[-1]
         PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1])
-
+        
+    if(add_selectbox=="Use some random Notes"):
+        st.write("These files are geneated")
+        
+        
+        
 with st.sidebar.expander("Add your personal touch, if wish:"):
   PredictionHorizontal = st.number_input("Select the Prediction Horizonal, in seconds",min_value=60, max_value =300,value=120,step=10)
   st.slider("Select the Inputshape, in sec",0,300,120) #here should be changed in accordnace with the inputs 
