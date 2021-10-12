@@ -66,7 +66,7 @@ if(add_selectbox=="Upload some audio files"):
         PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1]) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
         from WaveFeatures import GetWavFeatures
         WavFeatures=GetWavFeatures(FileLocation)
-        st.write(WavFeatures.SampleFrequecy)
+        st.write(WavFeatures['NumberofSamples'])
     elif (uploaded_file.name.endswith('mp3')):
         FileLocation=StoretheUpoldedFile(uploaded_file)
         FileType=FileLocation.split(".")[-1]
