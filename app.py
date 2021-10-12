@@ -3,8 +3,8 @@ st.title("Interactive Music Composition Using Artifical Intelligence")
 SubtitleofThePage=st.empty()
 DescriptionofThePage=st.empty()
 PrevoiusNextFooter=st.empty()
-if 'PageNumebr' not in st.session_state:
-    st.session_state['PageNumebr'] = '1'
+#if 'PageNumebr' not in st.session_state:
+#    st.session_state['PageNumebr'] = '1'
     
 SubtitleofThePage.write("Warm Welcome from our app!")
 DescriptionofThePage.write("""This is a beta version for an ambitious project aiming to promote the interactivity of 
@@ -19,7 +19,7 @@ with PrevoiusNextFooter:
     go=col10.button('Go',key="go")
 
 if(go):
-    st.session_state.PageNumebr='2'
+    #st.session_state.PageNumebr='2'
     SubtitleofThePage.write("The fist step is to listen to you")
     add_selectbox=DescriptionofThePage.radio("you can upload your audio samples or use ours:",
                                              ("Upload some audio files", "Use some random Notes", "Use pretrainned Audios"),index=1)
