@@ -28,7 +28,7 @@ def DecreasePageNumber():
     st.write(st.session_state.PageNumebr)    
            
         
-def InitalMove():
+def InitalMove(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter):
     SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter=TakeUserInput(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter)
 
 
