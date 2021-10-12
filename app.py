@@ -26,4 +26,7 @@ if(add_selectbox=="Upload some audio files"):
 col1, col2, col3 = st.columns(3)
 if col2.button('Click'):
     st.write('hello')
-
+st.markdown(""" 
+div.stButton > button:first-child {
+background-color: #00cc00;color:white;font-size:20px;height:3em;width:30em;border-radius:10px 10px 10px 10px;
+}
