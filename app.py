@@ -18,7 +18,7 @@ with PrevoiusNextFooter:
     col1, col2, col3,col4, col5, col6,col7, col8, col9,col10 = st.columns(10)
     go=col10.button('Go',key="go")
 
-if(go):
+if(Go):
     st.session_state.PageNumebr='2'
     SubtitleofThePage.write("The fist step is to listen to you")
     add_selectbox=DescriptionofThePage.radio("you can upload your audio samples or use ours:",
