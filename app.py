@@ -55,7 +55,7 @@ def get_binary_file_downloader_html(bin_file, file_label='File'):
 
 with st.sidebar.expander("How to prefer to strat with:"):
     MainPageDescription .empty() 
-  add_selectbox=st.radio("you can upload your audio samples or use ours:", ("Upload some audio files", "Use some random Notes", "Use pretrainned Audios"),index=1)
+    add_selectbox=st.radio("you can upload your audio samples or use ours:", ("Upload some audio files", "Use some random Notes", "Use pretrainned Audios"),index=1)
 if(add_selectbox=="Upload some audio files"):
   MainPageDescription .empty()       
   uploaded_file = MainPageDescription.file_uploader("Uplod AudioFile Here or leave it blank if other options are selected",
