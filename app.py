@@ -11,7 +11,7 @@ st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidd
 st.title("Interactive Music Composition Artifical Intelligence")
 st.header("                                                   ")
 MainPageDescription = st.empty()
-MainPageDescription.text("""This is a beta version for an ambitious project aiming to promote the interactivity of 
+MainPageDescription.write("""This is a beta version for an ambitious project aiming to promote the interactivity of 
          generate some musical pieces using Artificial Intelligence (AI) algorithms.
          Several AI models have been built and trained to match the variety of musical inputs ; furthermore, 
          the interface has been optimised to allow a user to add personal toutches and then to download the cratfed musical peices. 
