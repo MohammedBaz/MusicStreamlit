@@ -73,8 +73,8 @@ with st.sidebar.expander("How to prefer to strat with:"):
 if(add_selectbox=="Upload some audio files"):
   uploaded_file = st.file_uploader("Uplod AudioFile Here or leave it blank if other options are selected",
                                      type=['wav','mp3','mid'], accept_multiple_files=False, key=123456) 
-    if uploaded_file is not None:                               # Just to check that the user has its own input to the filed_uploader
-      if not (uploaded_file.name.endswith('mid')):              # if the file is not mid, i.e., it is .wav or.mp3 then
+  if uploaded_file is not None:                               # Just to check that the user has its own input to the filed_uploader
+    if not (uploaded_file.name.endswith('mid')):              # if the file is not mid, i.e., it is .wav or.mp3 then
         FileLocation=StoretheUpoldedFile(uploaded_file)         # Store the file and get its location information 
         FileType=FileLocation.split(".")[-1]
     PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1]) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
