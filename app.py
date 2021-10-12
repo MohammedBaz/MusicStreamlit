@@ -14,10 +14,7 @@ st.write("TThis app can be used to generate some musical pieces using principles
 #         the interface has been optimised to allow a user to add personal toutches and then to download the cratfed musical peices. 
 #         Wish this can 
 #         ''')
-st.markdown(""" <style>
-#MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
-</style> """, unsafe_allow_html=True)
+#st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidden;} </style> """, unsafe_allow_html=True)
 
 
 
