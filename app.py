@@ -1,13 +1,15 @@
-import streamlit as st
-from InputHandlingandDisplay import StoretheUpoldedFile
-if 'PageNumebr' not in st.session_state:
+def main():
+    import streamlit as st
+    if 'PageNumebr' not in st.session_state:
     st.session_state['PageNumebr'] = '1'
+    st.title("Interactive Music Composition Using Artifical Intelligence")
+    SubtitleofThePage=st.empty()
+    DescriptionofThePage=st.empty() 
+    PrevoiusNextFooter=st.empty()
+    SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter=WelcomPage(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter)
 
-st.title("Interactive Music Composition Using Artifical Intelligence")
-
-SubtitleofThePage=st.empty()
-DescriptionofThePage=st.empty() 
-PrevoiusNextFooter=st.empty()    
+if __name__ == "__main__":
+    main()
 
 def IncreasePageNumber():
     if  (st.session_state.PageNumebr=='1'):
@@ -67,7 +69,7 @@ def TakeUserInput(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter):
     return(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter)    
 
     
-SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter=WelcomPage(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter)
+
                                   
 #with PrevoiusNextFooter:
 #    col1, col2, col3,col4, col5, col6,col7, col8, col9,col10 = st.columns(10)
