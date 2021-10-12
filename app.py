@@ -30,7 +30,7 @@ def IncreasePageNumber():
         st.session_state.PageNumebr='2'
     elif(st.session_state.PageNumebr=='2'):
         st.session_state.PageNumebr='3'
-    else(st.session_state.PageNumebr=='3'):
+    else:
         st.session_state.PageNumebr='None'
     st.write(st.session_state.PageNumebr)
             
