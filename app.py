@@ -3,13 +3,10 @@ from InputHandlingandDisplay import StoretheUpoldedFile
 if 'PageNumebr' not in st.session_state:
     st.session_state['PageNumebr'] = '1'
 
-import WelcomePage
-import TakeUserInputPage
-import AnalysisUserInput
-import GetResults
-
+TitleofThePage=st.empty()
+DescriptionofThePage=st.empty() 
+PrevoiusNextFooter.empty()    
     
-
 def IncreasePageNumber():
     if  (st.session_state.PageNumebr=='1'):
         st.session_state.PageNumebr='2'
@@ -37,7 +34,7 @@ def DecreasePageNumber():
             
             
 col1, col2, col3,col4, col5, col6,col7, col8, col9,col10 = st.columns(10)
-col10.button('Next',key="next", on_click=IncreasePageNumber)
-col1.button('Prevoius',key="Prevoius", on_click=DecreasePageNumber)  
+PrevoiusNextFooter.col10.button('Next',key="next", on_click=IncreasePageNumber)
+PrevoiusNextFooter.col1.button('Prevoius',key="Prevoius", on_click=DecreasePageNumber)  
 
 
