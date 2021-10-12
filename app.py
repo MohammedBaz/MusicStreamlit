@@ -39,7 +39,7 @@ def InitalMove():
     TakeUserInput()
 
 
-def WelcomPage():
+def WelcomPage(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter):
     SubtitleofThePage.text("Warm Welcome from our app!")
     DescriptionofThePage.text("""This is a beta version for an ambitious project aiming to promote the interactivity of 
          generate some musical pieces using Artificial Intelligence (AI) algorithms.
@@ -51,6 +51,7 @@ def WelcomPage():
     with PrevoiusNextFooter:
         col1, col2, col3,col4, col5, col6,col7, col8, col9,col10 = st.columns(10)
         col10.button('Go!',key="Go", on_click=InitalMove)
+   return(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter)
 
 
 def TakeUserInput():
@@ -63,7 +64,7 @@ def TakeUserInput():
     #    col1, col2, col3,col4, col5, col6,col7, col8, col9,col10 = st.columns(10)
     #    col10.button('Next',key="next", on_click=IncreasePageNumber)
     #   col1.button('Prevoius',key="Prevoius", on_click=DecreasePageNumber)     
-        
+    return(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter)    
 
     
 WelcomPage()
