@@ -8,8 +8,8 @@ from typing import List
 import wave
 
 st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidden;} </style> """, unsafe_allow_html=True)
-st.title("AIMC")
-st.header("Interactive Music Composition Artifical Intelligence")
+st.title("Interactive Music Composition Artifical Intelligence")
+st.header("                                                   ")
 st.write("""This app can be used to generate some musical pieces using principles of Artificial Intelligence (AI) algorithms.
          Several AI models have been built and trained to match the variety of musical inputs; furthermore, 
          the interface has been optimised to allow a user to add personal toutches and then to download the cratfed musical peices. 
