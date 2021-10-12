@@ -1,7 +1,7 @@
 import streamlit as st
 from InputHandlingandDisplay import StoretheUpoldedFile
 if 'PageNumebr' not in st.session_state:
-    st.session_state['PageNumebr'] = 'One'
+    st.session_state['PageNumebr'] = '1'
 st.write(st.session_state.PageNumebr)
 st.title("Interactive Music Composition Artifical Intelligence")
 WhichStep = st.empty()
