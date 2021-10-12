@@ -24,7 +24,7 @@ if(add_selectbox=="Upload some audio files"):
             #PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1])
 
 col1, col2, col3,col4, col5, col6,col7, col8, col9,col10 = st.columns(10)
-col3.button('Click')
+col0.button('Click')
     
 st.markdown("""div.stButton > button:first-child {
 background-color: #00cc00;color:white;font-size:20px;height:3em;width:50%;border-radius:10px 10px 10px 10px;}""", unsafe_allow_html=True)
