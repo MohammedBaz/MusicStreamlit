@@ -1,7 +1,7 @@
 def main():
     import streamlit as st
     if 'PageNumebr' not in st.session_state:
-    st.session_state['PageNumebr'] = '1'
+        st.session_state['PageNumebr'] = '1'
     st.title("Interactive Music Composition Using Artifical Intelligence")
     SubtitleofThePage=st.empty()
     DescriptionofThePage=st.empty() 
