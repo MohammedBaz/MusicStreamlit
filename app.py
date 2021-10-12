@@ -10,8 +10,8 @@ DescriptionofThePage=st.empty()
 PrevoiusNextFooter=st.empty()    
 
 def WelcomPage():
-    SubtitleofThePage.st.write("Warm Welcome from our app!")
-    DescriptionofThePage.st.write("""This is a beta version for an ambitious project aiming to promote the interactivity of 
+    SubtitleofThePage.write("Warm Welcome from our app!")
+    DescriptionofThePage.write("""This is a beta version for an ambitious project aiming to promote the interactivity of 
          generate some musical pieces using Artificial Intelligence (AI) algorithms.
          Several AI models have been built and trained to match the variety of musical inputs ; furthermore, 
          the interface has been optimised to allow a user to add personal toutches and then to download the cratfed musical peices. 
