@@ -5,4 +5,4 @@ numpy
 pretty_midi
 pandas
 pathlib
-scipy.io
+scipy
