@@ -3,14 +3,33 @@ from InputHandlingandDisplay import StoretheUpoldedFile
 if 'PageNumebr' not in st.session_state:
     st.session_state['PageNumebr'] = '1'
 
+import WelcomePage
+import TakeUserInputPage
+import AnalysisUserInput
+import GetResults
+
+PAGES = {
+    "WelcomePage": WelcomePage,
+    "App2": app2
+}
+st.sidebar.title('Navigation')
+selection = st.sidebar.radio("Go to", list(PAGES.keys()))
+page = PAGES[selection]
+page.app()    
+    
+    
+    
 
 def IncreasePageNumber():
     if  (st.session_state.PageNumebr=='1'):
         st.session_state.PageNumebr='2'
+        TakeUserInputPage.app()
     elif(st.session_state.PageNumebr=='2'):
         st.session_state.PageNumebr='3'
+        AnalysisUserInput.app()
     elif(st.session_state.PageNumebr=='3'):
-        st.session_state.PageNumebr='4'    
+        st.session_state.PageNumebr='4'
+        GetResults.app()
     else:
         st.session_state.PageNumebr='PositiveInf'
     st.write(st.session_state.PageNumebr)
