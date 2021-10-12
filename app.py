@@ -6,6 +6,7 @@ import base64
 from typing import List
 import wave
 from InputHandlingandDisplay import StoretheUpoldedFile
+from MidiFeatures import GeneratemidFile
 
 
 ################reconsidering pleae 
@@ -75,6 +76,7 @@ if(add_selectbox=="Upload some audio files"):
         PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1])
         
 if(add_selectbox=="Use some random Notes"):
+    GeneratemidFile(10)
     st.write("These files are geneated")
         
         
