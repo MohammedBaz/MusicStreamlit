@@ -20,7 +20,7 @@ def WelcomPage():
          """)
     with PrevoiusNextFooter:
         col1, col2, col3,col4, col5, col6,col7, col8, col9,col10 = st.columns(10)
-        col10.button('Go!',key="next", on_click=IncreasePageNumber)
+        col10.button('Go!',key="Go", on_click=InitalMove)
 
 
 def TakeUserInput():
@@ -33,8 +33,8 @@ def TakeUserInput():
         
 def IncreasePageNumber():
     if  (st.session_state.PageNumebr=='1'):
-        TakeUserInput()
         st.session_state.PageNumebr='2'
+        TakeUserInput()
     elif(st.session_state.PageNumebr=='2'):
         st.session_state.PageNumebr='3'
     elif(st.session_state.PageNumebr=='3'):
@@ -47,15 +47,19 @@ def DecreasePageNumber():
     if  (st.session_state.PageNumebr=='4'):
         st.session_state.PageNumebr='3'
     elif(st.session_state.PageNumebr=='3'):
-        TakeUserInput()
         st.session_state.PageNumebr='2'
+        TakeUserInput()
     elif(st.session_state.PageNumebr=='2'):
         WelcomPage()
         st.session_state.PageNumebr='1'                          
     else:
         st.session_state.PageNumebr='NegtiveInf'
     st.write(st.session_state.PageNumebr)    
-            
+           
+        
+def InitalMove():
+    TakeUserInput()
+    
 WelcomPage() 
                                   
 #with PrevoiusNextFooter:
