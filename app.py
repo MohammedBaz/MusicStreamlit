@@ -26,6 +26,8 @@ if(add_selectbox=="Upload some audio files"):
 col1, col2, col3 = st.columns(3)
 if col2.button('Click'):
     st.write('hello')
-st.button("Next")
-button_alignment="""<style> #the-title {text-align: left}</style>"""
-st.markdown(button_alignment, unsafe_allow_html=True)
+
+    
+st.markdown("""div.stButton > button:first-child {
+background-color: #00cc00;color:white;font-size:20px;height:3em;width:50%;border-radius:10px 10px 10px 10px;}""", unsafe_allow_html=True)
+st.button(“the notice you want to show”)
