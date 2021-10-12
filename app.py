@@ -5,7 +5,7 @@ import pandas
 import base64
 from typing import List
 import wave
-from InputHandlingandDisplay import StoretheUpoldedFile,PlayBackMusicFile
+from InputHandlingandDisplay import StoretheUpoldedFile
 
 
 ################reconsidering pleae 
@@ -19,6 +19,15 @@ st.set_page_config(
         'About': "# This is a header. This is an *extremely* cool app!"
         }
         )
+
+def PlayBackMusicFile(FileLocation,FileType):
+  # This function generate audio widget, replay the contents found in FileLocation
+  # full specficaion for this widget can be found https://docs.streamlit.io/en/stable/api.html
+  # This function requires file locaton and its type
+  # I tried to find a way to run mid but failed.any help is appricated 
+  audio_file = open(FileLocation, 'rb')
+  audio_bytes = audio_file.read()
+  st.audio(audio_bytes, format='audio/'+FileType)
 
 
 st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidden;} </style> """, unsafe_allow_html=True)
@@ -56,7 +65,7 @@ if(add_selectbox=="Upload some audio files"):
         st.write(FileLocation)
         FileType=FileLocation.split(".")[-1]
         st.write(FileType)
-    #PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1]) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
+    PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1]) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
     from WaveFeatures import GetWavFeatures
     WavFeatures=GetWavFeatures(FileLocation)
     st.write(WavFeatures.SampleFrequecy)
