@@ -15,7 +15,8 @@ MainPageDescription.write("""This is a beta version for an ambitious project aim
          generate some musical pieces using Artificial Intelligence (AI) algorithms.
          Several AI models have been built and trained to match the variety of musical inputs ; furthermore, 
          the interface has been optimised to allow a user to add personal toutches and then to download the cratfed musical peices. 
-         Wish this can aid the users to recogenise the potential rules that AI can play in art making.  
+         Wish this can aid the users to recogenise the potential rules that AI can play in art making. Source code is at:
+         https://github.com/MohammedBaz/MusicStreamlit/blob/main/BackEndPrediction.py  
          """)
 
 
