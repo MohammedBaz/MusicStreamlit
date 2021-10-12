@@ -62,13 +62,15 @@ if(add_selectbox=="Upload some audio files"):
   if uploaded_file is not None:                               # Just to check that the user has its own input to the filed_uploader
     if (uploaded_file.name.endswith('wav')):              # if the file is not mid, i.e., it is .wav or.mp3 then
         FileLocation=StoretheUpoldedFile(uploaded_file)         # Store the file and get its location information 
-        st.write(FileLocation)
         FileType=FileLocation.split(".")[-1]
-        st.write(FileType)
-    PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1]) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
-    from WaveFeatures import GetWavFeatures
-    WavFeatures=GetWavFeatures(FileLocation)
-    st.write(WavFeatures.SampleFrequecy)
+        PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1]) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
+        from WaveFeatures import GetWavFeatures
+        WavFeatures=GetWavFeatures(FileLocation)
+        st.write(WavFeatures.SampleFrequecy)
+    elif (uploaded_file.name.endswith('mp3')):
+        FileLocation=StoretheUpoldedFile(uploaded_file)
+        FileType=FileLocation.split(".")[-1]
+        PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1])
 
 with st.sidebar.expander("Add your personal touch, if wish:"):
   PredictionHorizontal = st.number_input("Select the Prediction Horizonal, in seconds",min_value=60, max_value =300,value=120,step=10)
