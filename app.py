@@ -7,6 +7,18 @@ import base64
 from typing import List
 import wave
 
+st.set_page_config(
+    page_title="Ex-stream-ly Cool App",
+    page_icon="🧊",layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': 'https://www.extremelycoolapp.com/help',
+        'Report a bug': "https://www.extremelycoolapp.com/bug",
+        'About': "# This is a header. This is an *extremely* cool app!"
+        }
+        )
+
+
 st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidden;} </style> """, unsafe_allow_html=True)
 st.title("Interactive Music Composition Artifical Intelligence")
 st.header("                                                   ")
@@ -18,16 +30,6 @@ MainPageDescription.write("""This is a beta version for an ambitious project aim
          Wish this can aid the users to recogenise the potential rules that AI can play in art making. Source code is at:
          https://github.com/MohammedBaz/MusicStreamlit/blob/main/BackEndPrediction.py  
          """)
-st.set_page_config(
-    page_title="Ex-stream-ly Cool App",
-    page_icon="🧊",layout="wide",
-    initial_sidebar_state="expanded",
-    menu_items={
-        'Get Help': 'https://www.extremelycoolapp.com/help',
-        'Report a bug': "https://www.extremelycoolapp.com/bug",
-        'About': "# This is a header. This is an *extremely* cool app!"
-        }
-        )
 
 
 def GetParametersofWav(wavfile):
