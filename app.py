@@ -36,7 +36,7 @@ def DecreasePageNumber():
            
         
 def InitalMove():
-    TakeUserInput()
+    SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter=TakeUserInput(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter)
 
 
 def WelcomPage(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter):
