@@ -77,7 +77,7 @@ if(add_selectbox=="Upload some audio files"):
         
 if(add_selectbox=="Use some random Notes"):
     GeneratemidFile(10)
-    st.write("These files are geneated")
+    st.write(GeneratemidFile(10))
         
         
         
