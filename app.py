@@ -55,8 +55,8 @@ def TakeUserInput(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter):
     #   col1.button('Prevoius',key="Prevoius", on_click=DecreasePageNumber)     
     return(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter)    
 
+import streamlit as st
 def main():
-    import streamlit as st
     if 'PageNumebr' not in st.session_state:
         st.session_state['PageNumebr'] = '1'
     st.title("Interactive Music Composition Using Artifical Intelligence")
