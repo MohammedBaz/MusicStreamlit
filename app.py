@@ -23,5 +23,7 @@ if(add_selectbox=="Upload some audio files"):
             FileType=FileLocation.split(".")[-1]
             #PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1])
 
-st.button('Next')
+col1, col2, col3 = st.beta_columns(3)
+if col2.button('Click'):
+    st.write('hello')
 
