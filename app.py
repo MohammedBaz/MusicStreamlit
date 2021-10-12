@@ -34,7 +34,7 @@ def DecreasePageNumber():
             
             
 col1, col2, col3,col4, col5, col6,col7, col8, col9,col10 = st.columns(10)
-PrevoiusNextFooter.col10.button('Next',key="next", on_click=IncreasePageNumber)
-PrevoiusNextFooter.col1.button('Prevoius',key="Prevoius", on_click=DecreasePageNumber)  
+col10.PrevoiusNextFooter.button('Next',key="next", on_click=IncreasePageNumber)
+col1.PrevoiusNextFooter.button('Prevoius',key="Prevoius", on_click=DecreasePageNumber)  
 
 
