@@ -1,16 +1,3 @@
-def main():
-    import streamlit as st
-    if 'PageNumebr' not in st.session_state:
-        st.session_state['PageNumebr'] = '1'
-    st.title("Interactive Music Composition Using Artifical Intelligence")
-    SubtitleofThePage=st.empty()
-    DescriptionofThePage=st.empty() 
-    PrevoiusNextFooter=st.empty()
-    SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter=WelcomPage(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter)
-
-if __name__ == "__main__":
-    main()
-
 def IncreasePageNumber():
     if  (st.session_state.PageNumebr=='1'):
         st.session_state.PageNumebr='2'
@@ -68,7 +55,18 @@ def TakeUserInput(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter):
     #   col1.button('Prevoius',key="Prevoius", on_click=DecreasePageNumber)     
     return(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter)    
 
-    
+def main():
+    import streamlit as st
+    if 'PageNumebr' not in st.session_state:
+        st.session_state['PageNumebr'] = '1'
+    st.title("Interactive Music Composition Using Artifical Intelligence")
+    SubtitleofThePage=st.empty()
+    DescriptionofThePage=st.empty() 
+    PrevoiusNextFooter=st.empty()
+    SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter=WelcomPage(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter)
+if __name__ == "__main__":
+    main()
+
 
                                   
 #with PrevoiusNextFooter:
