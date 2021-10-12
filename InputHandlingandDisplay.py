@@ -9,7 +9,7 @@ def StoretheUpoldedFile(Filename):
   # so I use os.getcwd() to get the working directory and then add the uploaded file into it. 
   # we then use open-write to crate the file, more on https://www.w3schools.com/python/python_file_write.asp
   # finally we return the file locaion so that it can be used by other funciton 
-  with open(os.path.join(os.getcwd(Filename),),"wb") as f:
+  with open(os.path.join(os.getcwd(),Filename),"wb") as f:
       f.write(Filename.getbuffer())
   return (os.path.join(os.getcwd(),Filename.name))
 
