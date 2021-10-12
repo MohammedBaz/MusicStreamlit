@@ -74,8 +74,8 @@ if(add_selectbox=="Upload some audio files"):
         FileType=FileLocation.split(".")[-1]
         PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1])
         
-    if(add_selectbox=="Use some random Notes"):
-        st.write("These files are geneated")
+if(add_selectbox=="Use some random Notes"):
+    st.write("These files are geneated")
         
         
         
