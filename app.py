@@ -26,6 +26,6 @@ if(add_selectbox=="Upload some audio files"):
 col1, col2, col3 = st.columns(3)
 if col2.button('Click'):
     st.write('hello')
-st.title("The title")
-title_alignment="""<style> #the-title {text-align: center}</style>"""
+st.button("Next")
+title_alignment="""<style> #the-title {text-align: right}</style>"""
 st.markdown(title_alignment, unsafe_allow_html=True)
