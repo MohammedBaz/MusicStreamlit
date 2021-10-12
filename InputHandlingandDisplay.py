@@ -13,11 +13,4 @@ def StoretheUpoldedFile(Filename):
       f.write(Filename.getbuffer())
   return (os.path.join(os.getcwd(),Filename.name))
 
-def PlayBackMusicFile(FileLocation,FileType):
-  # This function generate audio widget, replay the contents found in FileLocation
-  # full specficaion for this widget can be found https://docs.streamlit.io/en/stable/api.html
-  # This function requires file locaton and its type
-  # I tried to find a way to run mid but failed.any help is appricated 
-  audio_file = open(FileLocation, 'rb')
-  audio_bytes = audio_file.read()
-  st.audio(audio_bytes, format='audio/'+FileType)
+
