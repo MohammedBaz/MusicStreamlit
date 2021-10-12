@@ -21,9 +21,19 @@ def WelcomPage():
     with PrevoiusNextFooter:
         col1, col2, col3,col4, col5, col6,col7, col8, col9,col10 = st.columns(10)
         col10.button('Go!',key="next", on_click=IncreasePageNumber)
-                                  
+
+
+def TakeUserInput():
+    SubtitleofThePage.write("The fist step is to listen to you")
+    add_selectbox=DescriptionofThePage.radio("you can upload your audio samples or use ours:", ("Upload some audio files", "Use some random Notes", "Use pretrainned Audios"),index=1)    
+    with PrevoiusNextFooter:
+        col1, col2, col3,col4, col5, col6,col7, col8, col9,col10 = st.columns(10)
+        col10.button('Next',key="next", on_click=IncreasePageNumber)
+        col1.button('Prevoius',key="Prevoius", on_click=DecreasePageNumber)     
+        
 def IncreasePageNumber():
     if  (st.session_state.PageNumebr=='1'):
+        TakeUserInput()
         st.session_state.PageNumebr='2'
     elif(st.session_state.PageNumebr=='2'):
         st.session_state.PageNumebr='3'
@@ -37,6 +47,7 @@ def DecreasePageNumber():
     if  (st.session_state.PageNumebr=='4'):
         st.session_state.PageNumebr='3'
     elif(st.session_state.PageNumebr=='3'):
+        TakeUserInput()
         st.session_state.PageNumebr='2'
     elif(st.session_state.PageNumebr=='2'):
         WelcomPage()
