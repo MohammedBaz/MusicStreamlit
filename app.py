@@ -2,7 +2,6 @@ import streamlit as st
 import pretty_midi
 import numpy
 import pandas
-import os
 import base64
 from typing import List
 import wave
