@@ -10,13 +10,10 @@ PrevoiusNextFooter=st.empty()
 def IncreasePageNumber():
     if  (st.session_state.PageNumebr=='1'):
         st.session_state.PageNumebr='2'
-        TakeUserInputPage.app()
     elif(st.session_state.PageNumebr=='2'):
         st.session_state.PageNumebr='3'
-        AnalysisUserInput.app()
     elif(st.session_state.PageNumebr=='3'):
         st.session_state.PageNumebr='4'
-        GetResults.app()
     else:
         st.session_state.PageNumebr='PositiveInf'
     st.write(st.session_state.PageNumebr)
