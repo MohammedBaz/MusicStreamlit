@@ -52,7 +52,7 @@ def CreateNewNote(UsingMidiNumber,withduration,SpecificInstrument=None):
 
 def GeneratemidFile(LenghtofMelody):
   newchord=music21.chord.Chord()
-  for i in range(2):
+  for i in range(LenghtofMelody):
     newchord.add(CreateNewNote(True,False,False))
     newchord.duration.quarterLength=GetPossibleDuration()
     newchord.show('text')
