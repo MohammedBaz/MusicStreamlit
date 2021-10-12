@@ -7,14 +7,15 @@ import base64
 from typing import List
 import wave
 
+st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidden;} </style> """, unsafe_allow_html=True)
 st.title("AIMC")
 st.header("Interactive Music Composition Using Transfer Learning and GAN")
-st.write("TThis app can be used to generate some musical pieces using principles of Artificial Intelligence (AI) algorithms.") 
+st.write("""TThis app can be used to generate some musical pieces using principles of Artificial Intelligence (AI) algorithms.") 
 #         Several AI models have been built and trained to match the variety of musical inputs; furthermore, 
 #         the interface has been optimised to allow a user to add personal toutches and then to download the cratfed musical peices. 
 #         Wish this can 
-#         ''')
-#st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidden;} </style> """, unsafe_allow_html=True)
+#         """)
+#
 
 
 
