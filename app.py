@@ -18,7 +18,7 @@ MainPageDescription.write("""This is a beta version for an ambitious project aim
          Wish this can aid the users to recogenise the potential rules that AI can play in art making. Source code is at:
          https://github.com/MohammedBaz/MusicStreamlit/blob/main/BackEndPrediction.py  
          """)
-
+st.sidebar.
 
 
 def GetParametersofWav(wavfile):
@@ -76,10 +76,13 @@ if(add_selectbox=="Upload some audio files"):
   uploaded_file = MainPageDescription.file_uploader("Uplod AudioFile Here or leave it blank if other options are selected",
                                      type=['wav','mp3','mid'], accept_multiple_files=False, key=123456) 
   if uploaded_file is not None:                               # Just to check that the user has its own input to the filed_uploader
-    if not (uploaded_file.name.endswith('mid')):              # if the file is not mid, i.e., it is .wav or.mp3 then
+    if (uploaded_file.name.endswith('wav')):              # if the file is not mid, i.e., it is .wav or.mp3 then
         FileLocation=StoretheUpoldedFile(uploaded_file)         # Store the file and get its location information 
         FileType=FileLocation.split(".")[-1]
     PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1]) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
+    from WaveFeatures import GetWavFeatures
+    GetWavFeatures(FileLocation) 
+
 with st.sidebar.expander("Add your personal touch, if wish:"):
   PredictionHorizontal = st.number_input("Select the Prediction Horizonal, in seconds",min_value=60, max_value =300,value=120,step=10)
   st.slider("Select the Inputshape, in sec",0,300,120) #here should be changed in accordnace with the inputs 
