@@ -34,24 +34,6 @@ MainPageDescription.write("""This is a beta version for an ambitious project aim
          https://github.com/MohammedBaz/MusicStreamlit/blob/main/BackEndPrediction.py  
          """)
 
-
-def GetParametersofWav(wavfile):
-  wav_file=wave.open(wavfile, "rb")
-  n_channels = wav_file.getnchannels()      # Number of channels. (1=Mono, 2=Stereo).
-  sample_width = wav_file.getsampwidth()    # Sample width in bytes.
-  framerate = wav_file.getframerate()       # Frame rate.
-  n_frames = wav_file.getnframes()          # Number of frames.
-  comp_type = wav_file.getcomptype()        # Compression type (only supports "NONE").
-  comp_name = wav_file.getcompname()        # Compression name.
-  st.write(n_channels)
-  st.write(sample_width)
-  st.write(framerate)
-  st.write(n_frames)
-  st.write(comp_type)
-  st.write(comp_name)
-
-
-
 def get_binary_file_downloader_html(bin_file, file_label='File'):
   with open(bin_file, 'rb') as f:
     data = f.read()
@@ -75,7 +57,8 @@ if(add_selectbox=="Upload some audio files"):
         FileType=FileLocation.split(".")[-1]
     PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1]) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
     from WaveFeatures import GetWavFeatures
-    GetWavFeatures(FileLocation) 
+    WavFeatures=GetWavFeatures(FileLocation)
+    st.write(WavFeatures.SampleFrequecy)
 
 with st.sidebar.expander("Add your personal touch, if wish:"):
   PredictionHorizontal = st.number_input("Select the Prediction Horizonal, in seconds",min_value=60, max_value =300,value=120,step=10)
