@@ -1,12 +1,5 @@
 import streamlit as st
-global SubtitleofThePage
-SubtitleofThePage=st.empty()
 
-global DescriptionofThePage
-DescriptionofThePage=st.empty()
-
-global PrevoiusNextFooter
-PrevoiusNextFooter=st.empty()
 
 
 def IncreasePageNumber():
