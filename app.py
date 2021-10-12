@@ -24,6 +24,9 @@ def WelcomPage():
 
 
 def TakeUserInput():
+    SubtitleofThePage.empty()
+    DescriptionofThePage.empty() 
+    PrevoiusNextFooter.empty()
     SubtitleofThePage.write("The fist step is to listen to you")
     add_selectbox=DescriptionofThePage.radio("you can upload your audio samples or use ours:", ("Upload some audio files", "Use some random Notes", "Use pretrainned Audios"),index=1)    
     with PrevoiusNextFooter:
