@@ -1,4 +1,5 @@
 import streamlit as st
+from InputHandlingandDisplay import StoretheUpoldedFile
 
 st.title("Interactive Music Composition Artifical Intelligence")
 WhichStep = st.empty()
@@ -20,7 +21,7 @@ if(add_selectbox=="Upload some audio files"):
         elif (uploaded_file.name.endswith('mp3')):
             FileLocation=StoretheUpoldedFile(uploaded_file)
             FileType=FileLocation.split(".")[-1]
-            PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1])
+            #PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1])
 
 st.button('Next')
 
