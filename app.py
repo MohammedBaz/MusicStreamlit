@@ -26,10 +26,12 @@ if(add_selectbox=="Upload some audio files"):
             #PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1])
 
 def IncreasePageNumber():
-    if(st.session_state.PageNumebr=='1'):
+    if  (st.session_state.PageNumebr=='1'):
         st.session_state.PageNumebr='2'
-    elis(st.session_state.PageNumebr=='2'):
+    elif(st.session_state.PageNumebr=='2'):
         st.session_state.PageNumebr='3'
+    else(st.session_state.PageNumebr=='3'):
+        st.session_state.PageNumebr='None'
     st.write(st.session_state.PageNumebr)
             
             
