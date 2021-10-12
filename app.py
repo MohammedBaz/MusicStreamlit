@@ -1,6 +1,6 @@
 import streamlit as st
 global SubtitleofThePage
-SubtitleofThePage=st.empty()=st.empty()
+SubtitleofThePage=st.empty()
 
 global DescriptionofThePage
 DescriptionofThePage=st.empty()
