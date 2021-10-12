@@ -4,6 +4,5 @@ tensorflow
 numpy
 pretty_midi
 pandas
-pydub
 pathlib
-wave
+scipy.io
