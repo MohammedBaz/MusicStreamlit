@@ -12,7 +12,7 @@ PrevoiusNextFooter=st.empty()
 def IncreasePageNumber():
     if  (st.session_state.PageNumebr=='1'):
         st.session_state.PageNumebr='2'
-        TakeUserInput()
+        SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter=TakeUserInput(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter)
     elif(st.session_state.PageNumebr=='2'):
         st.session_state.PageNumebr='3'
     elif(st.session_state.PageNumebr=='3'):
@@ -26,9 +26,9 @@ def DecreasePageNumber():
         st.session_state.PageNumebr='3'
     elif(st.session_state.PageNumebr=='3'):
         st.session_state.PageNumebr='2'
-        TakeUserInput()
+        SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter=TakeUserInput(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter)
     elif(st.session_state.PageNumebr=='2'):
-        WelcomPage()
+        SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter=WelcomPage(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter)
         st.session_state.PageNumebr='1'                          
     else:
         st.session_state.PageNumebr='NegtiveInf'
@@ -54,7 +54,7 @@ def WelcomPage(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter):
     return(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter)
 
 
-def TakeUserInput():
+def TakeUserInput(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter):
     SubtitleofThePage.empty()
     DescriptionofThePage.empty() 
     PrevoiusNextFooter.empty()
