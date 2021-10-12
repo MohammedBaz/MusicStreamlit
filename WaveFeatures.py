@@ -30,15 +30,15 @@ def GetWavFeatures(wav_file):
     TimePointArray.append(x)
     # Now it is the time to move to freqquency domain: for the audio processing we need to calcaulte the amplitudes (those that are correpoding to readings of SoundArray)
     # As well as the FrequecyPoints( those that are corropsding to TimePointArray1). here we use:
-    # np.fft.rfft to compute the abmplitude as our data readings of the sound is real not Complex 
+    # numpy.fft.rfft to compute the abmplitude as our data readings of the sound is real not Complex 
   
   # FourierFrequencySpectrum is the Fourier transform of the signal, 
-  # np.abs to treat the negative frequencies
-  # np.fft.rfft is used as our data readings of the sound is real not Complex
+  # numpy.abs to treat the negative frequencies
+  # numpy.fft.rfft is used as our data readings of the sound is real not Complex
   # Some Useful Sites: https://klyshko.github.io/teaching/2019-02-22-teaching
   # https://medium.com/@nadimkawwa/can-we-guess-musical-instruments-with-machine-learning-afc8790590b8 
   # Wave DataSet:https://magenta.tensorflow.org/datasets/nsynth
 
   FourierFrequencySpectrumAllChannels= numpy.abs(numpy.fft.rfft(NormalisedSoundArray))
-  FrequencyPointArrayAllhannels = np.fft.rfftfreq(NormalisedSoundArray.size, d=1./SampleFrequecy)
+  FrequencyPointArrayAllhannels = numpy.fft.rfftfreq(NormalisedSoundArray.size, d=1./SampleFrequecy)
   return(SampleFrequecy,SoundArray,NormalisedSoundArray,NumberofSamples,NumberofChannel,DurationinSecond,TimePointArray,FourierFrequencySpectrumAllChannels,FrequencyPointArrayAllhannels)
