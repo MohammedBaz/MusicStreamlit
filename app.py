@@ -56,13 +56,14 @@ def TakeUserInput(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter):
     return(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter)    
 
 import streamlit as st
+SubtitleofThePage=st.empty()
+DescriptionofThePage=st.empty() 
+PrevoiusNextFooter=st.empty()
+
 def main():
     if 'PageNumebr' not in st.session_state:
         st.session_state['PageNumebr'] = '1'
     st.title("Interactive Music Composition Using Artifical Intelligence")
-    SubtitleofThePage=st.empty()
-    DescriptionofThePage=st.empty() 
-    PrevoiusNextFooter=st.empty()
     SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter=WelcomPage(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter)
 if __name__ == "__main__":
     main()
