@@ -4,7 +4,7 @@ st.title("Interactive Music Composition Artifical Intelligence")
 WhichStep = st.empty()
 WhichStep.write("Step1: How would you like to start")
 Contents = st.empty()
-WhichStep.add_selectbox=st.radio("you can upload your audio samples or use ours:",
+add_selectbox=WhichStep.radio("you can upload your audio samples or use ours:",
                                  ("Upload some audio files", "Use some random Notes", "Use pretrainned Audios"),index=1)
 if(add_selectbox=="Upload some audio files"):
     MainPageDescription .empty()       
