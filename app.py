@@ -8,16 +8,6 @@ import TakeUserInputPage
 import AnalysisUserInput
 import GetResults
 
-PAGES = {
-    "WelcomePage": WelcomePage,
-    "App2": app2
-}
-st.sidebar.title('Navigation')
-selection = st.sidebar.radio("Go to", list(PAGES.keys()))
-page = PAGES[selection]
-page.app()    
-    
-    
     
 
 def IncreasePageNumber():
