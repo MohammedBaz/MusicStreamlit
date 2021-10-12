@@ -9,6 +9,11 @@ import wave
 
 st.title("AIMC")
 st.header("Interactive Music Composition Using Transfer Learning and GAN")
+st.write('''TThis app can be used to generate some musical pieces using principles of Artificial Intelligence (AI) algorithms. 
+         Several AI models have been built and trained to match the variety of musical inputs; furthermore, 
+         the interface has been optimised to allow a user to add personal toutches and then to download the cratfed musical peices. 
+         Wish this can 
+         ''')
 st.markdown(""" <style>
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
@@ -63,11 +68,7 @@ def get_binary_file_downloader_html(bin_file, file_label='File'):
 #uploaded_file = st.file_uploader("Uplod AudioFile Here or leave it blank for random starting", type=['wav','mp3','mid'], accept_multiple_files=False, key=123456) 
 # Create new file uploader instance and let it accept audio files
 #add_selectbox = st.sidebar.selectbox("How to prefer to strat with",("Load some audio files", "Use some random Notes", "Use pretrainned Audios"))
-st.write('''TThis app can be used to generate some musical pieces using principles of Artificial Intelligence (AI) algorithms. 
-         Several AI models have been built and trained to match the variety of musical inputs; furthermore, 
-         the interface has been optimised to allow a user to add personal toutches and then to download the cratfed musical peices. 
-         Wish this can 
-         ''')
+
 with st.sidebar.expander("How to prefer to strat with:"):
   add_selectbox=st.radio("you can upload your audio samples or use ours:", ("Upload some audio files", "Use some random Notes", "Use pretrainned Audios"),index=1)
   if(add_selectbox=="Load some audio files"):
