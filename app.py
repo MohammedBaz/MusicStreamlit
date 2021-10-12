@@ -27,5 +27,5 @@ col1, col2, col3 = st.columns(3)
 if col2.button('Click'):
     st.write('hello')
 st.button("Next")
-title_alignment="""<style> #the-title {text-align: right}</style>"""
+title_alignment="""<style> #the-title {text-align: left}</style>"""
 st.markdown(title_alignment, unsafe_allow_html=True)
