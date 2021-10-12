@@ -1,7 +1,7 @@
 import streamlit as st
 from InputHandlingandDisplay import StoretheUpoldedFile
 if 'PageNumebr' not in st.session_state:
-    st.session_state['PageNumebr'] = 1
+    st.session_state['PageNumebr'] = 'One'
 st.write(st.session_state.PageNumebr)
 st.title("Interactive Music Composition Artifical Intelligence")
 WhichStep = st.empty()
@@ -25,13 +25,16 @@ if(add_selectbox=="Upload some audio files"):
             FileType=FileLocation.split(".")[-1]
             #PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1])
 
-def PageControl():
-    st.session_state.PageNumebr=st.session_state.PageNumebr+1
+def IncreasePageNumber():
+    if(st.session_state.PageNumebr=='1'):
+        st.session_state.PageNumebr='2'
+    elis(st.session_state.PageNumebr=='2'):
+        st.session_state.PageNumebr='3'
     st.write(st.session_state.PageNumebr)
             
             
 col1, col2, col3,col4, col5, col6,col7, col8, col9,col10 = st.columns(10)
-col10.button('Next',key="next", on_click=PageControl)
-col1.button('Prevoius',key="Prevoius", on_click=PageControl)  
+col10.button('Next',key="next", on_click=IncreasePageNumber)
+col1.button('Prevoius',key="Prevoius", on_click=DecreasePageNumber)  
 
 
