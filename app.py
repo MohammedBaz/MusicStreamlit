@@ -5,7 +5,7 @@ if 'PageNumebr' not in st.session_state:
 
 TitleofThePage=st.empty()
 DescriptionofThePage=st.empty() 
-PrevoiusNextFooter.empty()    
+PrevoiusNextFooter=st.empty()    
     
 def IncreasePageNumber():
     if  (st.session_state.PageNumebr=='1'):
