@@ -1,3 +1,9 @@
+import streamlit as st
+SubtitleofThePage=st.empty()
+DescriptionofThePage=st.empty() 
+PrevoiusNextFooter=st.empty()
+
+
 def IncreasePageNumber():
     if  (st.session_state.PageNumebr=='1'):
         st.session_state.PageNumebr='2'
@@ -55,10 +61,7 @@ def TakeUserInput(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter):
     #   col1.button('Prevoius',key="Prevoius", on_click=DecreasePageNumber)     
     return(SubtitleofThePage,DescriptionofThePage,PrevoiusNextFooter)    
 
-import streamlit as st
-SubtitleofThePage=st.empty()
-DescriptionofThePage=st.empty() 
-PrevoiusNextFooter=st.empty()
+
 
 def main():
     if 'PageNumebr' not in st.session_state:
