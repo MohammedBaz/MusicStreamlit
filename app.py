@@ -26,29 +26,13 @@ if(add_selectbox=="Upload some audio files"):
 col1, col2, col3 = st.columns(3)
 if col2.button('Click'):
     st.write('hello')
-st.markdown("""
-div.stButton > button:first-child {
-background-color: #00cc00;color:white;font-size:20px;height:3em;width:30em;border-radius:10px 10px 10px 10px;
+st.title("The title")
+title_alignment=
+"""
+<style>
+#the-title {
+  text-align: center
 }
-.css-2trqyj:focus:not(:active) {
-border-color: #ffffff;
-box-shadow: none;
-color: #ffffff;
-background-color: #0066cc;
-}
-.css-2trqyj:focus:(:active) {
-border-color: #ffffff;
-box-shadow: none;
-color: #ffffff;
-background-color: #0066cc;
-}
-.css-2trqyj:focus:active){
-background-color: #0066cc;
-border-color: #ffffff;
-box-shadow: none;
-color: #ffffff;
-background-color: #0066cc;
-}
-“”", unsafe_allow_html=True)
-if st.button(“the notice you want to show”):
-st.write(“content you want to tell”)
+</style>
+"""
+st.markdown(title_alignment, unsafe_allow_html=True)
