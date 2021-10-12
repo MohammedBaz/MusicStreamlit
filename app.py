@@ -18,7 +18,16 @@ MainPageDescription.write("""This is a beta version for an ambitious project aim
          Wish this can aid the users to recogenise the potential rules that AI can play in art making. Source code is at:
          https://github.com/MohammedBaz/MusicStreamlit/blob/main/BackEndPrediction.py  
          """)
-st.sidebar.
+st.set_page_config(
+    page_title="Ex-stream-ly Cool App",
+    page_icon="🧊",layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': 'https://www.extremelycoolapp.com/help',
+        'Report a bug': "https://www.extremelycoolapp.com/bug",
+        'About': "# This is a header. This is an *extremely* cool app!"
+        }
+        )
 
 
 def GetParametersofWav(wavfile):
