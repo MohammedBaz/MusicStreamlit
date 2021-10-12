@@ -5,10 +5,10 @@ st.title("Interactive Music Composition Artifical Intelligence")
 WhichStep = st.empty()
 WhichStep.write("Step1: How would you like to start")
 Contents = st.empty()
-add_selectbox=WhichStep.radio("you can upload your audio samples or use ours:",
+add_selectbox=Contents.radio("you can upload your audio samples or use ours:",
                                  ("Upload some audio files", "Use some random Notes", "Use pretrainned Audios"),index=1)
 if(add_selectbox=="Upload some audio files"):
-    uploaded_file = st.file_uploader("Uplod AudioFile Here or leave it blank if other options are selected",
+    Contents.uploaded_file = st.file_uploader("Uplod AudioFile Here or leave it blank if other options are selected",
                                      type=['wav','mp3','mid'], accept_multiple_files=False, key=123456) 
     if uploaded_file is not None:                               # Just to check that the user has its own input to the filed_uploader
         if (uploaded_file.name.endswith('wav')):              # if the file is not mid, i.e., it is .wav or.mp3 then
