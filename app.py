@@ -23,14 +23,24 @@ st.set_page_config(
         }
         )
 
-def PlayBackMusicFile(FileLocation,FileType):
+def PlayBackMusicFile(FileLocation):
   # This function generate audio widget, replay the contents found in FileLocation
   # full specficaion for this widget can be found https://docs.streamlit.io/en/stable/api.html
   # This function requires file locaton and its type
   # The midi file is replied by first converting it to wav and then play it  
-  audio_file = open(FileLocation, 'rb')
-  audio_bytes = audio_file.read()
-  st.audio(audio_bytes, format='audio/'+FileType)
+  if FileLocation.endswith('wav'):
+    audio_file = open(FileLocation, 'rb')
+    audio_bytes = audio_file.read()
+    st.audio(audio_bytes, format='audio/'+FileLocation.split(".")[-1])
+  elif FileLocation.endswith('mid'):
+    midi_data = pretty_midi.PrettyMIDI(FileLocation)
+    audio_data = midi_data.fluidsynth()
+    st.write(audio_data)
+    audio_data = numpy.int16(audio_data / numpy.max(numpy.abs(audio_data)) * 32767 * 0.9) 
+    virtualfile = io.BytesIO()
+    wavfile.write(virtualfile, 44100, audio_data)
+    st.audio(virtualfile)
+    
 
 
 st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidden;} </style> """, unsafe_allow_html=True)
@@ -112,32 +122,14 @@ if(add_selectbox=="Upload some audio files"):
   if uploaded_file is not None:                               # Just to check that the user has its own input to the filed_uploader
     if (uploaded_file.name.endswith('wav')):              # if the file is not mid, i.e., it is .wav or.mp3 then
         FileLocation=StoretheUpoldedFile(uploaded_file)         # Store the file and get its location information 
-        FileType=FileLocation.split(".")[-1]
-        PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1]) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
+        PlayBackMusicFile(FileLocation) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
         from WaveFeatures import GetWavFeatures
         WavFeatures=GetWavFeatures(FileLocation)
         if (WavFeatures['NumberofSamples']<=0):
             st.error("It seems that the loaded file is corroupted, please upload another file")
     elif (uploaded_file.name.endswith('mid')):
         FileLocation=StoretheUpoldedFile(uploaded_file)
-        
-        
-        midi_data = pretty_midi.PrettyMIDI(FileLocation)
-        audio_data = midi_data.fluidsynth()
-        st.write(audio_data)
-        audio_data = numpy.int16(
-            audio_data / numpy.max(numpy.abs(audio_data)) * 32767 * 0.9
-        )  # -- Normalize for 16 bit audio https://github.com/jkanner/streamlit-audio/blob/main/helper.py
-
-        virtualfile = io.BytesIO()
-        wavfile.write(virtualfile, 44100, audio_data)
-        st.audio(virtualfile)
-        
-        
-        
-        FileLocation=StoretheUpoldedFile(uploaded_file)
-        FileType=FileLocation.split(".")[-1]
-        PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1])
+        PlayBackMusicFile(FileLocation)
         
 if(add_selectbox=="Use some random Notes"):
     GeneratemidFile(10)
