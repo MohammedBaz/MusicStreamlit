@@ -42,6 +42,7 @@ us = music21.environment.UserSettings()
 us_path = us.getSettingsPath()
 if not os.path.exists(us_path):
     us.create()
+us['musescoreDirectPNGPath'] = '/usr/share/sounds/sf3/MuseScore_General_Lite.sf3'
 st.write('Path to music21 environment', us_path)
 st.write(us)
 n = music21.note.Note('c')
@@ -50,7 +51,7 @@ n = music21.note.Note('c')
 #image = Image.open(musicalNote)
 #st.image(image, caption='Sunrise by the mountains')
 
-st.write(st.session_state)
+
 ###################
 
 
