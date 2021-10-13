@@ -1,3 +1,10 @@
+#################################################
+# To do list: 
+# 1- use music21 instead of pretty_midi in PlayBackMusicFile, so that all app use signal musical library, 
+# the music21 is comptabile with lilypond which is used to display the musical note, but not with fluidsynth
+# I think that pretty_midi stores notes in flat shape, but in music more sophesticated structure is used !!. 
+
+
 import streamlit as st
 import pretty_midi
 import numpy
@@ -24,24 +31,35 @@ st.set_page_config(
         )
 
 def PlayBackMusicFile(FileLocation):
-  # This function generate audio widget, replay the contents found in FileLocation
+  # This function generate st.audio widget, replay the contents found in FileLocation
   # full specficaion for this widget can be found https://docs.streamlit.io/en/stable/api.html
-  # This function requires file locaton and its type
-  # The midi file is replied by first converting it to wav and then play it  
+  # This function pass the file to the widget directly, the extension extracted only as it is 
+  # needed by tehs second argument of the st.audio widget  
   if FileLocation.endswith('wav'):
     audio_file = open(FileLocation, 'rb')
     audio_bytes = audio_file.read()
     st.audio(audio_bytes, format='audio/'+FileLocation.split(".")[-1])
+  # The st.audio widget cannot play mid file direclty, here there is a need to convert it to other format
+  # wave is a good choice, the midi file consists of notes, instruments and many others; However, wav is simply 
+  # an array of numbers.
   elif FileLocation.endswith('mid'):
+  # read the file into mid instance, we use pretty_midi here But it worth to try music21 libary instant##################   
     midi_data = pretty_midi.PrettyMIDI(FileLocation)
-    audio_data = midi_data.fluidsynth()
-    st.write(audio_data)
-    audio_data = numpy.int16(audio_data / numpy.max(numpy.abs(audio_data)) * 32767 * 0.9) 
+    audio_data = midi_data.fluidsynth()## synthesizer the midi file, the output of this is a list of real numbers
+    audio_data = numpy.int16(audio_data / numpy.max(numpy.abs(audio_data)) * 32767 ) # convert the synthesized numbers into another numbers between [-32767,32767]
+    # this range represent 16bis which is selected here to reprsent the readings(amplitudes), other bits format 24 or 8 can be used instant. Some
+    # referneces multiple the 32767 by 0.9 , e.g.,https://share.streamlit.io/andfanilo/streamlit-midi-to-wav/main/app.py whereas others like: 
+    # https://stackoverflow.com/questions/10357992/how-to-generate-audio-from-a-numpy-array applied it without. I canot find a good reason for this multiplication, 
+    # Populate the 16-bits audio data inthe memory, so it can be written to wave files  
     virtualfile = io.BytesIO()
+    # 44100 is the sample_rate, other sample rate is also possible
     wavfile.write(virtualfile, 44100, audio_data)
     st.audio(virtualfile)
-    
 
+    
+    
+    
+#################################################### page layout start here #########################################################
 
 st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidden;} </style> """, unsafe_allow_html=True)
 st.title("Interactive Music Composition Using Artifical Intelligence")
