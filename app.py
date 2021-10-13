@@ -3,6 +3,19 @@
 # 1- use music21 instead of pretty_midi in PlayBackMusicFile, so that all app use signal musical library, 
 # the music21 is comptabile with lilypond which is used to display the musical note, but not with fluidsynth
 # I think that pretty_midi stores notes in flat shape, but in music more sophesticated structure is used !!. 
+# 2-Typically, music21 uses musescore to render the musical notes, this requies to install the musescore on the device,
+# in streamlit share, simply But it in packages.txt and then to add the path of musescore into the music21 environment
+# file, a good describtion can be found here :https://www.audiolabs-erlangen.de/resources/MIR/FMP/C1/C1S2_SymbolicRendering.html. 
+# In our case, the follwoing error raises music21.converter.subConverters.SubConverterException: Cannot find a path to the 'mscore' file at /usr/bin/mscore3 -- download MuseScore
+# I left some of the code here as reminder for me:
+# us = music21.environment.UserSettings()
+# us_path = us.getSettingsPath()
+# if not os.path.exists(us_path):
+#    us.create()
+# us['musescoreDirectPNGPath'] = '/usr/share/sounds/sf3/default-GM.sf3'
+# st.write('Path to music21 environment', us_path)
+# st.write(us)
+
 
 
 import streamlit as st
@@ -56,9 +69,6 @@ def PlayBackMusicFile(FileLocation):
     wavfile.write(virtualfile, 44100, audio_data)
     st.audio(virtualfile)
 
-    
-    
-    
 #################################################### page layout start here #########################################################
 
 st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidden;} </style> """, unsafe_allow_html=True)
@@ -66,20 +76,8 @@ st.title("Interactive Music Composition Using Artifical Intelligence")
 st.header("                                                   ")
 
 #######################for one time only#############
-
-st.write(os.getcwd())
-us = music21.environment.UserSettings()
-us_path = us.getSettingsPath()
-if not os.path.exists(us_path):
-    us.create()
-us['musescoreDirectPNGPath'] = '/usr/share/sounds/sf3/default-GM.sf3'
-st.write('Path to music21 environment', us_path)
-st.write(us)
-n = music21.note.Note('c')
-#musicalNote=n.show('ipython.musicxml.png')
 from PIL import Image
-#
-#st.image(image, caption='Sunrise by the mountains')
+
 
 def show(music):
   return (str(music.write('lily.png')))
