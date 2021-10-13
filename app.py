@@ -56,7 +56,7 @@ for note_name in ['C5', 'E5', 'G5']:
 # Add the cello instrument to the PrettyMIDI object
 cello_c_chord.instruments.append(cello)
 # Write out the MIDI data
-cello_c_chord.write('cello-C-chord.mid')
+#cello_c_chord.write('cello-C-chord.mid')
 
 
 st.write(os.getcwd())
