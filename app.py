@@ -75,7 +75,7 @@ if(add_selectbox=="Upload some audio files"):
         FileLocation=StoretheUpoldedFile(uploaded_file)
         midi_data = pretty_midi.PrettyMIDI(FileLocation)
         audio_data = midi_data.fluidsynth()
-        audio_data = np.int16(
+        audio_data = numpy.int16(
             audio_data / numpy.max(numpy.abs(audio_data)) * 32767 * 0.9
         )  # -- Normalize for 16 bit audio https://github.com/jkanner/streamlit-audio/blob/main/helper.py
 
