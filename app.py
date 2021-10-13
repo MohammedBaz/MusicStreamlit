@@ -66,26 +66,6 @@ st.title("Interactive Music Composition Using Artifical Intelligence")
 st.header("                                                   ")
 
 #######################for one time only#############
-import pretty_midi
-# Create a PrettyMIDI object
-cello_c_chord = pretty_midi.PrettyMIDI()
-# Create an Instrument instance for a cello instrument
-cello_program = pretty_midi.instrument_name_to_program('Cello')
-cello = pretty_midi.Instrument(program=cello_program)
-# Iterate over note names, which will be converted to note number later
-for note_name in ['C5', 'E5', 'G5']:
-    # Retrieve the MIDI note number for this note name
-    note_number = pretty_midi.note_name_to_number(note_name)
-    # Create a Note instance, starting at 0s and ending at .5s
-    note = pretty_midi.Note(
-        velocity=100, pitch=note_number, start=0, end=.5)
-    # Add it to our cello instrument
-    cello.notes.append(note)
-# Add the cello instrument to the PrettyMIDI object
-cello_c_chord.instruments.append(cello)
-# Write out the MIDI data
-#cello_c_chord.write('cello-C-chord.mid')
-
 
 st.write(os.getcwd())
 us = music21.environment.UserSettings()
@@ -142,7 +122,9 @@ if(add_selectbox=="Upload some audio files"):
         FileLocation=StoretheUpoldedFile(uploaded_file)         # Store the file and get its location information 
         PlayBackMusicFile(FileLocation) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
         from WaveFeatures import GetWavFeatures
+        
         WavFeatures=GetWavFeatures(FileLocation)
+        st.write(WavFeatures['SoundArray'].shape)
         if (WavFeatures['NumberofSamples']<=0):
             st.error("It seems that the loaded file is corroupted, please upload another file")
     elif (uploaded_file.name.endswith('mid')):
