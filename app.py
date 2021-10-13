@@ -120,7 +120,9 @@ if(add_selectbox=="Upload some audio files"):
             st.error("It seems that the loaded file is corroupted, please upload another file")
     elif (uploaded_file.name.endswith('mid')):
         FileLocation=StoretheUpoldedFile(uploaded_file)
-        midi_data = pretty_midi.PrettyMIDI(FileLocation)
+        
+        midi_data =music21.converter.parse(FileLocation)
+        #midi_data = pretty_midi.PrettyMIDI(FileLocation)
         audio_data = midi_data.fluidsynth()
         audio_data = numpy.int16(
             audio_data / numpy.max(numpy.abs(audio_data)) * 32767 * 0.9
