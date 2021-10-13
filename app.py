@@ -46,6 +46,21 @@ st.set_page_config(
         }
         )
 
+def ConvertMiditoWave(FileLocation, samplerate=44100,AmplitudeQuantizationRange=16):
+  midi_data = pretty_midi.PrettyMIDI(FileLocation)
+  audio_data = midi_data.fluidsynth()## synthesizer the midi file, the output of this is a list of real numbers
+  audio_data = numpy.int16(audio_data / numpy.max(numpy.abs(audio_data)) * 32767 ) # convert the synthesized numbers into another numbers between [-32767,32767]
+  # this range represent 16bis which is selected here to reprsent the readings(amplitudes), other bits format 24 or 8 can be used instant. Some
+  # referneces multiple the 32767 by 0.9 , e.g.,https://share.streamlit.io/andfanilo/streamlit-midi-to-wav/main/app.py whereas others like: 
+  # https://stackoverflow.com/questions/10357992/how-to-generate-audio-from-a-numpy-array applied it without. I canot find a good reason for this multiplication, 
+  # Populate the 16-bits audio data inthe memory, so it can be written to wave files  
+  virtualfile = io.BytesIO()
+  # 44100 is the sample_rate, other sample rate is also possible
+  wavfile.write(virtualfile, 44100, audio_data)
+  return (virtualfile)
+
+
+
 def PlayBackMusicFile(FileLocation):
   # This function generate st.audio widget, replay the contents found in FileLocation
   # full specficaion for this widget can be found https://docs.streamlit.io/en/stable/api.html
@@ -59,20 +74,8 @@ def PlayBackMusicFile(FileLocation):
   # wave is a good choice, the midi file consists of notes, instruments and many others; However, wav is simply 
   # an array of numbers.
   elif FileLocation.endswith('mid'):
-  # read the file into mid instance, we use pretty_midi here But it worth to try music21 libary instant##################   
-    midi_data = pretty_midi.PrettyMIDI(FileLocation)
-    audio_data = midi_data.fluidsynth()## synthesizer the midi file, the output of this is a list of real numbers
-    audio_data = numpy.int16(audio_data / numpy.max(numpy.abs(audio_data)) * 32767 ) # convert the synthesized numbers into another numbers between [-32767,32767]
-    # this range represent 16bis which is selected here to reprsent the readings(amplitudes), other bits format 24 or 8 can be used instant. Some
-    # referneces multiple the 32767 by 0.9 , e.g.,https://share.streamlit.io/andfanilo/streamlit-midi-to-wav/main/app.py whereas others like: 
-    # https://stackoverflow.com/questions/10357992/how-to-generate-audio-from-a-numpy-array applied it without. I canot find a good reason for this multiplication, 
-    # Populate the 16-bits audio data inthe memory, so it can be written to wave files  
-    virtualfile = io.BytesIO()
-    # 44100 is the sample_rate, other sample rate is also possible
-    wavfile.write(virtualfile, 44100, audio_data)
-    st.audio(virtualfile)
-    
-    
+    st.audio(ConvertMiditoWave(FileLocation))
+  
 def DisplayMusicalNotes(music): 
   # This function is used to render the musical sheet of the argument music
   # it is adopted from the idea presented in https://groups.google.com/g/music21list/c/kjjt3QucVFM
