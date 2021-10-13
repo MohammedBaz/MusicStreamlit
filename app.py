@@ -3,6 +3,7 @@
 # 1- use music21 instead of pretty_midi in PlayBackMusicFile, so that all app use signal musical library, 
 # the music21 is comptabile with lilypond which is used to display the musical note, but not with fluidsynth
 # I think that pretty_midi stores notes in flat shape, but in music more sophesticated structure is used !!. 
+# 
 # 2-Typically, music21 uses musescore to render the musical notes, this requies to install the musescore on the device,
 # in streamlit share, simply But it in packages.txt and then to add the path of musescore into the music21 environment
 # file, a good describtion can be found here :https://www.audiolabs-erlangen.de/resources/MIR/FMP/C1/C1S2_SymbolicRendering.html. 
@@ -72,9 +73,13 @@ def PlayBackMusicFile(FileLocation):
     st.audio(virtualfile)
     
     
-def DisplayMusicalNotes(music):
+def DisplayMusicalNotes(music): 
+  # This function is used to render the musical sheet of the argument music
+  # it is adopted from the idea presented in https://groups.google.com/g/music21list/c/kjjt3QucVFM
+  # it is simply cast the music into strings and then to image.   
   streamingNotes=str(music.write('lily.png'))
   image = Image.open(streamingNotes)
+  # Then the st.image widget is used to display the image
   st.image(image, caption='Musical sheet')
 
 #################################################### page layout start here #########################################################
