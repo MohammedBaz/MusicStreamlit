@@ -45,10 +45,10 @@ if not os.path.exists(us_path):
 st.write('Path to music21 environment', us_path)
 st.write(us)
 n = music21.note.Note('c')
-musicalNote=n.show('ipython.musicxml.png')
-from PIL import Image
-image = Image.open(musicalNote)
-st.image(image, caption='Sunrise by the mountains')
+#musicalNote=n.show('ipython.musicxml.png')
+#from PIL import Image
+#image = Image.open(musicalNote)
+#st.image(image, caption='Sunrise by the mountains')
 
 st.write(st.session_state)
 ###################
