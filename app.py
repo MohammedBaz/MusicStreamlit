@@ -72,6 +72,7 @@ if(add_selectbox=="Upload some audio files"):
         if (WavFeatures['NumberofSamples']<=0):
             st.error("It seems that the loaded file is corroupted, please upload another file")
     elif (uploaded_file.name.endswith('mid')):
+        FileLocation=StoretheUpoldedFile(uploaded_file)
         midi_data = pretty_midi.PrettyMIDI(FileLocation)
         audio_data = midi_data.fluidsynth()
         audio_data = np.int16(
