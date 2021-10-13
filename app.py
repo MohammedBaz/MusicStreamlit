@@ -38,6 +38,7 @@ st.title("Interactive Music Composition Using Artifical Intelligence")
 st.header("                                                   ")
 
 #######################for one time only#############
+st.write(os.getcwd())
 us = music21.environment.UserSettings()
 us_path = us.getSettingsPath()
 if not os.path.exists(us_path):
@@ -46,10 +47,10 @@ us['musescoreDirectPNGPath'] = '/usr/share/sounds/sf3/default-GM.sf3'
 st.write('Path to music21 environment', us_path)
 st.write(us)
 n = music21.note.Note('c')
-musicalNote=n.show('ipython.musicxml.png')
-from PIL import Image
-image = Image.open(musicalNote)
-st.image(image, caption='Sunrise by the mountains')
+#musicalNote=n.show('ipython.musicxml.png')
+#from PIL import Image
+#image = Image.open(musicalNote)
+#st.image(image, caption='Sunrise by the mountains')
 
 
 ###################
