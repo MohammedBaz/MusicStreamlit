@@ -124,7 +124,7 @@ if(add_selectbox=="Upload some audio files"):
         from WaveFeatures import GetWavFeatures
         
         WavFeatures=GetWavFeatures(FileLocation)
-        st.write(WavFeatures['SoundArray'].shape)
+        st.write(WavFeatures['SoundArray'].shape())
         if (WavFeatures['NumberofSamples']<=0):
             st.error("It seems that the loaded file is corroupted, please upload another file")
     elif (uploaded_file.name.endswith('mid')):
