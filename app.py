@@ -8,7 +8,7 @@ import wave
 from InputHandlingandDisplay import StoretheUpoldedFile
 from MidiFeatures import GeneratemidFile
 import io
-
+from scipy.io import wavfile
 
 ################reconsidering pleae 
 st.set_page_config(
