@@ -31,6 +31,8 @@ import io
 from scipy.io import wavfile
 import os
 import music21
+from PIL import Image
+
 ################reconsidering pleae 
 st.set_page_config(
     page_title="Ex-stream-ly Cool App",
@@ -68,6 +70,12 @@ def PlayBackMusicFile(FileLocation):
     # 44100 is the sample_rate, other sample rate is also possible
     wavfile.write(virtualfile, 44100, audio_data)
     st.audio(virtualfile)
+    
+    
+def DisplayMusicalNotes(music):
+  streamingNotes=str(music.write('lily.png'))
+  image = Image.open(streamingNotes)
+  st.image(image, caption='Musical sheet')
 
 #################################################### page layout start here #########################################################
 
@@ -76,12 +84,15 @@ st.title("Interactive Music Composition Using Artifical Intelligence")
 st.header("                                                   ")
 
 #######################for one time only#############
+stream2 = music21.stream.Stream()
+n3 = music21.note.Note('D#5')  # octave values can be included in creation arguments
+stream2.repeatAppend(n3, 4)
+DisplayMusicalNotes(stream2)
+
+
 from PIL import Image
-
-
 def show(music):
   return (str(music.write('lily.png')))
-
 musicalNote=show(n)
 image = Image.open(musicalNote)
 st.image(image, caption='Sunrise by the mountains')
