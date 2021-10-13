@@ -7,4 +7,3 @@ pandas
 pathlib
 scipy
 music21
-music
