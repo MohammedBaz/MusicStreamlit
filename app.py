@@ -87,22 +87,15 @@ def DisplayMusicalNotes(music):
 st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidden;} </style> """, unsafe_allow_html=True)
 st.title("Interactive Music Composition Using Artifical Intelligence")
 st.header("                                                   ")
-
-#######################for one time only#############
-stream2 = music21.stream.Stream()
-n3 = music21.note.Note('D#5')  # octave values can be included in creation arguments
-stream2.repeatAppend(n3, 4)
-DisplayMusicalNotes(stream2)
-###################
-
-
+#One of the good widgets presented in streamlit is empty. it is a place holder so that we can consider it as template. 
 MainPageDescription = st.empty()
 MainPageDescription.write("""This is a beta version for an ambitious project aiming to promote the interactivity of 
          generate some musical pieces using Artificial Intelligence (AI) algorithms.
          Several AI models have been built and trained to match the variety of musical inputs ; furthermore, 
          the interface has been optimised to allow a user to add personal toutches and then to download the cratfed musical peices. 
-         Wish this can aid the users to recogenise the potential rules that AI can play in art making. Source code is at:
-         https://github.com/MohammedBaz/MusicStreamlit/blob/main/BackEndPrediction.py  
+         Wish this can aid the users to recogenise the potential rules that AI can play in art making. Source code is avaiavle free of charge at:
+         https://github.com/MohammedBaz/MusicStreamlit/blob/main/BackEndPrediction.py.
+         Suggestions and comments can be sent to mdbaz01@gmail.com 
          """)
 
 def get_binary_file_downloader_html(bin_file, file_label='File'):
@@ -128,7 +121,13 @@ if(add_selectbox=="Upload some audio files"):
         FileLocation=StoretheUpoldedFile(uploaded_file)         # Store the file and get its location information 
         PlayBackMusicFile(FileLocation) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
         from WaveFeatures import GetWavFeatures
-        
+        with open(FileLocation, "rb") as file:
+            btn = st.download_button(label="Download your crafted file",
+                                     data=file,
+                                     file_name=FileLocation,
+                                     mime='audio/'+FileLocation.split(".")[-1]
+                                    )
+
         WavFeatures=GetWavFeatures(FileLocation)
         st.write(WavFeatures['SoundArray'].shape())
         if (WavFeatures['NumberofSamples']<=0):
