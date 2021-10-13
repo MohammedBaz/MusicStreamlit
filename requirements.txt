@@ -8,3 +8,4 @@ pathlib
 scipy
 music21
 pyfluidsynth
+PIL
