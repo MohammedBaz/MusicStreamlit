@@ -88,14 +88,6 @@ stream2 = music21.stream.Stream()
 n3 = music21.note.Note('D#5')  # octave values can be included in creation arguments
 stream2.repeatAppend(n3, 4)
 DisplayMusicalNotes(stream2)
-
-
-from PIL import Image
-def show(music):
-  return (str(music.write('lily.png')))
-musicalNote=show(n)
-image = Image.open(musicalNote)
-st.image(image, caption='Sunrise by the mountains')
 ###################
 
 
