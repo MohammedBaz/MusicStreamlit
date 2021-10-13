@@ -9,7 +9,8 @@ from InputHandlingandDisplay import StoretheUpoldedFile
 from MidiFeatures import GeneratemidFile
 import io
 from scipy.io import wavfile
-
+import os
+import music21
 ################reconsidering pleae 
 st.set_page_config(
     page_title="Ex-stream-ly Cool App",
@@ -35,6 +36,17 @@ def PlayBackMusicFile(FileLocation,FileType):
 st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidden;} </style> """, unsafe_allow_html=True)
 st.title("Interactive Music Composition Using Artifical Intelligence")
 st.header("                                                   ")
+
+#######################for one time only#############
+us = music21.environment.UserSettings()
+us_path = us.getSettingsPath()
+if not os.path.exists(us_path):
+    us.create()
+st.write('Path to music21 environment', us_path)
+st.write(us)
+###################
+
+
 MainPageDescription = st.empty()
 MainPageDescription.write("""This is a beta version for an ambitious project aiming to promote the interactivity of 
          generate some musical pieces using Artificial Intelligence (AI) algorithms.
