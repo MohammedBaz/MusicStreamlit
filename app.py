@@ -53,7 +53,8 @@ from PIL import Image
 #st.image(image, caption='Sunrise by the mountains')
 
 def show(music):
-  return (Image(str(music.write('lily.png'))))
+  return (str(music.write('lily.png')))
+
 musicalNote=show(n)
 image = Image.open(musicalNote)
 st.image(image, caption='Sunrise by the mountains')
