@@ -70,7 +70,19 @@ if(add_selectbox=="Upload some audio files"):
         WavFeatures=GetWavFeatures(FileLocation)
         if (WavFeatures['NumberofSamples']<=0):
             st.error("It seems that the loaded file is corroupted, please upload another file")
-    elif (uploaded_file.name.endswith('mp3')):
+    elif (uploaded_file.name.endswith('mid')):
+        midi_data = pretty_midi.PrettyMIDI(FileLocation)
+        audio_data = midi_data.fluidsynth()
+        audio_data = np.int16(
+            audio_data / np.max(np.abs(audio_data)) * 32767 * 0.9
+        )  # -- Normalize for 16 bit audio https://github.com/jkanner/streamlit-audio/blob/main/helper.py
+
+        virtualfile = io.BytesIO()
+        wavfile.write(virtualfile, 44100, audio_data)
+        st.audio(virtualfile)
+        
+        
+        
         FileLocation=StoretheUpoldedFile(uploaded_file)
         FileType=FileLocation.split(".")[-1]
         PlayBackMusicFile(FileLocation,FileLocation.split(".")[-1])
