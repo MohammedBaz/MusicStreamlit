@@ -48,11 +48,15 @@ st.write('Path to music21 environment', us_path)
 st.write(us)
 n = music21.note.Note('c')
 #musicalNote=n.show('ipython.musicxml.png')
-#from PIL import Image
-#image = Image.open(musicalNote)
+from PIL import Image
+#
 #st.image(image, caption='Sunrise by the mountains')
 
-
+def show(music):
+  return (Image(str(music.write('lily.png'))))
+musicalNote=show(n)
+image = Image.open(musicalNote)
+st.image(image, caption='Sunrise by the mountains')
 ###################
 
 
