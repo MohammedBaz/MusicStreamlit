@@ -91,6 +91,8 @@ with st.sidebar.container():
   st.write("About")
   st.write("This is a simple apps demoenstrates for the user how advanved artifical intellgience techniques can be readily adopted")
 
-
+from music import *
+note = Note(443.1, HN)     # create a note a bit over A4 (440.0)
+Play.midi(note)  
 
 #st.markdown(get_binary_file_downloader_html('newMid.mid', 'Audio'), unsafe_allow_html=True)
