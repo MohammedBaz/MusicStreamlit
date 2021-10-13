@@ -7,7 +7,7 @@ from typing import List
 import wave
 from InputHandlingandDisplay import StoretheUpoldedFile
 from MidiFeatures import GeneratemidFile
-
+import io
 
 
 ################reconsidering pleae 
