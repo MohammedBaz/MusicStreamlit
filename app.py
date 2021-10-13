@@ -76,7 +76,7 @@ from PIL import Image
 def show(music):
   return (str(music.write('lily.png')))
 
-musicalNote=show(cello_c_chord)
+musicalNote=show(n)
 image = Image.open(musicalNote)
 st.image(image, caption='Sunrise by the mountains')
 ###################
