@@ -27,7 +27,7 @@ def PlayBackMusicFile(FileLocation,FileType):
   # This function generate audio widget, replay the contents found in FileLocation
   # full specficaion for this widget can be found https://docs.streamlit.io/en/stable/api.html
   # This function requires file locaton and its type
-  # I tried to find a way to run mid but failed.any help is appricated 
+  # The midi file is replied by first converting it to wav and then play it  
   audio_file = open(FileLocation, 'rb')
   audio_bytes = audio_file.read()
   st.audio(audio_bytes, format='audio/'+FileType)
@@ -124,6 +124,7 @@ if(add_selectbox=="Upload some audio files"):
         
         midi_data = pretty_midi.PrettyMIDI(FileLocation)
         audio_data = midi_data.fluidsynth()
+        st.write(audio_data)
         audio_data = numpy.int16(
             audio_data / numpy.max(numpy.abs(audio_data)) * 32767 * 0.9
         )  # -- Normalize for 16 bit audio https://github.com/jkanner/streamlit-audio/blob/main/helper.py
