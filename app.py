@@ -100,11 +100,13 @@ def parsemidfile(midfile):
     
     StartBeat,Endbeat=[]
     for starttime in Allinformationdf['start']:
-      StartBeat.append(InputFile.get_beats(starttime)[0])
+      st.write(InputFile.get_beats(starttime)[0])
+      #StartBeat.append(InputFile.get_beats(starttime)[0])
     for endtime in Allinformationdf['end']:
-      Endbeat.append(InputFile.get_beats(endtime)[0])
-    ArrayedInputFile['startBeat']=StartBeat
-    ArrayedInputFile['endBeat']=Endbeat  
+      #Endbeat.append(InputFile.get_beats(endtime)[0])
+      st.write(InputFile.get_beats(endtime)[0])
+    #ArrayedInputFile['startBeat']=StartBeat
+    #ArrayedInputFile['endBeat']=Endbeat  
     return (Allinformationdf)
   except:
     st.error('It seems that this is corrupted mod file, please upload another')
