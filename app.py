@@ -85,19 +85,20 @@ def ChecktheCorrectnessofUploadedFile(uploaded_file):
 def parsemidfile(midfile):
   try:
     InputFile= pretty_midi.PrettyMIDI(midfile)
+    ArrayedInputFile=[]
+    for instrument in InputFile.instruments:
+      for note in instrument.notes:
+        Start=note.start
+        End=note.end
+        Pitch=note.pitch
+        Velocity=note.velocity
+        ArrayedInputFile.append([Start,End,Pitch,Velocity, instrument.program])
+    #ArrayedInputFile = sorted(ArrayedInputFile, key=lambda x: (x[0], x[2]))# sorted the list based on the start and then pitch fields
+    Allinformationdf=pandas.DataFrame(ArrayedInputFile, columns=['Start','duration','pitch','velocity','InstrumentNo'])
+    return (Allinformationdf)
   except ValueError:
     st.error('It seems that this is corrupted mod file, please upload another')
-  ArrayedInputFile=[]
-  for instrument in InputFile.instruments:
-    for note in instrument.notes:
-      Start=note.start
-      End=note.end
-      Pitch=note.pitch
-      Velocity=note.velocity
-      ArrayedInputFile.append([Start,End,Pitch,Velocity, instrument.program])
-  #ArrayedInputFile = sorted(ArrayedInputFile, key=lambda x: (x[0], x[2]))# sorted the list based on the start and then pitch fields
-  Allinformationdf=pandas.DataFrame(ArrayedInputFile, columns=['Start','duration','pitch','velocity','InstrumentNo'])
-  return (Allinformationdf)
+  
   
 #################################################### page layout start here #########################################################
 
