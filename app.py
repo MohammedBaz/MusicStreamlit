@@ -59,8 +59,6 @@ def ConvertMiditoWave(FileLocation, samplerate=44100,AmplitudeQuantizationRange=
   wavfile.write(virtualfile, 44100, audio_data)
   return (virtualfile)
 
-
-
 def PlayBackMusicFile(FileLocation):
   # This function generate st.audio widget, replay the contents found in FileLocation
   # full specficaion for this widget can be found https://docs.streamlit.io/en/stable/api.html
@@ -85,6 +83,26 @@ def DisplayMusicalNotes(music):
   # Then the st.image widget is used to display the image
   st.image(image, caption='Musical sheet')
 
+def get_binary_file_downloader_html(bin_file, file_label='File'):
+  with open(bin_file, 'rb') as f:
+    data = f.read()
+  bin_str = base64.b64encode(data).decode()
+  href = f'<a href="data:application/octet-stream;base64,{bin_str}" download="{os.path.basename(bin_file)}">Download {file_label}</a>'
+  return (href)
+
+#def ChecktheCorrectnessofUploadedFile(uploaded_file):
+#from WaveFeatures import GetWavFeatures
+#with open(FileLocation, "rb") as file:
+#btn = st.download_button(label="Download your crafted file",data=file,file_name=FileLocation,mime='audio/'+FileLocation.split(".")[-1])
+#elif (uploaded_file.name.endswith('mid')):
+#        FileLocation=StoretheUpoldedFile(uploaded_file)
+#        PlayBackMusicFile(FileLocation)
+#       btn = st.download_button(label="Download your crafted file",
+#        data=ConvertMiditoWave(FileLocation),
+#        file_name=FileLocation,
+#        mime='audio/wav'
+#        )
+    
 #################################################### page layout start here #########################################################
 
 st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidden;} </style> """, unsafe_allow_html=True)
@@ -101,58 +119,27 @@ MainPageDescription.write("""This is a beta version for an ambitious project aim
          Suggestions and comments can be sent to mdbaz01@gmail.com 
          """)
 
-def get_binary_file_downloader_html(bin_file, file_label='File'):
-  with open(bin_file, 'rb') as f:
-    data = f.read()
-  bin_str = base64.b64encode(data).decode()
-  href = f'<a href="data:application/octet-stream;base64,{bin_str}" download="{os.path.basename(bin_file)}">Download {file_label}</a>'
-  return (href)
-  
-#uploaded_file = st.file_uploader("Uplod AudioFile Here or leave it blank for random starting", type=['wav','mp3','mid'], accept_multiple_files=False, key=123456) 
-# Create new file uploader instance and let it accept audio files
-#add_selectbox = st.sidebar.selectbox("How to prefer to strat with",("Load some audio files", "Use some random Notes", "Use pretrainned Audios"))
-
-with st.sidebar.expander("How to prefer to strat with:"):
-    MainPageDescription .empty() 
-    add_selectbox=st.radio("you can upload your audio samples or use ours:", ("Upload some audio files", "Use some random Notes", "Use pretrainned Audios"),index=1)
+with st.sidebar.expander("The first step is listen to you"):
+    MainPageDescription.empty() 
+    add_selectbox=st.radio("Here you can:", ("Upload your audio files", "Generate musical Notes", "Use our pregeneraed Audios"),index=1)
 if(add_selectbox=="Upload some audio files"):
-  MainPageDescription .empty()       
+  MainPageDescription.empty()       
   uploaded_file = MainPageDescription.file_uploader("Uplod AudioFile Here or leave it blank if other options are selected",
-                                     type=['wav','mp3','mid'], accept_multiple_files=False, key=123456) 
+                                     type=['wav','mp3','mid'], accept_multiple_files=False) 
   if uploaded_file is not None:                               # Just to check that the user has its own input to the filed_uploader
-    if (uploaded_file.name.endswith('wav')):              # if the file is not mid, i.e., it is .wav or.mp3 then
-        FileLocation=StoretheUpoldedFile(uploaded_file)         # Store the file and get its location information 
-        PlayBackMusicFile(FileLocation) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
-        from WaveFeatures import GetWavFeatures
-        with open(FileLocation, "rb") as file:
-            btn = st.download_button(label="Download your crafted file",
-                                     data=file,
-                                     file_name=FileLocation,
-                                     mime='audio/'+FileLocation.split(".")[-1]
-                                    )
-
-        #WavFeatures=GetWavFeatures(FileLocation)
-        #st.write(WavFeatures['SoundArray'].shape())
-        #if (WavFeatures['NumberofSamples']<=0):
-        #    st.error("It seems that the loaded file is corroupted, please upload another file")
-    elif (uploaded_file.name.endswith('mid')):
-        FileLocation=StoretheUpoldedFile(uploaded_file)
-        PlayBackMusicFile(FileLocation)
-        btn = st.download_button(label="Download your crafted file",
-        data=ConvertMiditoWave(FileLocation),
-        file_name=FileLocation,
-        mime='audio/wav'
-        )
+    FileLocation=StoretheUpoldedFile(uploaded_file)         # Store the file and get its location information 
+    PlayBackMusicFile(FileLocation) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
+    ChecktheCorrectnessofUploadedFile(uploaded_file)
         
-if(add_selectbox=="Use some random Notes"):
-    GeneratemidFile(10)
-    st.write(GeneratemidFile(10))
-        
-        
-        
-with st.sidebar.expander("Add your personal touch, if wish:"):
-  PredictionHorizontal = st.number_input("Select the Prediction Horizonal, in seconds",min_value=60, max_value =300,value=120,step=10)
-  st.slider("Select the Inputshape, in sec",0,300,120) #here should be changed in accordnace with the inputs 
+if(add_selectbox=="Generate musical Notes"):
+    genetedNotes=DisplayMusicalNotes(GeneratemidFile(10))   
+if(add_selectbox=="Use our pregeneraed Audios"):
+################## If the fist step has been finished then the user can add personal touch################
+if (FileLocation is not None) or(genetedNotes is not None):
+    with st.sidebar.expander("Add your personal touch, if wish:"):
+        PredictionHorizontal = st.number_input("Select the Prediction Horizonal, in seconds",min_value=60, max_value =300,value=120,step=10)
+        st.slider("Select the Inputshape, in sec",0,300,120) #here should be changed in accordnace with the inputs
+##########################################################        
 with st.sidebar.expander("Takeout your art piece"):
   st.write("Notthing tillnow")
   #st.download_button(label="DOWNLOAD!",data="trees",file_name=FileLocation,mime='audio/.'+FileType)
