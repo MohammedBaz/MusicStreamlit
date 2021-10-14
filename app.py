@@ -133,11 +133,16 @@ if(add_selectbox=="Upload some audio files"):
 
         #WavFeatures=GetWavFeatures(FileLocation)
         #st.write(WavFeatures['SoundArray'].shape())
-        if (WavFeatures['NumberofSamples']<=0):
-            st.error("It seems that the loaded file is corroupted, please upload another file")
+        #if (WavFeatures['NumberofSamples']<=0):
+        #    st.error("It seems that the loaded file is corroupted, please upload another file")
     elif (uploaded_file.name.endswith('mid')):
         FileLocation=StoretheUpoldedFile(uploaded_file)
         PlayBackMusicFile(FileLocation)
+        btn = st.download_button(label="Download your crafted file",
+                                     data=file,
+                                     file_name=FileLocation,
+                                     mime='audio/'+FileLocation.split(".")[-1]
+                                    )
         
 if(add_selectbox=="Use some random Notes"):
     GeneratemidFile(10)
