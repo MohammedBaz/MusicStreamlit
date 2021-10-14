@@ -92,6 +92,7 @@ def get_binary_file_downloader_html(bin_file, file_label='File'):
   return (href)
 
 def ChecktheCorrectnessofUploadedFile(uploaded_file):
+    return
 #from WaveFeatures import GetWavFeatures
 #with open(FileLocation, "rb") as file:
 #btn = st.download_button(label="Download your crafted file",data=file,file_name=FileLocation,mime='audio/'+FileLocation.split(".")[-1])
