@@ -33,7 +33,8 @@ from scipy.io import wavfile
 import os
 import music21
 from PIL import Image
-
+FileLocation = None
+genetedNotes=None
 ################reconsidering pleae 
 st.set_page_config(
     page_title="Ex-stream-ly Cool App",
