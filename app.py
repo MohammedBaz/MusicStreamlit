@@ -107,4 +107,4 @@ if(add_selectbox=="Upload your audio files"):
     FileLocation=StoretheUpoldedFile(uploaded_file)         # Store the file and get its location information 
     PlayBackMusicFile(FileLocation) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
     ChecktheCorrectnessofUploadedFile(uploaded_file)
-    GetWavFeatures(ConvertMiditoWave(FileLocation))
+    GetWavFeatures(ConvertMiditoWave(FileLocation),false)
