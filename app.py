@@ -134,6 +134,7 @@ if(add_selectbox=="Upload some audio files"):
 if(add_selectbox=="Generate musical Notes"):
     genetedNotes=DisplayMusicalNotes(GeneratemidFile(10))   
 if(add_selectbox=="Use our pregeneraed Audios"):
+    st.write("the output goes here")
 ################## If the fist step has been finished then the user can add personal touch################
 if ((FileLocation is not None) or (genetedNotes is not None)):
     with st.sidebar.expander("Add your personal touch, if wish:"):
