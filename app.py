@@ -92,7 +92,7 @@ def parsemidfile(midfile):
     for instrument in InputFile.instruments:
       for note in instrument.notes:
         Start=note.start
-        Beat=InputFile.get_beats(Start)
+        Beat=InputFile.get_beats(Start)[0]
         End=note.end
         Pitch=note.pitch
         Velocity=note.velocity
