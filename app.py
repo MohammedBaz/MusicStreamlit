@@ -1,24 +1,3 @@
-#################################################
-# To do list: 
-# 1- use music21 instead of pretty_midi in PlayBackMusicFile, so that all app use signal musical library, 
-# the music21 is comptabile with lilypond which is used to display the musical note, but not with fluidsynth
-# I think that pretty_midi stores notes in flat shape, but in music more sophesticated structure is used !!. 
-# 
-# 2-Typically, music21 uses musescore to render the musical notes, this requies to install the musescore on the device,
-# in streamlit share, simply But it in packages.txt and then to add the path of musescore into the music21 environment
-# file, a good describtion can be found here :https://www.audiolabs-erlangen.de/resources/MIR/FMP/C1/C1S2_SymbolicRendering.html. 
-# In our case, the follwoing error raises music21.converter.subConverters.SubConverterException: Cannot find a path to the 'mscore' file at /usr/bin/mscore3 -- download MuseScore
-# I left some of the code here as reminder for me:
-# us = music21.environment.UserSettings()
-# us_path = us.getSettingsPath()
-# if not os.path.exists(us_path):
-#    us.create()
-# us['musescoreDirectPNGPath'] = '/usr/share/sounds/sf3/default-GM.sf3'
-# st.write('Path to music21 environment', us_path)
-# st.write(us)
-
-
-
 import streamlit as st
 import pretty_midi
 import numpy
@@ -36,16 +15,6 @@ from PIL import Image
 FileLocation = None
 genetedNotes=None
 ################reconsidering pleae 
-st.set_page_config(
-    page_title="Ex-stream-ly Cool App",
-    page_icon="🧊",layout="wide",
-    initial_sidebar_state="expanded",
-    menu_items={
-        'Get Help': 'https://www.extremelycoolapp.com/help',
-        'Report a bug': "https://www.extremelycoolapp.com/bug",
-        'About': "# This is a header. This is an *extremely* cool app!"
-        }
-        )
 
 def ConvertMiditoWave(FileLocation, samplerate=44100,AmplitudeQuantizationRange=16):
   midi_data = pretty_midi.PrettyMIDI(FileLocation)
@@ -84,27 +53,8 @@ def DisplayMusicalNotes(music):
   # Then the st.image widget is used to display the image
   st.image(image, caption='Musical sheet')
 
-def get_binary_file_downloader_html(bin_file, file_label='File'):
-  with open(bin_file, 'rb') as f:
-    data = f.read()
-  bin_str = base64.b64encode(data).decode()
-  href = f'<a href="data:application/octet-stream;base64,{bin_str}" download="{os.path.basename(bin_file)}">Download {file_label}</a>'
-  return (href)
-
 def ChecktheCorrectnessofUploadedFile(uploaded_file):
     return
-#from WaveFeatures import GetWavFeatures
-#with open(FileLocation, "rb") as file:
-#btn = st.download_button(label="Download your crafted file",data=file,file_name=FileLocation,mime='audio/'+FileLocation.split(".")[-1])
-#elif (uploaded_file.name.endswith('mid')):
-#        FileLocation=StoretheUpoldedFile(uploaded_file)
-#        PlayBackMusicFile(FileLocation)
-#       btn = st.download_button(label="Download your crafted file",
-#        data=ConvertMiditoWave(FileLocation),
-#        file_name=FileLocation,
-#        mime='audio/wav'
-#        )
-    
 #################################################### page layout start here #########################################################
 
 st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidden;} </style> """, unsafe_allow_html=True)
@@ -126,29 +76,8 @@ with st.sidebar.expander("The first step is listen to you"):
     add_selectbox=st.radio("Here you can:", ("Upload your audio files", "Generate musical Notes", "Use our pregeneraed Audios"),index=1)
 if(add_selectbox=="Upload your audio files"):
   MainPageDescription.empty()       
-  uploaded_file = MainPageDescription.file_uploader("Uplod AudioFile Here or leave it blank if other options are selected",
-                                     type=['wav','mp3','mid'], accept_multiple_files=False) 
+  uploaded_file = MainPageDescription.file_uploader("Uplod AudioFile Here or leave it blank if other options are selected",type=['mid'], accept_multiple_files=False) 
   if uploaded_file is not None:                               # Just to check that the user has its own input to the filed_uploader
     FileLocation=StoretheUpoldedFile(uploaded_file)         # Store the file and get its location information 
     PlayBackMusicFile(FileLocation) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
     ChecktheCorrectnessofUploadedFile(uploaded_file)
-        
-if(add_selectbox=="Generate musical Notes"):
-    genetedNotes=DisplayMusicalNotes(GeneratemidFile(10))   
-if(add_selectbox=="Use our pregeneraed Audios"):
-    st.write("the output goes here")
-################## If the fist step has been finished then the user can add personal touch################
-if (FileLocation or genetedNotes is not None):
-    with st.sidebar.expander("Add your personal touch, if wish:"):
-        PredictionHorizontal = st.number_input("Select the Prediction Horizonal, in seconds",min_value=60, max_value =300,value=120,step=10)
-        st.slider("Select the Inputshape, in sec",0,300,120) #here should be changed in accordnace with the inputs
-##########################################################        
-with st.sidebar.expander("Takeout your art piece"):
-  st.write("Notthing tillnow")
-  #st.download_button(label="DOWNLOAD!",data="trees",file_name=FileLocation,mime='audio/.'+FileType)
-with st.sidebar.container():
-  st.write("About")
-  st.write("This is a simple apps demoenstrates for the user how advanved artifical intellgience techniques can be readily adopted")
-
-
-#st.markdown(get_binary_file_downloader_html('newMid.mid', 'Audio'), unsafe_allow_html=True)
