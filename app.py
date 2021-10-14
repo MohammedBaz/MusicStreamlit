@@ -97,13 +97,14 @@ def parsemidfile(midfile):
         ArrayedInputFile.append([Start,End,Pitch,Velocity, instrument.program])
     #ArrayedInputFile = sorted(ArrayedInputFile, key=lambda x: (x[0], x[2]))# sorted the list based on the start and then pitch fields
     Allinformationdf=pandas.DataFrame(ArrayedInputFile, columns=['start','end','pitch','velocity','InstrumentNo'])
-    StartBeat,Endeat=[]
+    
+    StartBeat,Endbeat=[]
     for starttime in Allinformationdf['start']:
-      StartBeat.append(InputFile.get_beats(starttime)[0]))
+      StartBeat.append(InputFile.get_beats(starttime)[0])
     for endtime in Allinformationdf['end']:
-      Endeat.append(InputFile.get_beats(endtime)[0]))
+      Endbeat.append(InputFile.get_beats(endtime)[0])
     ArrayedInputFile['startBeat']=StartBeat
-    ArrayedInputFile['endBeat']=Endeat  
+    ArrayedInputFile['endBeat']=Endbeat  
     return (Allinformationdf)
   except:
     st.error('It seems that this is corrupted mod file, please upload another')
