@@ -96,7 +96,7 @@ def parsemidfile(midfile):
     #ArrayedInputFile = sorted(ArrayedInputFile, key=lambda x: (x[0], x[2]))# sorted the list based on the start and then pitch fields
     Allinformationdf=pandas.DataFrame(ArrayedInputFile, columns=['Start','duration','pitch','velocity','InstrumentNo'])
     return (Allinformationdf)
-  except ValueError:
+  except OSError:
     st.error('It seems that this is corrupted mod file, please upload another')
   
   
