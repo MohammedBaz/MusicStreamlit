@@ -81,6 +81,21 @@ def DisplayMusicalNotes(music):
 
 def ChecktheCorrectnessofUploadedFile(uploaded_file):
     return
+  
+def parsemidfile(midfile):
+  InputFile= pretty_midi.PrettyMIDI(midfile)
+  ArrayedInputFile=[]
+  for instrument in InputFile.instruments:
+    for note in instrument.notes:
+      Start=note.start
+      End=note.end
+      Pitch=note.pitch
+      Velocity=note.velocity
+      ArrayedInputFile.append([Start,End,Pitch,Velocity, instrument.program])
+  #ArrayedInputFile = sorted(ArrayedInputFile, key=lambda x: (x[0], x[2]))# sorted the list based on the start and then pitch fields
+  Allinformationdf=pandas.DataFrame(ArrayedInputFile, columns=['Start','duration','pitch','velocity','InstrumentNo'])
+  return (Allinformationdf)
+  
 #################################################### page layout start here #########################################################
 
 st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidden;} </style> """, unsafe_allow_html=True)
@@ -104,7 +119,9 @@ if(add_selectbox=="Upload your audio files"):
   MainPageDescription.empty()       
   uploaded_file = MainPageDescription.file_uploader("Uplod AudioFile Here or leave it blank if other options are selected",type=['mid'], accept_multiple_files=False) 
   if uploaded_file is not None:                               # Just to check that the user has its own input to the filed_uploader
-    FileLocation=StoretheUpoldedFile(uploaded_file)         # Store the file and get its location information 
-    PlayBackMusicFile(FileLocation) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
-    ChecktheCorrectnessofUploadedFile(uploaded_file)
-    GetWavFeatures(ConvertMiditoWave(FileLocation),false)
+    st.write(parsemidfile(uploaded_file))
+    
+    #FileLocation=StoretheUpoldedFile(uploaded_file)         # Store the file and get its location information 
+    #PlayBackMusicFile(FileLocation) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
+    #ChecktheCorrectnessofUploadedFile(uploaded_file)
+    #GetWavFeatures(ConvertMiditoWave(FileLocation),false)
