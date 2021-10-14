@@ -15,6 +15,29 @@ from PIL import Image
 FileLocation = None
 genetedNotes=None
 ################reconsidering pleae 
+def GetWavFeatures(wav_file):
+  SampleFrequecy, SoundArray = wavfile.read(wav_file)
+  NormalisedSoundArray=SoundArray/numpy.iinfo(SoundArray.dtype).max 
+  NumberofSamples=SoundArray.shape[0] 
+  NumberofChannel=SoundArray.shape[1]
+  DurationinSecond=NumberofSamples/SampleFrequecy
+  TimePointArray=[]
+  for i in range(NumberofSamples):
+    x=(DurationinSecond/NumberofSamples)*i
+    TimePointArray.append(x)
+  FourierFrequencySpectrumAllChannels= numpy.abs(numpy.fft.rfft(NormalisedSoundArray))
+  FrequencyPointArrayAllhannels = numpy.fft.rfftfreq(NormalisedSoundArray.size, d=1./SampleFrequecy)
+  Allinformationdf = dict()
+  Allinformationdf['SampleFrequecy'] = SampleFrequecy
+  Allinformationdf['SoundArray'] = SoundArray
+  Allinformationdf['NormalisedSoundArray'] = NormalisedSoundArray
+  Allinformationdf['NumberofSamples'] = NumberofSamples
+  Allinformationdf['NumberofChannel'] = NumberofChannel
+  Allinformationdf['DurationinSecond'] = DurationinSecond
+  Allinformationdf['TimePointArray'] = TimePointArray
+  Allinformationdf['FourierFrequencySpectrumAllChannels'] = FourierFrequencySpectrumAllChannels
+  Allinformationdf['FrequencyPointArrayAllhannels'] = FrequencyPointArrayAllhannels
+  return (Allinformationdf)
 
 def ConvertMiditoWave(FileLocation, samplerate=44100,AmplitudeQuantizationRange=16):
   midi_data = pretty_midi.PrettyMIDI(FileLocation)
@@ -81,3 +104,4 @@ if(add_selectbox=="Upload your audio files"):
     FileLocation=StoretheUpoldedFile(uploaded_file)         # Store the file and get its location information 
     PlayBackMusicFile(FileLocation) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
     ChecktheCorrectnessofUploadedFile(uploaded_file)
+    GetWavFeatures(ConvertMiditoWave(FileLocation))
