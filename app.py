@@ -91,7 +91,7 @@ def get_binary_file_downloader_html(bin_file, file_label='File'):
   href = f'<a href="data:application/octet-stream;base64,{bin_str}" download="{os.path.basename(bin_file)}">Download {file_label}</a>'
   return (href)
 
-#def ChecktheCorrectnessofUploadedFile(uploaded_file):
+def ChecktheCorrectnessofUploadedFile(uploaded_file):
 #from WaveFeatures import GetWavFeatures
 #with open(FileLocation, "rb") as file:
 #btn = st.download_button(label="Download your crafted file",data=file,file_name=FileLocation,mime='audio/'+FileLocation.split(".")[-1])
