@@ -141,7 +141,7 @@ if(add_selectbox=="Upload some audio files"):
         btn = st.download_button(label="Download your crafted file",
         data=ConvertMiditoWave(FileLocation),
         file_name=FileLocation,
-        mime='audio/'+FileLocation.split(".")[-1]
+        mime='audio/wav'
         )
         
 if(add_selectbox=="Use some random Notes"):
