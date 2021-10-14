@@ -138,7 +138,7 @@ if(add_selectbox=="Generate musical Notes"):
 if(add_selectbox=="Use our pregeneraed Audios"):
     st.write("the output goes here")
 ################## If the fist step has been finished then the user can add personal touch################
-if (FileLocation is not None) or if (genetedNotes is not None):
+if (FileLocation or genetedNotes is not None):
     with st.sidebar.expander("Add your personal touch, if wish:"):
         PredictionHorizontal = st.number_input("Select the Prediction Horizonal, in seconds",min_value=60, max_value =300,value=120,step=10)
         st.slider("Select the Inputshape, in sec",0,300,120) #here should be changed in accordnace with the inputs
