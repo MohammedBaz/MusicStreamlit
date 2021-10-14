@@ -85,8 +85,9 @@ def ChecktheCorrectnessofUploadedFile(uploaded_file):
 def parsemidfile(midfile):
   try:
     InputFile= pretty_midi.PrettyMIDI(midfile)
-    st.write(InputFile.get_beats())
-    st.write(InputFile.time_signature_changes)
+    st.write("getBeat=",InputFile.get_beats())
+    st.write("time_signature_changes",InputFile.time_signature_changes)
+    st.write("estimate_tempi",estimate_tempi())
     ArrayedInputFile=[]
     for instrument in InputFile.instruments:
       for note in instrument.notes:
