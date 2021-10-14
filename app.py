@@ -138,7 +138,8 @@ if(add_selectbox=="Upload some audio files"):
     elif (uploaded_file.name.endswith('mid')):
         FileLocation=StoretheUpoldedFile(uploaded_file)
         PlayBackMusicFile(FileLocation)
-        btn = st.download_button(label="Download your crafted file",
+        with open(FileLocation, "rb") as file:
+            btn = st.download_button(label="Download your crafted file",
                                      data=file,
                                      file_name=FileLocation,
                                      mime='audio/'+FileLocation.split(".")[-1]
