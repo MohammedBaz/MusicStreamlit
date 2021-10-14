@@ -123,7 +123,7 @@ MainPageDescription.write("""This is a beta version for an ambitious project aim
 with st.sidebar.expander("The first step is listen to you"):
     MainPageDescription.empty() 
     add_selectbox=st.radio("Here you can:", ("Upload your audio files", "Generate musical Notes", "Use our pregeneraed Audios"),index=1)
-if(add_selectbox=="Upload some audio files"):
+if(add_selectbox=="Upload your audio files"):
   MainPageDescription.empty()       
   uploaded_file = MainPageDescription.file_uploader("Uplod AudioFile Here or leave it blank if other options are selected",
                                      type=['wav','mp3','mid'], accept_multiple_files=False) 
