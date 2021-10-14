@@ -86,7 +86,7 @@ def parsemidfile(midfile):
   try:
     InputFile= pretty_midi.PrettyMIDI(midfile)
     st.write("time_signature_changes",InputFile.time_signature_changes)
-    #st.write("estimate_tempi",estimate_tempo())
+    st.write("get_tempo_changes",get_tempo_changes())
     ArrayedInputFile=[]
     for instrument in InputFile.instruments:
       for note in instrument.notes:
