@@ -15,11 +15,14 @@ from PIL import Image
 FileLocation = None
 genetedNotes=None
 ################reconsidering pleae 
-def GetWavFeatures(wav_file):
+def GetWavFeatures(wav_file,OiginalWave): ##########
   SampleFrequecy, SoundArray = wavfile.read(wav_file)
   NormalisedSoundArray=SoundArray/numpy.iinfo(SoundArray.dtype).max 
-  NumberofSamples=SoundArray.shape[0] 
-  NumberofChannel=SoundArray.shape[1]
+  NumberofSamples=SoundArray.shape[0]
+  if FileLocation==False:##################
+    NumberofChannel=SoundArray.shape[1]###########
+  else:###################################
+    NumberofChannel=1
   DurationinSecond=NumberofSamples/SampleFrequecy
   TimePointArray=[]
   for i in range(NumberofSamples):
