@@ -119,8 +119,10 @@ if(add_selectbox=="Upload your audio files"):
   MainPageDescription.empty()       
   uploaded_file = MainPageDescription.file_uploader("Uplod AudioFile Here or leave it blank if other options are selected",type=['mid'], accept_multiple_files=False) 
   if uploaded_file is not None:                               # Just to check that the user has its own input to the filed_uploader
-    st.write(parsemidfile(uploaded_file))
-    
+    try:
+      st.write(parsemidfile(uploaded_file))
+    except ValueError:
+      st.error('It seems that this is corrupted mod file, please upload another')
     #FileLocation=StoretheUpoldedFile(uploaded_file)         # Store the file and get its location information 
     #PlayBackMusicFile(FileLocation) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
     #ChecktheCorrectnessofUploadedFile(uploaded_file)
