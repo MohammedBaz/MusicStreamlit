@@ -1,3 +1,53 @@
+#!pip install pretty_midi
+import pretty_midi
+import numpy
+import pandas
+from google.colab import drive
+drive.mount('/content/gdrive')
+filename1='/content/gdrive/MyDrive/guitar/Arab1.mid'
+filename2='/content/gdrive/MyDrive/guitar/Arab2.mid'
+#!pip install pretty_midi
+
+def GetMidFeatures(InputFile):
+  pm= pretty_midi.PrettyMIDI(InputFile)
+  ArrayedInputFile=[]
+  for instrument in pm.instruments:
+    for anote in instrument.notes:
+      Start=anote.start
+      End=anote.end
+      Pitch=anote.pitch
+      Velocity=anote.velocity
+      ArrayedInputFile.append([Start,End,Pitch,Velocity, instrument.program])
+  NotesInformation=pandas.DataFrame(ArrayedInputFile, columns=['start','end','pitch','velocity','InstrumentNo'])
+  return (NotesInformation)
+
+def DisplayGeneralFeatrues(InputFile):
+  temp=GetMidFeatures(InputFile) 
+  pm= pretty_midi.PrettyMIDI(InputFile)
+  InstrumentName=[]
+  for aInstrumentNo in numpy.unique(temp['InstrumentNo']):
+    InstrumentName.append(pretty_midi.program_to_instrument_class(aInstrumentNo))
+  FinalInstrumentName=numpy.unique(InstrumentName)  
+  print('It is interesting truck of {} second'.format(pm.get_end_time()), 'It consists of {} notes'.format(temp.shape[0]),
+        'it is played with the follwoing instrument(s) {}:'.format(FinalInstrumentName), 
+        )
+
+
+DisplayGeneralFeatrues(filename2)   
+##########################################
+
+
+
+
+
+
+
+
+
+
+
+
+
 import music21
 from random import randint, choice
 import music21
