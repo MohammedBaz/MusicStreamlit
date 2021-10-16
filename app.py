@@ -177,7 +177,8 @@ with st.sidebar.expander("The first step is listen to you"):
         SubMainPageDescription.success("It is interesting truck of  "+str(duration) +"seconds" + " That  comprises  " + str(NotesNumbers)+ " notes "
                                   + "and played with the follwoing instrument(s)"+ str(InstrumentsList)+"  Offcorse you can get detailed infomation such as:" )
        
-        option = Sub2MainPageDescription.selectbox(options=("Plot for Tempo changes or ", "Plot for pitch distributions or", "Musical sheet "))
+        option = Sub2MainPageDescription.selectbox(label='',
+                                                   options=("Plot for Tempo changes or ", "Plot for pitch distributions or", "Musical sheet "))
         
         #MainPageDescription.write('It is interesting truck of'+a+ 'second'+
         #                          'It consists of'+b+'notes'+ 
