@@ -166,7 +166,7 @@ st.header("                                                   ")
 
 
 #One of the good widgets presented in streamlit is empty. it is a place holder so that we can consider it as template. 
-#MainPageDescription = st.empty()
+MainPageDescription = st.empty()
 MainPageDescription.write("""This is a beta version for an ambitious project aiming to promote the interactivity of 
          generate some musical pieces using Artificial Intelligence (AI) algorithms.
          Several AI models have been built and trained to match the variety of musical inputs ; furthermore, 
