@@ -147,6 +147,8 @@ if(add_selectbox=="Upload your audio files"):
     with st.expander("Musical Sheet"):
       musictrack=music21.converter.parse(FileLocation)
       DisplayMusicalNotes(music21.converter.parse(FileLocation))
+      
+      
     #with st.expander("Harmony analysis"):
     #with st.expander("See explanation"):
     
