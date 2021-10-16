@@ -125,9 +125,10 @@ def DisplayGeneralFeatrues(InputFile):
   for aInstrumentNo in numpy.unique(temp['InstrumentNo']):
     InstrumentName.append(pretty_midi.program_to_instrument_class(aInstrumentNo))
   FinalInstrumentName=numpy.unique(InstrumentName)
-  st.write('It is interesting truck of {} second'.format(int(pm.get_end_time())),
-           'It consists of {} notes'.format(temp.shape[0]),
-           'it is played with the follwoing instrument(s) {}:'.format(FinalInstrumentName))
+  return(int(pm.get_end_time()),temp.shape[0],FinalInstrumentName)
+  #st.write('It is interesting truck of {} second'.format(int(pm.get_end_time())),
+  #         'It consists of {} notes'.format(temp.shape[0]),
+  #         'it is played with the follwoing instrument(s) {}:'.format(FinalInstrumentName))
   
 def PlotTempoChanges(InputFile):
   pm= pretty_midi.PrettyMIDI(InputFile)
@@ -168,7 +169,12 @@ with st.sidebar.expander("The first step is listen to you"):
       uploaded_file = MainPageDescription.file_uploader("Uplod AudioFile Here or leave it blank if other options are selected",type=['mid'], accept_multiple_files=False) 
       if uploaded_file is not None:                              # Just to check that the user has its own input to the filed_uploader
         FileLocation=StoretheUpoldedFile(uploaded_file)
-        DisplayGeneralFeatrues(FileLocation)
+        a,b,c= DisplayGeneralFeatrues(FileLocation)
+        MainPageDescription.write('It is interesting truck of {} second'.format(int(pm.get_end_time())),
+                                  'It consists of {} notes'.format(temp.shape[0]),
+                                  'it is played with the follwoing instrument(s) {}:'.format(FinalInstrumentName))
+        
+        
         #DisplayGeneralFeatrues(FileLocation)
         #with st.expander("Plot Tempo Changes"):
         #  PlotTempoChanges(FileLocation)
