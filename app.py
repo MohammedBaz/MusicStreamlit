@@ -138,11 +138,14 @@ def PlotTempoChanges(InputFile):
 def PlotPitchDistribution(InputFile):
   pm= pretty_midi.PrettyMIDI(InputFile)
   fig, ax = plt.subplots()
-  ax.bar(numpy.arange(12), pm.get_pitch_class_histogram());
-  xticks=numpy.arange(12)(['C', '', 'D', '', 'E', 'F', '', 'G', '', 'A', '', 'B'])
-  ax.set_xticks(xticks)
-  fig.xlabel('Note')
-  fig.ylabel('Proportion')
+  xtickvalues = [0,1,2,3,4,5,6,7,8,9,10,11]
+  
+  
+  #ax.bar(numpy.arange(12), pm.get_pitch_class_histogram());
+  xticksTitle=numpy.arange(12)(['C', '', 'D', '', 'E', 'F', '', 'G', '', 'A', '', 'B'])
+  ax.set_xticks(xtickvalues,xticksTitle)
+  #fig.xlabel('Note')
+  #fig.ylabel('Proportion')
   st.pyplot(fig)
   
  
