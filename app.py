@@ -149,6 +149,15 @@ def PlotPitchDistribution(InputFile):
 #################################################### page layout start here #########################################################
 
 st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidden;} </style> """, unsafe_allow_html=True)
+padding = 0
+st.markdown(f""" <style>
+    .reportview-container .main .block-container{{
+        padding-top: {padding}rem;
+        padding-right: {padding}rem;
+        padding-left: {padding}rem;
+        padding-bottom: {padding}rem;
+    }} </style> """, unsafe_allow_html=True)
+
 st.title("Interactive Music Composition Using Artifical Intelligence")
 st.header("                                                   ")
 #One of the good widgets presented in streamlit is empty. it is a place holder so that we can consider it as template. 
