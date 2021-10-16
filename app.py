@@ -13,7 +13,7 @@ import os
 import music21
 from PIL import Image
 import time
-from MidiFeatures import GetMidFeatures,GetNameofAllInstruments
+from MidiFeatures import GetMidFeatures,GetNameofAllInstruments,aGenerateMidFile
 import matplotlib.pyplot as plt
 
 FileLocation = None
@@ -228,7 +228,8 @@ with st.sidebar.expander("The first step is listen to you"):
       with MainPageDescription.container():
         Instruments = st.multiselect('Instruments you wish to use:',GetNameofAllInstruments())
         MinTempo, MaxTempo = st.select_slider('Select a range of tempos',options=Tempos['TempoName'],value=('Adagio', 'Moderato'))
-        
+        FileLocationofGeneraedMelody=aGenerateMidFile(MinTempo=MinTempo,MaxTempo=MaxTempo, lenghtofMelody=1,listofInstruments=Instruments)
+        PlayBackMusicFile(FileLocationofGeneraedMelody)
  
         
         
