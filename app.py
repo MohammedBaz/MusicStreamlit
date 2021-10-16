@@ -165,11 +165,11 @@ if(add_selectbox=="Upload your audio files"):
   if uploaded_file is not None:                              # Just to check that the user has its own input to the filed_uploader
     FileLocation=StoretheUpoldedFile(uploaded_file)
     DisplayGeneralFeatrues(FileLocation)
+    with st.expander("Plot Tempo Changes"):
+      PlotTempoChanges(FileLocation)
     with st.expander("Musical Sheet"):
       musictrack=music21.converter.parse(FileLocation)
       DisplayMusicalNotes(musictrack)
-    #with st.expander("Plot Tempo Changes"):
-    #  PlotTempoChanges(FileLocation)
     #with st.expander("Harmony analysis"):
     #with st.expander("See explanation"):
     
