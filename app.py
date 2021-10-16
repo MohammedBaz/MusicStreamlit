@@ -138,7 +138,7 @@ def PlotTempoChanges(InputFile):
 def PlotPitchDistribution(InputFile):
   pm= pretty_midi.PrettyMIDI(InputFile)
   fig, ax = plt.subplots()
-  plt.bar(numoy.arange(12), pm.get_pitch_class_histogram());
+  plt.bar(numpy.arange(12), pm.get_pitch_class_histogram());
   
   #ax.set_xticks(xticksTitle)
   ax.set_xticklabels(['C', '', 'D', '', 'E', 'F', '', 'G', '', 'A', '', 'B'])
