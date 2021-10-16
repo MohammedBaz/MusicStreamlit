@@ -230,9 +230,10 @@ with st.sidebar.expander("The first step is listen to you"):
         MinTempo, MaxTempo = st.select_slider('Select a range of tempos',options=Tempos['TempoName'],value=('Adagio', 'Moderato'))
         lenghtofMelody = st.slider('length of melody in seconds', 0, 300, 20)
         FileLocationofGeneraedMelody=aGenerateMidFile(MinTempo=MinTempo,MaxTempo=MaxTempo, lenghtofMelody=lenghtofMelody,listofInstruments=Instruments)
+        
         PlayBackMusicFile(FileLocationofGeneraedMelody)
         PlotPitchDistribution(FileLocationofGeneraedMelody)
-        duration,NotesNumbers,InstrumentsList= DisplayGeneralFeatrues(FileLocation)
+        duration,NotesNumbers,InstrumentsList= DisplayGeneralFeatrues(FileLocationofGeneraedMelody)
         SubMainPageDescription.markdown('It is interesting truck of `'+str(duration)+'`'+' seconds '+
                                         'that comprises`'+str(NotesNumbers)+'`'+' notes '+
                                         'and played with the follwoing instrument(s)`'+str(InstrumentsList)+'`'+
