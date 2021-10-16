@@ -163,15 +163,16 @@ MainPageDescription.write("""This is a beta version for an ambitious project aim
          """)
 
 with st.sidebar.expander("The first step is listen to you"):
-    MainPageDescription.empty() 
+    MainPageDescription.empty()
+    SubMainPageDescription.empty() 
     add_selectbox=st.radio("We can aid you to compete your piece: ", ("Upload your audio files", "Generate musical Notes", "Use our pregeneraed Audios"),index=1)
     if(add_selectbox=="Upload your audio files"):
       uploaded_file = MainPageDescription.file_uploader("Uplod AudioFile Here or leave it blank if other options are selected",type=['mid'], accept_multiple_files=False) 
       if uploaded_file is not None:                              # Just to check that the user has its own input to the filed_uploader
         FileLocation=StoretheUpoldedFile(uploaded_file)
-        a,b,c= DisplayGeneralFeatrues(FileLocation)
-        MainPageDescription.write("It is interesting truck of  "+str(a) +"seconds" + " That  comprises  " + str(b)+ " notes "
-                                  + "and played with the follwoing instrument(s)"+ str(c))
+        duration,NotesNumbers,InstrumentsList= DisplayGeneralFeatrues(FileLocation)
+        SubMainPageDescription.write("It is interesting truck of  "+str(duration) +"seconds" + " That  comprises  " + str(NotesNumbers)+ " notes "
+                                  + "and played with the follwoing instrument(s)"+ str(InstrumentsList))
         
         #MainPageDescription.write('It is interesting truck of'+a+ 'second'+
         #                          'It consists of'+b+'notes'+ 
