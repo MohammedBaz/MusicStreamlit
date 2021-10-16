@@ -12,6 +12,7 @@ from scipy.io import wavfile
 import os
 import music21
 from PIL import Image
+import time
 FileLocation = None
 genetedNotes=None
 ################reconsidering pleae 
@@ -145,12 +146,11 @@ if(add_selectbox=="Upload your audio files"):
     FileLocation=StoretheUpoldedFile(uploaded_file)
     musictrack=music21.converter.parse(FileLocation)
     DisplayContents=st.empty()
-      with import time:
-        import time
-        my_bar = DisplayContents.progress(0)
-        for percent_complete in range(100):
-          time.sleep(0.1)
-          my_bar.progress(percent_complete + 1)
+    with import time:
+      my_bar = DisplayContents.progress(0)
+      for percent_complete in range(100):
+        time.sleep(0.1)
+        my_bar.progress(percent_complete + 1)
       DisplayMusicalNotes(musictrack)
     
   #    st.write(parsemidfile(uploaded_file))
