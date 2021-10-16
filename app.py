@@ -232,6 +232,12 @@ with st.sidebar.expander("The first step is listen to you"):
         FileLocationofGeneraedMelody=aGenerateMidFile(MinTempo=MinTempo,MaxTempo=MaxTempo, lenghtofMelody=lenghtofMelody,listofInstruments=Instruments)
         PlayBackMusicFile(FileLocationofGeneraedMelody)
         PlotPitchDistribution(FileLocationofGeneraedMelody)
+        duration,NotesNumbers,InstrumentsList= DisplayGeneralFeatrues(FileLocation)
+        SubMainPageDescription.markdown('It is interesting truck of `'+str(duration)+'`'+' seconds '+
+                                        'that comprises`'+str(NotesNumbers)+'`'+' notes '+
+                                        'and played with the follwoing instrument(s)`'+str(InstrumentsList)+'`'+
+                                        '**'+'Offcorse you can get more detailes using the follwoing:'+'**'
+                                       )
  
         
         
