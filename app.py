@@ -142,7 +142,8 @@ if(add_selectbox=="Upload your audio files"):
   MainPageDescription.empty()       
   uploaded_file = MainPageDescription.file_uploader("Uplod AudioFile Here or leave it blank if other options are selected",type=['mid'], accept_multiple_files=False) 
   if uploaded_file is not None:                               # Just to check that the user has its own input to the filed_uploader
-      st.write(parsemidfile(uploaded_file))
+    DisplayMusicalNotes(uploaded_file)
+  #    st.write(parsemidfile(uploaded_file))
       
     #FileLocation=StoretheUpoldedFile(uploaded_file)         # Store the file and get its location information 
     #PlayBackMusicFile(FileLocation) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
