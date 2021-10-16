@@ -177,7 +177,7 @@ with st.sidebar.expander("The first step is listen to you"):
         
         SubMainPageDescription.radio("Offcorse you can get detailed infomation such as: ",
                                ("Plot for Tempo changes or ", "Plot for pitch distributions or", "Musical sheet "),index=1)
-        SubMainPageDescription.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+        
         #MainPageDescription.write('It is interesting truck of'+a+ 'second'+
         #                          'It consists of'+b+'notes'+ 
         #                          'and played with the follwoing instrument(s)'+ c)
