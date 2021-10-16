@@ -179,12 +179,16 @@ SubMainPageDescription=st.empty()
 Sub2MainPageDescription=st.empty()
 Sub3MainPageDescription=st.empty()
 
+###############these to control the folw of information 
+FileLocationofGeneraedMelody=''
+FileLocation=''
 
 with st.sidebar.expander("The first step is listen to you"):
     MainPageDescription.empty()
     SubMainPageDescription.empty() 
     add_selectbox=st.radio("We can aid you to compete your piece: ", ("Upload your audio files", "Generate musical Notes", "Use our pregeneraed Audios"))
     if(add_selectbox=="Upload your audio files"):
+      FileLocationofGeneraedMelody=''
       uploaded_file = MainPageDescription.file_uploader("Uplod AudioFile Here or leave it blank if other options are selected",type=['mid'], accept_multiple_files=False) 
       if uploaded_file is not None:                              # Just to check that the user has its own input to the filed_uploader
         FileLocation=StoretheUpoldedFile(uploaded_file)
@@ -217,6 +221,7 @@ with st.sidebar.expander("The first step is listen to you"):
             PlayBackMusicFile(FileLocation)
             
     if(add_selectbox=="Generate musical Notes"):
+      FileLocation=''
       MainPageDescription.empty()
       SubMainPageDescription.empty()
       Sub2MainPageDescription.empty()
