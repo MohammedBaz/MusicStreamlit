@@ -231,7 +231,7 @@ with st.sidebar.expander("The first step is listen to you"):
                  ['Moderato',108, 120],['Allegro moderato', 112, 127],['Allegro', 120, 168],['Vivace', 168, 176],['Presto', 168, 200],['Prestissimo', 200, 176]]
        Tempos = pandas.DataFrame(Tempos, columns = ['TempoName', 'MinValue','MaxValue'])
        Instruments = MainPageDescription.multiselect('Instruments you wish to use:',GetNameofAllInstruments())
-       #MinTempo, MaxTempo = SubMainPageDescription.select_slider('Select a range of tempos',options=Tempos['TempoName'],value=('Adagio', 'Moderato'))
+       MinTempo, MaxTempo = SubMainPageDescription.select_slider('Select a range of tempos',options=Tempos['TempoName'],value=('Adagio', 'Moderato'))
  
         
         
