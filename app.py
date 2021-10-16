@@ -217,7 +217,7 @@ with st.sidebar.expander("The first step is listen to you"):
           with Sub3MainPageDescription:
             PlayBackMusicFile(FileLocation)
             
-    if(add_selectbox==""Generate musical Notes"):
+    if(add_selectbox=="Generate musical Notes"):
        MainPageDescription.empty()
        SubMainPageDescription.empty()
        Sub2MainPageDescription.empty()
