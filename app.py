@@ -140,22 +140,10 @@ def PlotPitchDistribution(InputFile):
   fig, ax = plt.subplots()
   plt.bar(numpy.arange(12), pm.get_pitch_class_histogram());
   ax.set_xticks(numpy.arange(12))
-  #ax.set_xticks(xticksTitle)
   ax.set_xticklabels(['C', '', 'D', '', 'E', 'F', '', 'G', '', 'A', '', 'B'])
-  #fig.xlabel('Note')
-  #fig.ylabel('Proportion')
+  ax.set_xlabel('Musical Notes')
+  ax.set_ylabel('Proportion')
   st.pyplot(fig)
-  ax.set_xticks([0,2,4,6])
- 
-  
-  
-  
-  
-  
-  #
-  #times, tempo_changes = pm.get_tempo_changes()
-  #fig=plt.plot(times, tempo_changes, '.')
-  #st.pyplot(fig)
 #################################################### page layout start here #########################################################
 
 st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidden;} </style> """, unsafe_allow_html=True)
