@@ -198,7 +198,9 @@ with st.sidebar.expander("The first step is listen to you"):
         if (option=="Musical sheet "):
           with Sub3MainPageDescription:
             musictrack=music21.converter.parse(FileLocation)
-            DisplayMusicalNotes(musictrack)
+            JustoaddLoadingFunctionality=DisplayMusicalNotes(musictrack)
+              while JustoaddLoadingFunctionality is None:
+                st.write("Please wait we working on it")
             
             
         #MainPageDescription.write('It is interesting truck of'+a+ 'second'+
