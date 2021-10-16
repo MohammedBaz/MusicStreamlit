@@ -127,6 +127,13 @@ def DisplayGeneralFeatrues(InputFile):
   FinalInstrumentName=numpy.unique(InstrumentName)  
   st.write('It is interesting truck of {} second'.format(int(pm.get_end_time())), 'It consists of {} notes'.format(temp.shape[0]),
         'it is played with the follwoing instrument(s) {}:'.format(FinalInstrumentName))
+  from bokeh.plotting import figure
+  times, tempo_changes = pm.get_tempo_changes()
+  x = times
+  y = tempo_changes
+  p = figure(title='simple line example',x_axis_label='times',y_axis_label='tempo_changes')
+  p.line(x, y, legend_label='Tempo Changes of the uploaded ruck', line_width=2)
+  st.bokeh_chart(p, use_container_width=True)
   
   
   
