@@ -192,6 +192,15 @@ with st.sidebar.expander("The first step is listen to you"):
         if (option=="Plot for Tempo changes or "):
           with Sub3MainPageDescription:
             PlotTempoChanges(FileLocation)
+        if (option=="Plot for pitch distributions or"):
+          with Sub3MainPageDescription:
+            PlotPitchDistribution(FileLocation)
+        if (option=="Musical sheet "):
+          with Sub3MainPageDescription:
+            musictrack=music21.converter.parse(FileLocation)
+            DisplayMusicalNotes(musictrack)
+            
+            
         #MainPageDescription.write('It is interesting truck of'+a+ 'second'+
         #                          'It consists of'+b+'notes'+ 
         #                          'and played with the follwoing instrument(s)'+ c)
