@@ -147,7 +147,11 @@ def PlotPitchDistribution(InputFile):
   ax.set_ylabel('Proportion')
   st.pyplot(fig)
   
-
+def GetNameofAllInstruments():
+  InstrumentName=[]
+  for i in range(127):
+    InstrumentName.append(pretty_midi.program_to_instrument_class(i))
+  return (numpy.unique(InstrumentName))
         
 #################################################### page layout start here #########################################################
 #st.set_page_config(layout="wide") just change the page to wide mode
