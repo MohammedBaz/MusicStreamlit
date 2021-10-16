@@ -217,7 +217,14 @@ with st.sidebar.expander("The first step is listen to you"):
           with Sub3MainPageDescription:
             PlayBackMusicFile(FileLocation)
             
-            
+    if(add_selectbox==""Generate musical Notes"):
+       MainPageDescription.empty()
+       SubMainPageDescription.empty()
+       Sub2MainPageDescription.empty()
+       Sub3MainPageDescription.empty()
+       st.write("This is where the generated code is coming")
+      
+      
         #MainPageDescription.write('It is interesting truck of'+a+ 'second'+
         #                          'It consists of'+b+'notes'+ 
         #                          'and played with the follwoing instrument(s)'+ c)
