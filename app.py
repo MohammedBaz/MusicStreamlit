@@ -228,7 +228,7 @@ with st.sidebar.expander("The first step is listen to you"):
       with MainPageDescription.container():
         Instruments = st.multiselect('Instruments you wish to use:',GetNameofAllInstruments(),default=['Electric Piano 1'])
         MinTempo, MaxTempo = st.select_slider('Select a range of tempos',options=Tempos['TempoName'],value=('Adagio', 'Moderato'))
-        lenghtofMelody = st.slider('length of melody in seconds', 0, 300, 2)
+        lenghtofMelody = st.slider('length of melody in seconds', 0, 30, 2)
         FileLocationofGeneraedMelody=aGenerateMidFile(MinTempo=MinTempo,MaxTempo=MaxTempo, lenghtofMelody=lenghtofMelody,listofInstruments=Instruments)
         
         PlayBackMusicFile(FileLocationofGeneraedMelody)
@@ -241,7 +241,10 @@ with st.sidebar.expander("The first step is listen to you"):
                                        )
         musictrack=music21.converter.parse(FileLocation)
         DisplayMusicalNotes(musictrack)
- 
+with st.sidebar.expander("Here you can add personalise generation process:"): 
+  PredictionHorizontal = st.number_input("Select the Prediction Horizonal, in seconds",min_value=60, max_value =300,value=120,step=10)
+  InputShape=st.slider("Select the Inputshape, in sec",0,300,120) #here should be changed in accordnace with the inputs
+  FrequecyDomain = st.checkbox('I agree')
         
         
         
