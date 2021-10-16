@@ -1,11 +1,10 @@
-#!pip install pretty_midi
 import pretty_midi
 import numpy
 import pandas
-from google.colab import drive
-drive.mount('/content/gdrive')
-filename1='/content/gdrive/MyDrive/guitar/Arab1.mid'
-filename2='/content/gdrive/MyDrive/guitar/Arab2.mid'
+#from google.colab import drive
+#drive.mount('/content/gdrive')
+#filename1='/content/gdrive/MyDrive/guitar/Arab1.mid'
+#filename2='/content/gdrive/MyDrive/guitar/Arab2.mid'
 #!pip install pretty_midi
 
 def GetMidFeatures(InputFile):
@@ -33,7 +32,7 @@ def DisplayGeneralFeatrues(InputFile):
         )
 
 
-DisplayGeneralFeatrues(filename2)   
+ 
 ##########################################
 
 
