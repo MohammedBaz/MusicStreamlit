@@ -188,18 +188,21 @@ with st.sidebar.expander("The first step is listen to you"):
                                   + "and played with the follwoing instrument(s)"+ str(InstrumentsList)+"  Offcorse you can get detailed infomation such as:" )
        
         option = Sub2MainPageDescription.selectbox(label='',
-                                                   options=("Plot for Tempo changes or ", "Plot for pitch distributions or", "Musical sheet ","Play the uplodaed file "))
-        if (option=="Plot for Tempo changes or "):
+                                                   options=("Plot Tempo change",
+                                                            "Plot pitch distributions",
+                                                            "Render musical sheet, please wait it may take some times",
+                                                            "Replay the uplodaed file, please wait it may take some times"))
+        if (option=="Plot Tempo changes"):
           with Sub3MainPageDescription:
             PlotTempoChanges(FileLocation)
-        if (option=="Plot for pitch distributions or"):
+        if (option=="Plot pitch distributions"):
           with Sub3MainPageDescription:
             PlotPitchDistribution(FileLocation)
-        if (option=="Musical sheet, please wait it may take some times"):
+        if (option=="Render musical sheet, please wait it may take some times"):
           with Sub3MainPageDescription:
             musictrack=music21.converter.parse(FileLocation)
             DisplayMusicalNotes(musictrack)
-        if (option=="Play the uplodaed file, please wait it may take some times"):
+        if (option=="Replay the uplodaed file, please wait it may take some times"):
           with Sub3MainPageDescription:
             PlayBackMusicFile(FileLocation)
             
