@@ -149,7 +149,7 @@ if(add_selectbox=="Upload your audio files"):
       GeneratedMusicSheeet=DisplayMusicalNotes(musictrack)
       while (GeneratedMusicSheeet) is None:
         with st.spinner('Please wait until generating the musical sheet'):
-          time.sleep(5)
+          time.sleep(1)
       GeneratedMusicSheeet
       
       
