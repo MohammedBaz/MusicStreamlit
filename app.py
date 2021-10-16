@@ -142,7 +142,7 @@ def PlotPitchDistribution(InputFile):
   
   
   #ax.bar(numpy.arange(12), pm.get_pitch_class_histogram());
-  xticksTitle=numpy.arange(12)(['C', '', 'D', '', 'E', 'F', '', 'G', '', 'A', '', 'B'])
+  xticksTitle=['C', '', 'D', '', 'E', 'F', '', 'G', '', 'A', '', 'B']
   ax.set_xticks(xtickvalues,xticksTitle)
   #fig.xlabel('Note')
   #fig.ylabel('Proportion')
