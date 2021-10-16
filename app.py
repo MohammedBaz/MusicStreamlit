@@ -175,10 +175,9 @@ with st.sidebar.expander("The first step is listen to you"):
         FileLocation=StoretheUpoldedFile(uploaded_file)
         duration,NotesNumbers,InstrumentsList= DisplayGeneralFeatrues(FileLocation)
         SubMainPageDescription.success("It is interesting truck of  "+str(duration) +"seconds" + " That  comprises  " + str(NotesNumbers)+ " notes "
-                                  + "and played with the follwoing instrument(s)"+ str(InstrumentsList))
+                                  + "and played with the follwoing instrument(s)"+ str(InstrumentsList)+"  Offcorse you can get detailed infomation such as:" )
        
-        option = Sub2MainPageDescription.selectbox('Offcorse you can get detailed infomation such as:',
-                              ("Plot for Tempo changes or ", "Plot for pitch distributions or", "Musical sheet "))
+        option = Sub2MainPageDescription.selectbox(options=("Plot for Tempo changes or ", "Plot for pitch distributions or", "Musical sheet "))
         
         #MainPageDescription.write('It is interesting truck of'+a+ 'second'+
         #                          'It consists of'+b+'notes'+ 
