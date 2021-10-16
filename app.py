@@ -77,7 +77,7 @@ def DisplayMusicalNotes(music):
   # it is simply cast the music into strings and then to image.   
   streamingNotes=str(music.write('lily.png'))
   image = Image.open(streamingNotes)
-  Then the st.image widget is used to display the image
+  #Then the st.image widget is used to display the image
   st.image(image, caption='Musical sheet')
 
 def ChecktheCorrectnessofUploadedFile(uploaded_file):
