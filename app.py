@@ -147,7 +147,7 @@ def PlotPitchDistribution(InputFile):
   ax.set_ylabel('Proportion')
   st.pyplot(fig)
 #################################################### page layout start here #########################################################
-st.set_page_config(layout="wide")
+#st.set_page_config(layout="wide") just change the page to wide mode
 st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidden;} </style> """, unsafe_allow_html=True)
 padding = 0
 st.markdown(f""" <style>
