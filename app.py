@@ -170,9 +170,9 @@ with st.sidebar.expander("The first step is listen to you"):
       if uploaded_file is not None:                              # Just to check that the user has its own input to the filed_uploader
         FileLocation=StoretheUpoldedFile(uploaded_file)
         a,b,c= DisplayGeneralFeatrues(FileLocation)
-        MainPageDescription.write('It is interesting truck of {} second'.format(int(pm.get_end_time())),
-                                  'It consists of {} notes'.format(temp.shape[0]),
-                                  'it is played with the follwoing instrument(s) {}:'.format(FinalInstrumentName))
+        MainPageDescription.write('It is interesting truck of {} second'.format(a),
+                                  'It consists of {} notes'.format(b),
+                                  'it is played with the follwoing instrument(s) {}:'.format(c))
         
         
         #DisplayGeneralFeatrues(FileLocation)
