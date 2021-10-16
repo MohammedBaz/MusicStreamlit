@@ -130,6 +130,7 @@ def DisplayGeneralFeatrues(InputFile):
   
 def PlotTempoChanges(InputFile):
   pm= pretty_midi.PrettyMIDI(InputFile)
+  times, tempo_changes = pm.get_tempo_changes()
   arr = numpy.random.normal(1, 1, size=100)
   fig, ax = plt.subplots()
   ax.plot(times, tempo_changes, '.')
