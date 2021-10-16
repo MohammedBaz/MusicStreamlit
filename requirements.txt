@@ -9,4 +9,3 @@ scipy
 music21
 pyfluidsynth
 Pillow
-bokeh
