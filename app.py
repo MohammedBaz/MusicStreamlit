@@ -141,8 +141,10 @@ with st.sidebar.expander("The first step is listen to you"):
 if(add_selectbox=="Upload your audio files"):
   MainPageDescription.empty()       
   uploaded_file = MainPageDescription.file_uploader("Uplod AudioFile Here or leave it blank if other options are selected",type=['mid'], accept_multiple_files=False) 
-  if uploaded_file is not None:                               # Just to check that the user has its own input to the filed_uploader
+  if uploaded_file is not None:                              # Just to check that the user has its own input to the filed_uploader
+    pm= pretty_midi.PrettyMIDI(uploaded_file)
     DisplayMusicalNotes(uploaded_file)
+    
   #    st.write(parsemidfile(uploaded_file))
       
     #FileLocation=StoretheUpoldedFile(uploaded_file)         # Store the file and get its location information 
