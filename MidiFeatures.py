@@ -2,6 +2,7 @@ import pretty_midi
 import numpy
 import pandas
 import random
+import os
 
 #from google.colab import drive
 #drive.mount('/content/gdrive')
@@ -30,7 +31,24 @@ def GetNameofAllInstruments():
   return (numpy.unique(InstrumentName))
 
 
-
+def aGenerateMidFile(MinTempo,MaxTempo, lenghtofMelody,listofInstruments):
+  MinSelectedTempo=Tempos[Tempos['TempoName']==MinTempo].index[0]
+  MaxSelectedTempo=Tempos[Tempos['TempoName']==MaxTempo].index[0]
+  pm = pretty_midi.PrettyMIDI()
+  velocity = 100
+  startingPoint=0
+  #inst.notes.append(pretty_midi.Note(velocity, random.choice(range(127)), start=0.0, end=EndingPoint))
+  while(startingPoint<=lenghtofMelody):
+      randomduration=random.uniform(1/Tempos['MinValue'][MinSelectedTempo], 1/Tempos['MaxValue'][MaxSelectedTempo])
+      EndingPoint=randomduration+startingPoint
+      #pretty_midi.Instrument(program=42,is_drum=False)
+      randomInstrument=choice(listofInstruments)
+      inst = pretty_midi.Instrument(program=pretty_midi.instrument_name_to_program(randomInstrument), is_drum=False,name=randomInstrument)
+      pm.instruments.append(inst)
+      inst.notes.append(pretty_midi.Note(velocity, random.choice(range(127)), start=startingPoint, end=EndingPoint))
+      startingPoint=EndingPoint
+      pm.write(os.path.join(os.getcwd(),"GeneratedFile.mid"))
+      return(os.path.join(os.getcwd(),"GeneratedFile.mid"))
 
 
 
