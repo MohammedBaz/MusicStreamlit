@@ -127,6 +127,9 @@ def DisplayGeneralFeatrues(InputFile):
   FinalInstrumentName=numpy.unique(InstrumentName)  
   st.write('It is interesting truck of {} second'.format(int(pm.get_end_time())), 'It consists of {} notes'.format(temp.shape[0]),
         'it is played with the follwoing instrument(s) {}:'.format(FinalInstrumentName))
+  
+def PlotTempoChanges(InputFile):
+  pm= pretty_midi.PrettyMIDI(InputFile)
   from bokeh.plotting import figure
   times, tempo_changes = pm.get_tempo_changes()
   x = times
@@ -134,8 +137,6 @@ def DisplayGeneralFeatrues(InputFile):
   p = figure(title='simple line example',x_axis_label='times',y_axis_label='tempo_changes')
   p.line(x, y, legend_label='Tempo Changes of the uploaded ruck', line_width=2)
   st.bokeh_chart(p, use_container_width=True)
-  
-  
   
 #################################################### page layout start here #########################################################
 
@@ -165,10 +166,8 @@ if(add_selectbox=="Upload your audio files"):
     with st.expander("Musical Sheet"):
       musictrack=music21.converter.parse(FileLocation)
       DisplayMusicalNotes(musictrack)
-    #with st.expander("Musical Sheet"):
-    #  musictrack=music21.converter.parse(FileLocation)
-    #  DisplayMusicalNotes(musictrack)
-    
+    with st.expander("Plot Tempo Changes"):
+      PlotTempoChanges(FileLocation)
     #with st.expander("Harmony analysis"):
     #with st.expander("See explanation"):
     
