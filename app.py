@@ -191,8 +191,8 @@ with st.sidebar.expander("The first step is listen to you"):
         FileLocation=StoretheUpoldedFile(uploaded_file)
         duration,NotesNumbers,InstrumentsList= DisplayGeneralFeatrues(FileLocation)
         SubMainPageDescription.markdown('It is interesting truck of **_'+str(duration)+'**.')
-        SubMainPageDescription.success("It is interesting truck of  "+str(duration) +"seconds" + " That  comprises  " + str(NotesNumbers)+ " notes "
-                                  + "and played with the follwoing instrument(s)"+ str(InstrumentsList)+"  Offcorse you can get detailed infomation such as:" )
+        #SubMainPageDescription.success("It is interesting truck of  "+str(duration) +"seconds" + " That  comprises  " + str(NotesNumbers)+ " notes "
+        #                          + "and played with the follwoing instrument(s)"+ str(InstrumentsList)+"  Offcorse you can get detailed infomation such as:" )
        
         option = Sub2MainPageDescription.selectbox(label='',
                                                    options=("Plot Tempo changes",
