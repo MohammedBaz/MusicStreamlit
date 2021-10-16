@@ -174,9 +174,10 @@ with st.sidebar.expander("The first step is listen to you"):
         duration,NotesNumbers,InstrumentsList= DisplayGeneralFeatrues(FileLocation)
         SubMainPageDescription.write("It is interesting truck of  "+str(duration) +"seconds" + " That  comprises  " + str(NotesNumbers)+ " notes "
                                   + "and played with the follwoing instrument(s)"+ str(InstrumentsList))
+        st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
         add_selectbox=st.radio("Offcorse you can get detailed infomation such as: ",
                                ("Plot for Tempo changes or ", "Plot for pitch distributions or", "Musical sheet "),index=1)
-        st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+        
         #MainPageDescription.write('It is interesting truck of'+a+ 'second'+
         #                          'It consists of'+b+'notes'+ 
         #                          'and played with the follwoing instrument(s)'+ c)
