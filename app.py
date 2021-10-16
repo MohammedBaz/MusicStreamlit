@@ -188,7 +188,7 @@ with st.sidebar.expander("The first step is listen to you"):
                                   + "and played with the follwoing instrument(s)"+ str(InstrumentsList)+"  Offcorse you can get detailed infomation such as:" )
        
         option = Sub2MainPageDescription.selectbox(label='',
-                                                   options=("Plot Tempo change",
+                                                   options=("Plot Tempo changes",
                                                             "Plot pitch distributions",
                                                             "Render musical sheet, please wait it may take some times",
                                                             "Replay the uplodaed file, please wait it may take some times"))
