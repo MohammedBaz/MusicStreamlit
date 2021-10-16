@@ -132,7 +132,7 @@ def PlotTempoChanges(InputFile):
   pm= pretty_midi.PrettyMIDI(InputFile)
   arr = numpy.random.normal(1, 1, size=100)
   fig, ax = plt.subplots()
-  ax.plt.plot(times, tempo_changes, '.')
+  ax.plot(times, tempo_changes, '.')
   st.pyplot(fig)
   
   #
