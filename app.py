@@ -161,6 +161,7 @@ MainPageDescription.write("""This is a beta version for an ambitious project aim
          https://github.com/MohammedBaz/MusicStreamlit/blob/main/BackEndPrediction.py.
          Suggestions and comments can be sent to mdbaz01@gmail.com 
          """)
+SubMainPageDescription=st.empty()
 
 with st.sidebar.expander("The first step is listen to you"):
     MainPageDescription.empty()
