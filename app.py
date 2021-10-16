@@ -166,7 +166,7 @@ st.header("                                                   ")
 
 
 #One of the good widgets presented in streamlit is empty. it is a place holder so that we can consider it as template. 
-MainPageDescription = st.empty()
+#MainPageDescription = st.empty()
 MainPageDescription.write("""This is a beta version for an ambitious project aiming to promote the interactivity of 
          generate some musical pieces using Artificial Intelligence (AI) algorithms.
          Several AI models have been built and trained to match the variety of musical inputs ; furthermore, 
@@ -226,7 +226,7 @@ with st.sidebar.expander("The first step is listen to you"):
       Tempos = pandas.DataFrame(Tempos, columns = ['TempoName', 'MinValue','MaxValue'])
       #col1, col2 = MainPageDescription.columns(2)
       with MainPageDescription.container():
-        Instruments = st.multiselect('Instruments you wish to use:',GetNameofAllInstruments(),default=['Acoustic Grand Piano','Soprano Sax'])
+        Instruments = st.multiselect('Instruments you wish to use:',GetNameofAllInstruments(),default=['Electric Piano 1'])
         MinTempo, MaxTempo = st.select_slider('Select a range of tempos',options=Tempos['TempoName'],value=('Adagio', 'Moderato'))
         lenghtofMelody = st.slider('length of melody in seconds', 0, 300, 2)
         FileLocationofGeneraedMelody=aGenerateMidFile(MinTempo=MinTempo,MaxTempo=MaxTempo, lenghtofMelody=lenghtofMelody,listofInstruments=Instruments)
