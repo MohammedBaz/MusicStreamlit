@@ -188,7 +188,7 @@ with st.sidebar.expander("The first step is listen to you"):
                                   + "and played with the follwoing instrument(s)"+ str(InstrumentsList)+"  Offcorse you can get detailed infomation such as:" )
        
         option = Sub2MainPageDescription.selectbox(label='',
-                                                   options=("Plot for Tempo changes or ", "Plot for pitch distributions or", "Musical sheet "))
+                                                   options=("Plot for Tempo changes or ", "Plot for pitch distributions or", "Musical sheet ","Play the uplodaed file "))
         if (option=="Plot for Tempo changes or "):
           with Sub3MainPageDescription:
             PlotTempoChanges(FileLocation)
@@ -198,9 +198,10 @@ with st.sidebar.expander("The first step is listen to you"):
         if (option=="Musical sheet "):
           with Sub3MainPageDescription:
             musictrack=music21.converter.parse(FileLocation)
-            JustoaddLoadingFunctionality=DisplayMusicalNotes(musictrack)
-            while JustoaddLoadingFunctionality is None:
-                st.write("Please wait we working on it")
+            DisplayMusicalNotes(musictrack)
+        if (option=="Play the uplodaed file "):
+          with Sub3MainPageDescription:
+            PlayBackMusicFile(FileLocation)
             
             
         #MainPageDescription.write('It is interesting truck of'+a+ 'second'+
