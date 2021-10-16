@@ -118,15 +118,19 @@ def parsemidfile(midfile):
     st.error('It seems that this is corrupted mod file, please upload another')
 
     
-def DisplayGeneralFeatrues(InputFile):
+def DisplayGeneralFeatrues(InputFile, WidgetControl=MainPageDescription):
   temp=GetMidFeatures(InputFile) 
   pm= pretty_midi.PrettyMIDI(InputFile)
   InstrumentName=[]
   for aInstrumentNo in numpy.unique(temp['InstrumentNo']):
     InstrumentName.append(pretty_midi.program_to_instrument_class(aInstrumentNo))
-  FinalInstrumentName=numpy.unique(InstrumentName)  
-  st.write('It is interesting truck of {} second'.format(int(pm.get_end_time())), 'It consists of {} notes'.format(temp.shape[0]),
-        'it is played with the follwoing instrument(s) {}:'.format(FinalInstrumentName))
+  FinalInstrumentName=numpy.unique(InstrumentName)
+  if (widgetContrl is None):
+    st.write('It is interesting truck of {} second'.format(int(pm.get_end_time())), 'It consists of {} notes'.format(temp.shape[0]),
+             'it is played with the follwoing instrument(s) {}:'.format(FinalInstrumentName))
+  else:
+    WidgetControl.write('It is interesting truck of {} second'.format(int(pm.get_end_time())), 'It consists of {} notes'.format(temp.shape[0]),
+             'it is played with the follwoing instrument(s) {}:'.format(FinalInstrumentName))
   
 def PlotTempoChanges(InputFile):
   pm= pretty_midi.PrettyMIDI(InputFile)
@@ -165,9 +169,9 @@ with st.sidebar.expander("The first step is listen to you"):
     add_selectbox=st.radio("We can aid you to compete your piece: ", ("Upload your audio files", "Generate musical Notes", "Use our pregeneraed Audios"),index=1)
     if(add_selectbox=="Upload your audio files"):
       uploaded_file = MainPageDescription.file_uploader("Uplod AudioFile Here or leave it blank if other options are selected",type=['mid'], accept_multiple_files=False) 
-    if uploaded_file is not None:                              # Just to check that the user has its own input to the filed_uploader
-      FileLocation=StoretheUpoldedFile(uploaded_file)
-      DisplayGeneralFeatrues(FileLocation)
+      if uploaded_file is not None:                              # Just to check that the user has its own input to the filed_uploader
+        FileLocation=StoretheUpoldedFile(uploaded_file)
+        DisplayGeneralFeatrues(FileLocation)
         #with st.expander("Plot Tempo Changes"):
         #  PlotTempoChanges(FileLocation)
         #with st.expander("Plot Pitch Distrbution"):   
