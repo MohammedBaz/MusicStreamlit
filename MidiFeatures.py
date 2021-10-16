@@ -30,6 +30,9 @@ def GetNameofAllInstruments():
     InstrumentName.append(pretty_midi.program_to_instrument_name(i))
   return (numpy.unique(InstrumentName))
 
+Tempos = [['Larghissimo', 0, 20], ['Grave', 20, 40], ['Slow', 40, 60],['Larghetto', 60, 66],['Adagio', 66, 76],['Adagietto', 70, 80],['Andante', 76, 108],
+                ['Moderato',108, 120],['Allegro moderato', 112, 127],['Allegro', 120, 168],['Vivace', 168, 176],['Presto', 168, 200],['Prestissimo', 200, 176]]
+Tempos = pandas.DataFrame(Tempos, columns = ['TempoName', 'MinValue','MaxValue'])
 
 def aGenerateMidFile(MinTempo,MaxTempo, lenghtofMelody,listofInstruments):
   MinSelectedTempo=Tempos[Tempos['TempoName']==MinTempo].index[0]
