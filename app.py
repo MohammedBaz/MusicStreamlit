@@ -146,6 +146,11 @@ def PlotPitchDistribution(InputFile):
   ax.set_xlabel('Musical Notes')
   ax.set_ylabel('Proportion')
   st.pyplot(fig)
+  
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown('<style>{}</style>'.format(f.read()), unsafe_allow_html=True)
+        
 #################################################### page layout start here #########################################################
 #st.set_page_config(layout="wide") just change the page to wide mode
 st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidden;} </style> """, unsafe_allow_html=True)
@@ -160,6 +165,16 @@ st.markdown(f""" <style>
 
 st.title("Interactive Music Composition Using Artifical Intelligence")
 st.header("                                                   ")
+
+from Writingcss import local_css
+
+local_css("style.css")
+ 
+t = "<div>Hello there my <span class='highlight blue'>name <span class='bold'>yo</span> </span> is <span class='highlight red'>Fanilo <span class='bold'>Name</span></span></div>"
+
+st.markdown(t, unsafe_allow_html=True)
+
+
 #One of the good widgets presented in streamlit is empty. it is a place holder so that we can consider it as template. 
 MainPageDescription = st.empty()
 MainPageDescription.write("""This is a beta version for an ambitious project aiming to promote the interactivity of 
