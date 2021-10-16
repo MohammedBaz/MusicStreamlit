@@ -191,7 +191,8 @@ with st.sidebar.expander("The first step is listen to you"):
         FileLocation=StoretheUpoldedFile(uploaded_file)
         duration,NotesNumbers,InstrumentsList= DisplayGeneralFeatrues(FileLocation)
         SubMainPageDescription.markdown('It is interesting truck of `'+str(duration)+'`'+' seconds '+
-                                        'that comprises`'+str(NotesNumbers)+'`'+' notes ')
+                                        'that comprises`'+str(NotesNumbers)+'`'+' notes '+
+                                        'and played with the follwoing instrument(s)`'+str(InstrumentsList)+'`')
         #SubMainPageDescription.success("It is interesting truck of  "+str(duration) +"seconds" + " That  comprises  " + str(NotesNumbers)+ " notes "
         #                          + "and played with the follwoing instrument(s)"+ str(InstrumentsList)+"  Offcorse you can get detailed infomation such as:" )
        
