@@ -77,8 +77,9 @@ def DisplayMusicalNotes(music):
   # it is simply cast the music into strings and then to image.   
   streamingNotes=str(music.write('lily.png'))
   image = Image.open(streamingNotes)
+  return(image)
   # Then the st.image widget is used to display the image
-  st.image(image, caption='Musical sheet')
+  #st.image(image, caption='Musical sheet')
 
 def ChecktheCorrectnessofUploadedFile(uploaded_file):
     return
@@ -146,7 +147,10 @@ if(add_selectbox=="Upload your audio files"):
     FileLocation=StoretheUpoldedFile(uploaded_file)
     with st.expander("Musical Sheet"):
       musictrack=music21.converter.parse(FileLocation)
-      DisplayMusicalNotes(music21.converter.parse(FileLocation))
+      GeneratedMusicSheeet=DisplayMusicalNotes(musictrack)
+      while (DisplayMusicalNotes(musictrack)) is empty:
+        st.write("Please wait until generating the musical sheet)     
+      st.image(image, caption='Musical sheet')
       
       
     #with st.expander("Harmony analysis"):
