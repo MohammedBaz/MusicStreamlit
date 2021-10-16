@@ -226,7 +226,7 @@ with st.sidebar.expander("The first step is listen to you"):
       Tempos = pandas.DataFrame(Tempos, columns = ['TempoName', 'MinValue','MaxValue'])
       #col1, col2 = MainPageDescription.columns(2)
       with MainPageDescription.container():
-        Instruments = st.multiselect('Instruments you wish to use:',GetNameofAllInstruments())
+        Instruments = st.multiselect('Instruments you wish to use:',GetNameofAllInstruments(),default=['Acoustic Grand Piano','Soprano Sax'])
         MinTempo, MaxTempo = st.select_slider('Select a range of tempos',options=Tempos['TempoName'],value=('Adagio', 'Moderato'))
         lenghtofMelody = st.slider('length of melody in seconds', 0, 180, 150)
         FileLocationofGeneraedMelody=aGenerateMidFile(MinTempo=MinTempo,MaxTempo=MaxTempo, lenghtofMelody=lenghtofMelody,listofInstruments=Instruments)
