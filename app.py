@@ -166,15 +166,15 @@ with st.sidebar.expander("The first step is listen to you"):
     if(add_selectbox=="Upload your audio files"):
       uploaded_file = MainPageDescription.file_uploader("Uplod AudioFile Here or leave it blank if other options are selected",type=['mid'], accept_multiple_files=False) 
       if uploaded_file is not None:                              # Just to check that the user has its own input to the filed_uploader
-      FileLocation=StoretheUpoldedFile(uploaded_file)
-      DisplayGeneralFeatrues(FileLocation)
-with st.expander("Plot Tempo Changes"):
-      PlotTempoChanges(FileLocation)
-with st.expander("Plot Pitch Distrbution"):   
-      PlotPitchDistribution(FileLocation)
-with st.expander("Musical Sheet"):
-      musictrack=music21.converter.parse(FileLocation)
-      DisplayMusicalNotes(musictrack)
+        FileLocation=StoretheUpoldedFile(uploaded_file)
+        DisplayGeneralFeatrues(FileLocation)
+        with st.expander("Plot Tempo Changes"):
+          PlotTempoChanges(FileLocation)
+        with st.expander("Plot Pitch Distrbution"):   
+          PlotPitchDistribution(FileLocation)
+        with st.expander("Musical Sheet"):
+          musictrack=music21.converter.parse(FileLocation)
+          DisplayMusicalNotes(musictrack)
       
       
       
