@@ -168,7 +168,7 @@ with st.sidebar.expander("The first step is listen to you"):
       uploaded_file = MainPageDescription.file_uploader("Uplod AudioFile Here or leave it blank if other options are selected",type=['mid'], accept_multiple_files=False) 
       if uploaded_file is not None:                              # Just to check that the user has its own input to the filed_uploader
         FileLocation=StoretheUpoldedFile(uploaded_file)
-        DisplayGeneralFeatrues(uploaded_file)
+        DisplayGeneralFeatrues(FileLocation)
         #DisplayGeneralFeatrues(FileLocation)
         #with st.expander("Plot Tempo Changes"):
         #  PlotTempoChanges(FileLocation)
