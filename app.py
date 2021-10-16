@@ -125,7 +125,7 @@ def DisplayGeneralFeatrues(InputFile):
   for aInstrumentNo in numpy.unique(temp['InstrumentNo']):
     InstrumentName.append(pretty_midi.program_to_instrument_class(aInstrumentNo))
   FinalInstrumentName=numpy.unique(InstrumentName)
-  return(int(pm.get_end_time()),temp.shape[0],FinalInstrumentName)
+  return(pm.get_end_time(),temp.shape[0],FinalInstrumentName)
   #st.write('It is interesting truck of {} second'.format(int(pm.get_end_time())),
   #         'It consists of {} notes'.format(temp.shape[0]),
   #         'it is played with the follwoing instrument(s) {}:'.format(FinalInstrumentName))
