@@ -1,6 +1,8 @@
 import pretty_midi
 import numpy
 import pandas
+import random
+
 #from google.colab import drive
 #drive.mount('/content/gdrive')
 #filename1='/content/gdrive/MyDrive/guitar/Arab1.mid'
@@ -19,6 +21,19 @@ def GetMidFeatures(InputFile):
       ArrayedInputFile.append([Start,End,Pitch,Velocity, instrument.program])
   NotesInformation=pandas.DataFrame(ArrayedInputFile, columns=['start','end','pitch','velocity','InstrumentNo'])
   return (NotesInformation)
+
+
+def GetNameofAllInstruments():
+  InstrumentName=[]
+  for i in range(127):
+    InstrumentName.append(pretty_midi.program_to_instrument_name(i))
+  return (numpy.unique(InstrumentName))
+
+
+
+
+
+
 
 
 
