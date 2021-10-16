@@ -20,16 +20,7 @@ def GetMidFeatures(InputFile):
   NotesInformation=pandas.DataFrame(ArrayedInputFile, columns=['start','end','pitch','velocity','InstrumentNo'])
   return (NotesInformation)
 
-def DisplayGeneralFeatrues(InputFile):
-  temp=GetMidFeatures(InputFile) 
-  pm= pretty_midi.PrettyMIDI(InputFile)
-  InstrumentName=[]
-  for aInstrumentNo in numpy.unique(temp['InstrumentNo']):
-    InstrumentName.append(pretty_midi.program_to_instrument_class(aInstrumentNo))
-  FinalInstrumentName=numpy.unique(InstrumentName)  
-  print('It is interesting truck of {} second'.format(pm.get_end_time()), 'It consists of {} notes'.format(temp.shape[0]),
-        'it is played with the follwoing instrument(s) {}:'.format(FinalInstrumentName), 
-        )
+
 
 
  
