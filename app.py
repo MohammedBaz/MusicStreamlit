@@ -13,6 +13,9 @@ import os
 import music21
 from PIL import Image
 import time
+from MidiFeatures import GetMidFeatures
+
+
 FileLocation = None
 genetedNotes=None
 ################reconsidering pleae 
@@ -109,14 +112,21 @@ def parsemidfile(midfile):
     EndBeat=[]
     for starttime in Allinformationdf['start']:
       StartBeat.append(InputFile.get_beats(starttime)[0])
-    Allinformationdf['startBeat']=StartBeat
-    
-    
+    Allinformationdf['startBeat']=StartBeat   
     return (Allinformationdf)
   except:
     st.error('It seems that this is corrupted mod file, please upload another')
-  
-  
+
+    
+def DisplayGeneralFeatrues(InputFile):
+  temp=GetMidFeatures(InputFile) 
+  pm= pretty_midi.PrettyMIDI(InputFile)
+  InstrumentName=[]
+  for aInstrumentNo in numpy.unique(temp['InstrumentNo']):
+    InstrumentName.append(pretty_midi.program_to_instrument_class(aInstrumentNo))
+  FinalInstrumentName=numpy.unique(InstrumentName)  
+  print('It is interesting truck of {} second'.format(int(pm.get_end_time())), 'It consists of {} notes'.format(temp.shape[0]),
+        'it is played with the follwoing instrument(s) {}:'.format(FinalInstrumentName))
   
   
   
@@ -144,9 +154,13 @@ if(add_selectbox=="Upload your audio files"):
   uploaded_file = MainPageDescription.file_uploader("Uplod AudioFile Here or leave it blank if other options are selected",type=['mid'], accept_multiple_files=False) 
   if uploaded_file is not None:                              # Just to check that the user has its own input to the filed_uploader
     FileLocation=StoretheUpoldedFile(uploaded_file)
+    DisplayGeneralFeatrues(uploaded_file)
     with st.expander("Musical Sheet"):
       musictrack=music21.converter.parse(FileLocation)
       DisplayMusicalNotes(musictrack)
+    #with st.expander("Musical Sheet"):
+    #  musictrack=music21.converter.parse(FileLocation)
+    #  DisplayMusicalNotes(musictrack)
     
     #with st.expander("Harmony analysis"):
     #with st.expander("See explanation"):
