@@ -162,6 +162,8 @@ MainPageDescription.write("""This is a beta version for an ambitious project aim
          Suggestions and comments can be sent to mdbaz01@gmail.com 
          """)
 SubMainPageDescription=st.empty()
+Sub2MainPageDescription=st.empty()
+
 
 with st.sidebar.expander("The first step is listen to you"):
     MainPageDescription.empty()
@@ -172,10 +174,10 @@ with st.sidebar.expander("The first step is listen to you"):
       if uploaded_file is not None:                              # Just to check that the user has its own input to the filed_uploader
         FileLocation=StoretheUpoldedFile(uploaded_file)
         duration,NotesNumbers,InstrumentsList= DisplayGeneralFeatrues(FileLocation)
-        SubMainPageDescription.write("It is interesting truck of  "+str(duration) +"seconds" + " That  comprises  " + str(NotesNumbers)+ " notes "
+        SubMainPageDescription.success("It is interesting truck of  "+str(duration) +"seconds" + " That  comprises  " + str(NotesNumbers)+ " notes "
                                   + "and played with the follwoing instrument(s)"+ str(InstrumentsList))
-        
-        option = MainPageDescription.selectbox('Offcorse you can get detailed infomation such as:',
+       
+        option = Sub2MainPageDescription.selectbox('Offcorse you can get detailed infomation such as:',
                               ("Plot for Tempo changes or ", "Plot for pitch distributions or", "Musical sheet "))
         
         #MainPageDescription.write('It is interesting truck of'+a+ 'second'+
