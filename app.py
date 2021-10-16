@@ -222,16 +222,17 @@ with st.sidebar.expander("The first step is listen to you"):
             PlayBackMusicFile(FileLocation)
             
     if(add_selectbox=="Generate musical Notes"):
-       MainPageDescription.empty()
-       SubMainPageDescription.empty()
-       Sub2MainPageDescription.empty()
-       Sub3MainPageDescription.empty()
-       
-       Tempos = [['Larghissimo', 0, 20], ['Grave', 20, 40], ['Slow', 40, 60],['Larghetto', 60, 66],['Adagio', 66, 76],['Adagietto', 70, 80],['Andante', 76, 108],
-                 ['Moderato',108, 120],['Allegro moderato', 112, 127],['Allegro', 120, 168],['Vivace', 168, 176],['Presto', 168, 200],['Prestissimo', 200, 176]]
-       Tempos = pandas.DataFrame(Tempos, columns = ['TempoName', 'MinValue','MaxValue'])
-       Instruments = MainPageDescription.multiselect('Instruments you wish to use:',GetNameofAllInstruments())
-       MinTempo, MaxTempo = SubMainPageDescription.select_slider('Select a range of tempos',options=Tempos['TempoName'],value=('Adagio', 'Moderato'))
+      MainPageDescription.empty()
+      SubMainPageDescription.empty()
+      Sub2MainPageDescription.empty()
+      Sub3MainPageDescription.empty()
+      Tempos = [['Larghissimo', 0, 20], ['Grave', 20, 40], ['Slow', 40, 60],['Larghetto', 60, 66],['Adagio', 66, 76],['Adagietto', 70, 80],['Andante', 76, 108],
+                ['Moderato',108, 120],['Allegro moderato', 112, 127],['Allegro', 120, 168],['Vivace', 168, 176],['Presto', 168, 200],['Prestissimo', 200, 176]]
+      Tempos = pandas.DataFrame(Tempos, columns = ['TempoName', 'MinValue','MaxValue'])
+      col1, col2, col3 = MainPageDescription.columns(3)
+      Instruments = col3.multiselect('Instruments you wish to use:',GetNameofAllInstruments())
+      MinTempo, MaxTempo = col2.select_slider('Select a range of tempos',options=Tempos['TempoName'],value=('Adagio', 'Moderato'))
+        
  
         
         
