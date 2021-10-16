@@ -172,6 +172,7 @@ MainPageDescription.write("""This is a beta version for an ambitious project aim
          """)
 SubMainPageDescription=st.empty()
 Sub2MainPageDescription=st.empty()
+Sub3MainPageDescription=st.empty()
 
 
 with st.sidebar.expander("The first step is listen to you"):
@@ -188,7 +189,8 @@ with st.sidebar.expander("The first step is listen to you"):
        
         option = Sub2MainPageDescription.selectbox(label='',
                                                    options=("Plot for Tempo changes or ", "Plot for pitch distributions or", "Musical sheet "))
-        
+        if (option=="Plot for Tempo changes or "):
+          Sub3MainPageDescription.PlotTempoChanges(FileLocation)
         #MainPageDescription.write('It is interesting truck of'+a+ 'second'+
         #                          'It consists of'+b+'notes'+ 
         #                          'and played with the follwoing instrument(s)'+ c)
