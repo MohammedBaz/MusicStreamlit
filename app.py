@@ -147,7 +147,7 @@ if(add_selectbox=="Upload your audio files"):
     with st.expander("Musical Sheet"):
       musictrack=music21.converter.parse(FileLocation)
       GeneratedMusicSheeet=DisplayMusicalNotes(musictrack)
-      while (GeneratedMusicSheeet) is empty:
+      while (GeneratedMusicSheeet) is None:
         st.write("Please wait until generating the musical sheet")
       GeneratedMusicSheeet
       
