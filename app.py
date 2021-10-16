@@ -233,18 +233,12 @@ with st.sidebar.expander("The first step is listen to you"):
         
         PlayBackMusicFile(FileLocationofGeneraedMelody)
         PlotPitchDistribution(FileLocationofGeneraedMelody)
-        duration,NotesNumbers,InstrumentsList= DisplayGeneralFeatrues(FileLocationofGeneraedMelody)
-        SubMainPageDescription.markdown('It is interesting truck of `'+str(duration)+'`'+' seconds '+
-                                        'that comprises`'+str(NotesNumbers)+'`'+' notes '+
-                                        'and played with the follwoing instrument(s)`'+str(InstrumentsList)+'`'+
-                                        '**'+'Offcorse you can get more detailes using the follwoing:'+'**'
-                                       )
         musictrack=music21.converter.parse(FileLocation)
         DisplayMusicalNotes(musictrack)
 with st.sidebar.expander("Here you can add personalise generation process:"): 
   PredictionHorizontal = st.number_input("Select the Prediction Horizonal, in seconds",min_value=60, max_value =300,value=120,step=10)
   InputShape=st.slider("Select the Inputshape, in sec",0,300,120) #here should be changed in accordnace with the inputs
-  FrequecyDomain = st.checkbox('I agree')
+  FrequecyDomain = st.checkbox('Using frequecy domain')
         
         
         
