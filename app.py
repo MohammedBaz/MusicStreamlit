@@ -199,7 +199,7 @@ with st.sidebar.expander("The first step is listen to you"):
           with Sub3MainPageDescription:
             musictrack=music21.converter.parse(FileLocation)
             JustoaddLoadingFunctionality=DisplayMusicalNotes(musictrack)
-              while JustoaddLoadingFunctionality is None:
+            while JustoaddLoadingFunctionality is None:
                 st.write("Please wait we working on it")
             
             
