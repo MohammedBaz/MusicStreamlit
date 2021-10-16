@@ -231,6 +231,7 @@ with st.sidebar.expander("The first step is listen to you"):
         lenghtofMelody = st.slider('length of melody in seconds', 0, 180, 150)
         FileLocationofGeneraedMelody=aGenerateMidFile(MinTempo=MinTempo,MaxTempo=MaxTempo, lenghtofMelody=lenghtofMelody,listofInstruments=Instruments)
         PlayBackMusicFile(FileLocationofGeneraedMelody)
+        PlotPitchDistribution(FileLocationofGeneraedMelody)
  
         
         
