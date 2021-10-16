@@ -143,9 +143,14 @@ if(add_selectbox=="Upload your audio files"):
   uploaded_file = MainPageDescription.file_uploader("Uplod AudioFile Here or leave it blank if other options are selected",type=['mid'], accept_multiple_files=False) 
   if uploaded_file is not None:                              # Just to check that the user has its own input to the filed_uploader
     FileLocation=StoretheUpoldedFile(uploaded_file)
-    
-    with DisplayContents=st.empty():
-      musictrack=music21.converter.parse(FileLocation)
+    musictrack=music21.converter.parse(FileLocation)
+    DisplayContents=st.empty():
+      with import time:
+        import time
+        my_bar = st.progress(0)
+        for percent_complete in range(100):
+          time.sleep(0.1)
+          my_bar.progress(percent_complete + 1)
       DisplayMusicalNotes(musictrack)
     
   #    st.write(parsemidfile(uploaded_file))
