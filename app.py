@@ -246,10 +246,12 @@ with st.sidebar.expander("The first step is listen to you"):
             PredictionHorizontal = st.number_input("Select the Prediction Horizonal, in seconds",min_value=60, max_value =300,value=120,step=10)
             InputShape=st.slider("Select the Inputshape, in sec",0,300,120) #here should be changed in accordnace with the inputs
             FrequecyDomain = st.checkbox('Using frequecy domain')
-            #GetMidFeatures()
-  
-  
-  #Prediction(Trainingdataset,modelname='StreamlitModel.h5',TrainingStep=1,PredicitonHorizontal=1)      
+            if (FileLocationofGeneraedMelody is None):
+              SuppliedFileLocations=FileLocation
+            else:
+              SuppliedFileLocations=FileLocationofGeneraedMelody
+            Trainingdataset=GetMidFeatures(SuppliedFileLocations)['pitch']
+            Prediction(Trainingdataset=Trainingdataset,modelname='StreamlitModel.h5',TrainingStep=InputShape,PredicitonHorizontal=PredictionHorizontal)      
         
         
       
