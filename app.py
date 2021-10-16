@@ -129,11 +129,16 @@ def DisplayGeneralFeatrues(InputFile):
         'it is played with the follwoing instrument(s) {}:'.format(FinalInstrumentName))
   
 def PlotTempoChanges(InputFile):
-  pm= pretty_midi.PrettyMIDI(InputFile)
   
-  times, tempo_changes = pm.get_tempo_changes()
-  fig=plt.plot(times, tempo_changes, '.')
+  arr = np.random.normal(1, 1, size=100)
+  fig, ax = plt.subplots()
+  ax.hist(arr, bins=20)
   st.pyplot(fig)
+  
+  #pm= pretty_midi.PrettyMIDI(InputFile)
+  #times, tempo_changes = pm.get_tempo_changes()
+  #fig=plt.plot(times, tempo_changes, '.')
+  #st.pyplot(fig)
 #################################################### page layout start here #########################################################
 
 st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidden;} </style> """, unsafe_allow_html=True)
