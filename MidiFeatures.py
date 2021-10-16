@@ -50,8 +50,8 @@ def aGenerateMidFile(MinTempo,MaxTempo, lenghtofMelody,listofInstruments):
       pm.instruments.append(inst)
       inst.notes.append(pretty_midi.Note(velocity, random.choice(range(127)), start=startingPoint, end=EndingPoint))
       startingPoint=EndingPoint
-      pm.write(os.path.join(os.getcwd(),"GeneratedFile.mid"))
-      return(os.path.join(os.getcwd(),"GeneratedFile.mid"))
+  pm.write(os.path.join(os.getcwd(),"GeneratedFile.mid"))
+  return(os.path.join(os.getcwd(),"GeneratedFile.mid"))
 
 
 
