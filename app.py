@@ -129,13 +129,13 @@ def DisplayGeneralFeatrues(InputFile):
         'it is played with the follwoing instrument(s) {}:'.format(FinalInstrumentName))
   
 def PlotTempoChanges(InputFile):
-  
+  pm= pretty_midi.PrettyMIDI(InputFile)
   arr = numpy.random.normal(1, 1, size=100)
   fig, ax = plt.subplots()
-  ax.hist(arr, bins=20)
+  ax.plt.plot(times, tempo_changes, '.')
   st.pyplot(fig)
   
-  #pm= pretty_midi.PrettyMIDI(InputFile)
+  #
   #times, tempo_changes = pm.get_tempo_changes()
   #fig=plt.plot(times, tempo_changes, '.')
   #st.pyplot(fig)
