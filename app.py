@@ -195,11 +195,11 @@ with st.sidebar.expander("The first step is listen to you"):
         if (option=="Plot for pitch distributions or"):
           with Sub3MainPageDescription:
             PlotPitchDistribution(FileLocation)
-        if (option=="Musical sheet "):
+        if (option=="Musical sheet, please wait it may take some times"):
           with Sub3MainPageDescription:
             musictrack=music21.converter.parse(FileLocation)
             DisplayMusicalNotes(musictrack)
-        if (option=="Play the uplodaed file "):
+        if (option=="Play the uplodaed file, please wait it may take some times"):
           with Sub3MainPageDescription:
             PlayBackMusicFile(FileLocation)
             
