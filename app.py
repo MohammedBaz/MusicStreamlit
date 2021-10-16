@@ -183,7 +183,7 @@ Sub3MainPageDescription=st.empty()
 with st.sidebar.expander("The first step is listen to you"):
     MainPageDescription.empty()
     SubMainPageDescription.empty() 
-    add_selectbox=st.radio("We can aid you to compete your piece: ", ("Upload your audio files", "Generate musical Notes", "Use our pregeneraed Audios"),index=1)
+    add_selectbox=st.radio("We can aid you to compete your piece: ", ("Upload your audio files", "Generate musical Notes", "Use our pregeneraed Audios"))
     if(add_selectbox=="Upload your audio files"):
       uploaded_file = MainPageDescription.file_uploader("Uplod AudioFile Here or leave it blank if other options are selected",type=['mid'], accept_multiple_files=False) 
       if uploaded_file is not None:                              # Just to check that the user has its own input to the filed_uploader
