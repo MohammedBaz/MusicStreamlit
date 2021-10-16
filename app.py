@@ -131,10 +131,24 @@ def DisplayGeneralFeatrues(InputFile):
 def PlotTempoChanges(InputFile):
   pm= pretty_midi.PrettyMIDI(InputFile)
   times, tempo_changes = pm.get_tempo_changes()
-  arr = numpy.random.normal(1, 1, size=100)
   fig, ax = plt.subplots()
   ax.plot(times, tempo_changes, '.')
   st.pyplot(fig)
+  
+def PlotPitchDistribution(InputFile):
+  pm= pretty_midi.PrettyMIDI(InputFile)
+  fig, ax = plt.subplots()
+  ax.bar(np.arange(12), pm.get_pitch_class_histogram());
+  ax.xticks(np.arange(12), ['C', '', 'D', '', 'E', 'F', '', 'G', '', 'A', '', 'B'])
+  ax.xlabel('Note')
+  ax.ylabel('Proportion')
+  st.pyplot(fig)
+  
+  
+  
+  
+  
+  
   
   #
   #times, tempo_changes = pm.get_tempo_changes()
@@ -167,9 +181,14 @@ if(add_selectbox=="Upload your audio files"):
     DisplayGeneralFeatrues(FileLocation)
     with st.expander("Plot Tempo Changes"):
       PlotTempoChanges(FileLocation)
+    with st.expander("Plot Pitch Distrbution"):   
+      PlotPitchDistribution(FileLocation)
     with st.expander("Musical Sheet"):
       musictrack=music21.converter.parse(FileLocation)
       DisplayMusicalNotes(musictrack)
+      
+      
+      
     #with st.expander("Harmony analysis"):
     #with st.expander("See explanation"):
     
