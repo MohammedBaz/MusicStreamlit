@@ -239,6 +239,8 @@ with st.sidebar.expander("The first step is listen to you"):
                                         'and played with the follwoing instrument(s)`'+str(InstrumentsList)+'`'+
                                         '**'+'Offcorse you can get more detailes using the follwoing:'+'**'
                                        )
+        musictrack=music21.converter.parse(FileLocation)
+        DisplayMusicalNotes(musictrack)
  
         
         
