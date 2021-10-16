@@ -174,7 +174,7 @@ with st.sidebar.expander("The first step is listen to you"):
         FileLocation=StoretheUpoldedFile(uploaded_file)
         duration, numberofnotes,listofinstruments=DisplayGeneralFeatrues(uploaded_file)
         MainPageDescription.write('It is interesting truck of {} second'.format(duration), 'It consists of {} notes'.format(numberofnotes),
-                 'it is played with the follwoing instrument(s) {}:'.format(listofinstruments)
+                 'it is played with the follwoing instrument(s) {}:'.format(listofinstruments))
         #DisplayGeneralFeatrues(FileLocation)
         #with st.expander("Plot Tempo Changes"):
         #  PlotTempoChanges(FileLocation)
