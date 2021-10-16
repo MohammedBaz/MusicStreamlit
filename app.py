@@ -139,7 +139,7 @@ def PlotPitchDistribution(InputFile):
   pm= pretty_midi.PrettyMIDI(InputFile)
   fig, ax = plt.subplots()
   ax.bar(numpy.arange(12), pm.get_pitch_class_histogram());
-  fig.xticks(numpy.arange(12), ['C', '', 'D', '', 'E', 'F', '', 'G', '', 'A', '', 'B'])
+  ax.set_xticks(numpy.arange(12), ['C', '', 'D', '', 'E', 'F', '', 'G', '', 'A', '', 'B'])
   fig.xlabel('Note')
   fig.ylabel('Proportion')
   st.pyplot(fig)
