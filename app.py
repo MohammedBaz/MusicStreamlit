@@ -248,7 +248,7 @@ with st.sidebar.expander("Here you can add personalise generation process:"):
   #else:
   #  SuppliedFileLocations=FileLocationofGeneraedMelody
   #Trainingdataset=GetMidFeatures(SuppliedFileLocations)['pitch']
-  Prediction(Trainingdataset=Trainingdataset,modelname='StreamlitModel.h5',TrainingStep=InputShape,PredicitonHorizontal=PredictionHorizontal)      
+  #Prediction(Trainingdataset=Trainingdataset,modelname='StreamlitModel.h5',TrainingStep=InputShape,PredicitonHorizontal=PredictionHorizontal)      
         
         
       
