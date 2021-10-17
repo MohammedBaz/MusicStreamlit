@@ -162,9 +162,6 @@ st.markdown(f""" <style>
 
 st.title("Interactive Music Composition Using Artifical Intelligence")
 st.header("                                                   ")
-
-
-
 #One of the good widgets presented in streamlit is empty. it is a place holder so that we can consider it as template. 
 MainPageDescription = st.empty()
 MainPageDescription.write("""This is a beta version for an ambitious project aiming to promote the interactivity of 
@@ -172,8 +169,10 @@ MainPageDescription.write("""This is a beta version for an ambitious project aim
          Several AI models have been built and trained to match the variety of musical inputs ; furthermore, 
          the interface has been optimised to allow a user to add personal toutches and then to download the cratfed musical peices. 
          Wish this can aid the users to recogenise the potential rules that AI can play in art making. 
-         Suggestions and comments can be sent to mdbaz01@gmail.com 
+         Suggestions and comments are welcomed at: mdbaz01@gmail.com 
          """)
+if st.button('Have a go!'):
+  st.write("XXXX")
 SubMainPageDescription=st.empty()
 Sub2MainPageDescription=st.empty()
 Sub3MainPageDescription=st.empty()
@@ -183,8 +182,8 @@ Sub3MainPageDescription=st.empty()
 #FileLocation=''
 
 with st.sidebar.expander("The first step is listen to you"):
-    MainPageDescription.empty()
-    SubMainPageDescription.empty() 
+    #MainPageDescription.empty()
+    #SubMainPageDescription.empty() 
     add_selectbox=st.radio("We can aid you to compete your piece: ", ("Upload your audio files", "Generate musical Notes", "Use our pregeneraed Audios"))
     if(add_selectbox=="Upload your audio files"):
       #FileLocationofGeneraedMelody=''
