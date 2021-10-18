@@ -130,9 +130,7 @@ with st.sidebar.expander("The first step is listen to you"):
         
         PlayBackMusicFile(ConvertMiditoWave(FileLocationofGeneraedMelody))
         PlotPitchDistribution(FileLocationofGeneraedMelody)
-        musictrack=music21.converter.parse(FileLocation, format='midi',
-                                              forceSource=True, quantizePost=True)
-        st.write(musictrack)
+        #musictrack=music21.converter.parse(FileLocation, format='midi') # need to convert pretty_midi object to music21 object. 
         #DisplayMusicalNotes(musictrack)
         if FileLocationofGeneraedMelody is not None :
           st.session_state.LocationofUploadedorGeneratedFile = FileLocationofGeneraedMelody
@@ -142,6 +140,13 @@ with st.sidebar.expander("Here you can add personalise generation process:"):
         InputShape=st.slider("Select the Inputshape, in sec",0,300,120) #here should be changed in accordnace with the inputs
         FrequecyDomain = st.checkbox('Using frequecy domain')
         PredictionHorizontal = st.number_input("Select the Prediction Horizonal, in seconds",min_value=60, max_value =300,value=120,step=10)
+        Trainingdataset= GetMidFeatures(LocationofUploadedorGeneratedFile)['pitch']
+        results=Prediction(Trainingdataset=Trainingdataset,
+                   modelname='StreamlitModel.h5',
+                   TrainingStep=1,
+                   PredicitonHorizontal=PredictionHorizontal)
+        st.write(results)
+        
    
   #if (FileLocationofGeneraedMelody is None):
   #  SuppliedFileLocations=FileLocation
