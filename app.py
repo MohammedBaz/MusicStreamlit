@@ -111,8 +111,8 @@ with st.sidebar.expander("The first step is listen to you"):
                 with Sub3MainPageDescription:
                     PlayBackMusicFile(FileLocation)
         
-        if FileLocation is not None :
-          st.session_state.LocationofUploadedorGeneratedFile = FileLocation
+            if FileLocation is not None :
+                st.session_state.LocationofUploadedorGeneratedFile = FileLocation
             
     if(add_selectbox=="Generate musical Notes"):
       FileLocation= None
