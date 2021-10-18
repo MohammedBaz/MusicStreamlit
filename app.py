@@ -181,9 +181,10 @@ Sub3MainPageDescription=st.empty()
 #FileLocationofGeneraedMelody=''
 #FileLocation=''
 
-with st.sidebar.expander("The first step is listen to you"):
-    #MainPageDescription.empty()
-    #SubMainPageDescription.empty() 
+def GetUserInputs():
+  with st.sidebar.expander("The first step is listen to you"):
+    MainPageDescription.empty()
+    SubMainPageDescription.empty() 
     add_selectbox=st.radio("We can aid you to compete your piece: ", ("Upload your audio files", "Generate musical Notes", "Use our pregeneraed Audios"),index=2)
     if(add_selectbox=="Upload your audio files"):
       #FileLocationofGeneraedMelody=''
@@ -238,10 +239,10 @@ with st.sidebar.expander("The first step is listen to you"):
         PlotPitchDistribution(FileLocationofGeneraedMelody)
         #musictrack=music21.converter.parse(FileLocation)
         #DisplayMusicalNotes(musictrack)
-with st.sidebar.expander("Here you can add personalise generation process:"): 
-  PredictionHorizontal = st.number_input("Select the Prediction Horizonal, in seconds",min_value=60, max_value =300,value=120,step=10)
-  InputShape=st.slider("Select the Inputshape, in sec",0,300,120) #here should be changed in accordnace with the inputs
-  FrequecyDomain = st.checkbox('Using frequecy domain')
+  with st.sidebar.expander("Here you can add personalise generation process:"): 
+    PredictionHorizontal = st.number_input("Select the Prediction Horizonal, in seconds",min_value=60, max_value =300,value=120,step=10)
+    InputShape=st.slider("Select the Inputshape, in sec",0,300,120) #here should be changed in accordnace with the inputs
+    FrequecyDomain = st.checkbox('Using frequecy domain')
   #if (FileLocationofGeneraedMelody is None):
   #  SuppliedFileLocations=FileLocation
   #else:
