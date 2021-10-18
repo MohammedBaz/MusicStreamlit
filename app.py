@@ -130,7 +130,7 @@ with st.sidebar.expander("The first step is listen to you"):
         
         PlayBackMusicFile(ConvertMiditoWave(FileLocationofGeneraedMelody))
         PlotPitchDistribution(FileLocationofGeneraedMelody)
-        musictrack=music21.converter.parse(FileLocation,, format='midi',
+        musictrack=music21.converter.parse(FileLocation, format='midi',
 ...                                                  forceSource=True, quantizePost=True)
         st.write(musictrack)
         #DisplayMusicalNotes(musictrack)
