@@ -79,36 +79,38 @@ Sub3MainPageDescription=st.empty() # same as above
 ########################################### The first step is listen to you ####################################################
 
 with st.sidebar.expander("The first step is listen to you"):
-    add_selectbox=st.radio("We can aid you to compete your piece: ", ("Upload your audio files", "Generate musical Notes", "Use our pregeneraed Audios"),index=2)
+    add_selectbox=st.radio("We can aid you to compete your piece or generate one for you: ",
+                           ("Upload your audio files", "Generate musical Notes"),index=0)
     if(add_selectbox=="Upload your audio files"):
         uploaded_file = MainPageDescription.file_uploader("Uplod AudioFile Here or leave it blank if other options are selected",type=['mid'], accept_multiple_files=False) 
         if uploaded_file is not None:                              # Just to check that the user has its own input to the filed_uploader
-        FileLocation=StoretheUpoldedFile(uploaded_file)
-        duration,NotesNumbers,InstrumentsList= DisplayGeneralFeatrues(FileLocation)
-        SubMainPageDescription.markdown('It is interesting truck of `'+str(duration)+'`'+' seconds '+
+            FileLocation=StoretheUpoldedFile(uploaded_file)
+            duration,NotesNumbers,InstrumentsList= DisplayGeneralFeatrues(FileLocation)
+            SubMainPageDescription.markdown('It is interesting truck of `'+str(duration)+'`'+' seconds '+
                                         'that comprises`'+str(NotesNumbers)+'`'+' notes '+
                                         'and played with the follwoing instrument(s)`'+str(InstrumentsList)+'`'+
                                         '**'+'Offcorse you can get more detailes using the follwoing:'+'**'
                                        )  
-        # The options that a user can select amongest: 
-        option = Sub2MainPageDescription.selectbox(label='',
+            # The options that a user can select amongest: 
+            option = Sub2MainPageDescription.selectbox(label='',
                                                    options=("Plot Tempo changes",
                                                             "Plot pitch distributions",
                                                             "Render musical sheet, please wait it may take some times",
                                                             "Replay the uplodaed file, please wait it may take some times"))
-        if (option=="Plot Tempo changes"):
-          with Sub3MainPageDescription:
-            PlotTempoChanges(FileLocation)
-        if (option=="Plot pitch distributions"):
-          with Sub3MainPageDescription:
-            PlotPitchDistribution(FileLocation)
-        if (option=="Render musical sheet, please wait it may take some times"):
-          with Sub3MainPageDescription:
-            musictrack=music21.converter.parse(FileLocation)
-            DisplayMusicalNotes(musictrack)
-        if (option=="Replay the uplodaed file, please wait it may take some times"):
-          with Sub3MainPageDescription:
-            PlayBackMusicFile(FileLocation)
+            if (option=="Plot Tempo changes"):
+                with Sub3MainPageDescription:
+                    PlotTempoChanges(FileLocation)
+            if (option=="Plot pitch distributions"):
+                with Sub3MainPageDescription:
+                    PlotPitchDistribution(FileLocation)
+            if (option=="Render musical sheet, please wait it may take some times"):
+                with Sub3MainPageDescription:
+                    musictrack=music21.converter.parse(FileLocation)
+                    DisplayMusicalNotes(musictrack)
+            if (option=="Replay the uplodaed file, please wait it may take some times"):
+                with Sub3MainPageDescription:
+                    PlayBackMusicFile(FileLocation)
+        
         if FileLocation is not None :
           st.session_state.LocationofUploadedorGeneratedFile = FileLocation
             
