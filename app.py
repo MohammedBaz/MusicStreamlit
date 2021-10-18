@@ -61,8 +61,8 @@ def ConvertMiditoWave(FileLocation, samplerate=44100,AmplitudeQuantizationRange=
   # Populate the 16-bits audio data inthe memory, so it can be written to wave files  
   virtualfile = io.BytesIO()
   # 44100 is the sample_rate, other sample rate is also possible
-  wavfile.write(virtualfile, 44100, audio_data)
-  return (virtualfile)
+  wavfile.write(os.path.join(os.getcwd(),'virtualfile.wave'), 44100, audio_data)
+  return (os.path.join(os.getcwd(),'virtualfile.wave')
 
 def PlayBackMusicFile(FileLocation):
   # This function generate st.audio widget, replay the contents found in FileLocation
