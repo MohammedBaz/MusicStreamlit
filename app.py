@@ -148,11 +148,49 @@ def PlotPitchDistribution(InputFile):
   st.pyplot(fig)
   
  
+
+#st.set_page_config(layout="wide") just change the page to wide mode
+st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidden;} </style> """, unsafe_allow_html=True)
+padding = 0
+st.markdown(f""" <style>
+    .reportview-container .main .block-container{{
+        padding-top: {padding}rem;
+        padding-right: {padding}rem;
+        padding-left: {padding}rem;
+        padding-bottom: {padding}rem;
+    }} </style> """, unsafe_allow_html=True)
+
+st.title("Interactive Music Composition Using Artifical Intelligence")
+st.header("                                                   ")
+#One of the good widgets presented in streamlit is empty. it is a place holder so that we can consider it as template. 
+MainPageDescription = st.empty()
+MainPageDescription.write("""This is a beta version for an ambitious project aiming to promote the interactivity of 
+         generate some musical pieces using Artificial Intelligence (AI) algorithms.
+         Several AI models have been built and trained to match the variety of musical inputs ; furthermore, 
+         the interface has been optimised to allow a user to add personal toutches and then to download the cratfed musical peices. 
+         Wish this can aid the users to recogenise the potential rules that AI can play in art making. 
+         Suggestions and comments are welcomed at: mdbaz01@gmail.com 
+         """)
+SubMainPageDescription=st.empty()
+Sub2MainPageDescription=st.empty()
+Sub3MainPageDescription=st.empty()
+
+  
+  
+
+###############these to control the folw of information 
+#FileLocationofGeneraedMelody=''
+#FileLocation=''
+
+
+
+
+
 #####################################################################################################################################
-def GetUserInputs():
-  with st.sidebar.expander("The first step is listen to you"):
-    MainPageDescription.empty()
-    SubMainPageDescription.empty() 
+
+with st.sidebar.expander("The first step is listen to you"):
+#    MainPageDescription.empty()
+#    SubMainPageDescription.empty() 
     add_selectbox=st.radio("We can aid you to compete your piece: ", ("Upload your audio files", "Generate musical Notes", "Use our pregeneraed Audios"),index=2)
     if(add_selectbox=="Upload your audio files"):
       #FileLocationofGeneraedMelody=''
@@ -207,7 +245,8 @@ def GetUserInputs():
         PlotPitchDistribution(FileLocationofGeneraedMelody)
         #musictrack=music21.converter.parse(FileLocation)
         #DisplayMusicalNotes(musictrack)
-  with st.sidebar.expander("Here you can add personalise generation process:"): 
+        
+with st.sidebar.expander("Here you can add personalise generation process:"): 
     PredictionHorizontal = st.number_input("Select the Prediction Horizonal, in seconds",min_value=60, max_value =300,value=120,step=10)
     InputShape=st.slider("Select the Inputshape, in sec",0,300,120) #here should be changed in accordnace with the inputs
     FrequecyDomain = st.checkbox('Using frequecy domain')
@@ -266,36 +305,4 @@ def GetUserInputs():
 
 
 #################################################### page layout start here #########################################################
-#st.set_page_config(layout="wide") just change the page to wide mode
-st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidden;} </style> """, unsafe_allow_html=True)
-padding = 0
-st.markdown(f""" <style>
-    .reportview-container .main .block-container{{
-        padding-top: {padding}rem;
-        padding-right: {padding}rem;
-        padding-left: {padding}rem;
-        padding-bottom: {padding}rem;
-    }} </style> """, unsafe_allow_html=True)
-
-st.title("Interactive Music Composition Using Artifical Intelligence")
-st.header("                                                   ")
-#One of the good widgets presented in streamlit is empty. it is a place holder so that we can consider it as template. 
-MainPageDescription = st.empty()
-MainPageDescription.write("""This is a beta version for an ambitious project aiming to promote the interactivity of 
-         generate some musical pieces using Artificial Intelligence (AI) algorithms.
-         Several AI models have been built and trained to match the variety of musical inputs ; furthermore, 
-         the interface has been optimised to allow a user to add personal toutches and then to download the cratfed musical peices. 
-         Wish this can aid the users to recogenise the potential rules that AI can play in art making. 
-         Suggestions and comments are welcomed at: mdbaz01@gmail.com 
-         """)
-SubMainPageDescription=st.empty()
-Sub2MainPageDescription=st.empty()
-Sub3MainPageDescription=st.empty()
-st.button('Have a go!',on_click=GetUserInputs)
-  
-  
-
-###############these to control the folw of information 
-#FileLocationofGeneraedMelody=''
-#FileLocation=''
 
