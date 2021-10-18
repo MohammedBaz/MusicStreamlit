@@ -140,7 +140,7 @@ with st.sidebar.expander("Here you can add personalise generation process:"):
         InputShape=st.slider("Select the Inputshape, in sec",0,300,120) #here should be changed in accordnace with the inputs
         FrequecyDomain = st.checkbox('Using frequecy domain')
         PredictionHorizontal = st.number_input("Select the Prediction Horizonal, in seconds",min_value=60, max_value =300,value=120,step=10)
-        Trainingdataset= GetMidFeatures(LocationofUploadedorGeneratedFile)['pitch']
+        Trainingdataset= GetMidFeatures(st.session_state.LocationofUploadedorGeneratedFile)['pitch']
         results=Prediction(Trainingdataset=Trainingdataset,
                    modelname='StreamlitModel.h5',
                    TrainingStep=1,
