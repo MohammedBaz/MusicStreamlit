@@ -61,7 +61,7 @@ def ConvertMiditoWave(FileLocation, samplerate=44100,AmplitudeQuantizationRange=
   # referneces multiple the 32767 by 0.9 , e.g.,https://share.streamlit.io/andfanilo/streamlit-midi-to-wav/main/app.py whereas others like: 
   # https://stackoverflow.com/questions/10357992/how-to-generate-audio-from-a-numpy-array applied it without. I canot find a good reason for this multiplication, 
   # Populate the 16-bits audio data inthe memory, so it can be written to wave files  
-  virtualfile = io.BytesIO()
+  #virtualfile = io.BytesIO()
   # 44100 is the sample_rate, other sample rate is also possible
   wavfile.write(os.path.join(os.getcwd(),'virtualfile.wave'), 44100, audio_data)
   return (os.path.join(os.getcwd(),'virtualfile.wave'))
