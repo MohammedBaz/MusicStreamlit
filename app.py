@@ -18,6 +18,11 @@ import matplotlib.pyplot as plt
 from BackEndPrediction import Prediction
 FileLocation = None
 genetedNotes=None
+if 'LocationofUploadedorGeneratedFile' not in st.session_state:
+    st.session_state['LocationofUploadedorGeneratedFile'] = None
+
+
+
 ################reconsidering pleae 
 def GetWavFeatures(wav_file,OiginalWave): ##########
   SampleFrequecy, SoundArray = wavfile.read(wav_file)
@@ -190,10 +195,9 @@ Sub3MainPageDescription=st.empty()
 
 with st.sidebar.expander("The first step is listen to you"):
 #    MainPageDescription.empty()
-#    SubMainPageDescription.empty() 
+#    SubMainPageDescription.empty()
     add_selectbox=st.radio("We can aid you to compete your piece: ", ("Upload your audio files", "Generate musical Notes", "Use our pregeneraed Audios"),index=2)
     if(add_selectbox=="Upload your audio files"):
-      #FileLocationofGeneraedMelody=''
       uploaded_file = MainPageDescription.file_uploader("Uplod AudioFile Here or leave it blank if other options are selected",type=['mid'], accept_multiple_files=False) 
       if uploaded_file is not None:                              # Just to check that the user has its own input to the filed_uploader
         FileLocation=StoretheUpoldedFile(uploaded_file)
@@ -224,9 +228,11 @@ with st.sidebar.expander("The first step is listen to you"):
         if (option=="Replay the uplodaed file, please wait it may take some times"):
           with Sub3MainPageDescription:
             PlayBackMusicFile(FileLocation)
+        if FileLocation is not None :
+          st.session_state.LocationofUploadedorGeneratedFile = FileLocation
             
     if(add_selectbox=="Generate musical Notes"):
-      #FileLocation=''
+      FileLocation= None
       MainPageDescription.empty()
       SubMainPageDescription.empty()
       Sub2MainPageDescription.empty()
@@ -245,11 +251,15 @@ with st.sidebar.expander("The first step is listen to you"):
         PlotPitchDistribution(FileLocationofGeneraedMelody)
         #musictrack=music21.converter.parse(FileLocation)
         #DisplayMusicalNotes(musictrack)
+        if FileLocationofGeneraedMelody is not None :
+          st.session_state.LocationofUploadedorGeneratedFile = FileLocationofGeneraedMelody
         
-with st.sidebar.expander("Here you can add personalise generation process:"): 
-    PredictionHorizontal = st.number_input("Select the Prediction Horizonal, in seconds",min_value=60, max_value =300,value=120,step=10)
-    InputShape=st.slider("Select the Inputshape, in sec",0,300,120) #here should be changed in accordnace with the inputs
-    FrequecyDomain = st.checkbox('Using frequecy domain')
+    with st.sidebar.expander("Here you can add personalise generation process:"): 
+      if st.session_state.LocationofUploadedorGeneratedFile is None: 
+        InputShape=st.slider("Select the Inputshape, in sec",0,300,120) #here should be changed in accordnace with the inputs
+        FrequecyDomain = st.checkbox('Using frequecy domain')
+        PredictionHorizontal = st.number_input("Select the Prediction Horizonal, in seconds",min_value=60, max_value =300,value=120,step=10)
+   
   #if (FileLocationofGeneraedMelody is None):
   #  SuppliedFileLocations=FileLocation
   #else:
