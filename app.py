@@ -172,7 +172,7 @@ MainPageDescription.write("""This is a beta version for an ambitious project aim
          Suggestions and comments are welcomed at: mdbaz01@gmail.com 
          """)
 if st.button('Have a go!'):
-  pass #ddfdsf
+  GetUserInputs() #ddfdsf
 SubMainPageDescription=st.empty()
 Sub2MainPageDescription=st.empty()
 Sub3MainPageDescription=st.empty()
