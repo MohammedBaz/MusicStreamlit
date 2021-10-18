@@ -28,3 +28,4 @@ def Prediction(Trainingdataset,modelname='StreamlitModel.h5',TrainingStep=1,Pred
     yhat=model.predict(array(Trainingdataset[-TrainingStep]).reshape(1,TrainingStep,1))
     Predicitonresults.append(int(yhat))
   return (Predicitonresults)
+""" 
