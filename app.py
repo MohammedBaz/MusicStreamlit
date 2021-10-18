@@ -288,11 +288,11 @@ MainPageDescription.write("""This is a beta version for an ambitious project aim
          Wish this can aid the users to recogenise the potential rules that AI can play in art making. 
          Suggestions and comments are welcomed at: mdbaz01@gmail.com 
          """)
-if st.button('Have a go!'):
-  GetUserInputs() #ddfdsf
 SubMainPageDescription=st.empty()
 Sub2MainPageDescription=st.empty()
 Sub3MainPageDescription=st.empty()
+if st.button('Have a go!'):
+  GetUserInputs() #ddfdsf
 
 ###############these to control the folw of information 
 #FileLocationofGeneraedMelody=''
