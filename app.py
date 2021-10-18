@@ -291,7 +291,7 @@ MainPageDescription.write("""This is a beta version for an ambitious project aim
 SubMainPageDescription=st.empty()
 Sub2MainPageDescription=st.empty()
 Sub3MainPageDescription=st.empty()
-st.button('Have a go!',on_click=GetUserInputs):
+st.button('Have a go!',on_click=GetUserInputs)
   
   
 
