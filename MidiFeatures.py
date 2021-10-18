@@ -12,10 +12,11 @@ def GetMidFeatures(InputFile):
     for anote in instrument.notes:
       Start=anote.start
       End=anote.end
+      Duration=End-Start
       Pitch=anote.pitch
       Velocity=anote.velocity
-      ArrayedInputFile.append([Start,End,Pitch,Velocity, instrument.program])
-  NotesInformation=pandas.DataFrame(ArrayedInputFile, columns=['start','end','pitch','velocity','InstrumentNo'])
+      ArrayedInputFile.append([Start,End,Pitch,Velocity,Duration, instrument.program])
+  NotesInformation=pandas.DataFrame(ArrayedInputFile, columns=['start','end','pitch','velocity','duration','InstrumentNo'])
   return (NotesInformation)
 
 
