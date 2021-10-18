@@ -255,7 +255,7 @@ with st.sidebar.expander("The first step is listen to you"):
           st.session_state.LocationofUploadedorGeneratedFile = FileLocationofGeneraedMelody
         
     with st.sidebar.expander("Here you can add personalise generation process:"): 
-      if st.session_state.LocationofUploadedorGeneratedFile is None: 
+      if st.session_state.LocationofUploadedorGeneratedFile is not None: 
         InputShape=st.slider("Select the Inputshape, in sec",0,300,120) #here should be changed in accordnace with the inputs
         FrequecyDomain = st.checkbox('Using frequecy domain')
         PredictionHorizontal = st.number_input("Select the Prediction Horizonal, in seconds",min_value=60, max_value =300,value=120,step=10)
