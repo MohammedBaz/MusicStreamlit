@@ -145,7 +145,7 @@ with st.sidebar.expander("Here you can add personalise generation process:"):
                            len(Trainingdataset1)-1,
                            int(len(Trainingdataset1)/2))#here should be changed in accordnace with the inputs
         FrequecyDomain = st.checkbox('Using frequecy domain')
-        PredictionHorizontal = st.number_input("Select the Prediction Horizonal, in seconds",min_value=60, max_value =300,value=120,step=10)
+        PredicitonHorizontal = st.number_input("Select the Prediction Horizonal, in seconds",min_value=60, max_value =300,value=120,step=10)
         
         Trainingdataset1= GetMidFeatures(st.session_state.LocationofUploadedorGeneratedFile)['pitch']
         OverallAmplitude,OverallScale=Prediction('AmplitudeScaleSavedModel.h5',
