@@ -6,7 +6,6 @@ import base64
 from InputHandlingandDisplay import StoretheUpoldedFile
 import music21
 from PIL import Image
-#from MidiFeatures import GetMidFeatures,GetNameofAllInstruments,aGenerateMidFile,,DisplayGeneralFeatrues
 from MidiFeatures import DisplayGeneralFeatrues,ConvertMiditoWave,GetNameofAllInstruments,aGenerateMidFile
 import matplotlib.pyplot as plt
 from BackEndPrediction import Prediction
@@ -34,8 +33,6 @@ def DisplayMusicalNotes(music):
 
 def ChecktheCorrectnessofUploadedFile(uploaded_file):
     return
-  
-
   
 def PlotTempoChanges(InputFile):
   pm= pretty_midi.PrettyMIDI(InputFile)
@@ -131,13 +128,13 @@ with st.sidebar.expander("The first step is listen to you"):
         lenghtofMelody = st.slider('length of melody in seconds', 0, 30, 2)
         FileLocationofGeneraedMelody=aGenerateMidFile(MinTempo=MinTempo,MaxTempo=MaxTempo, lenghtofMelody=lenghtofMelody,listofInstruments=Instruments)
         
-        PlayBackMusicFile(FileLocationofGeneraedMelody)
+        PlayBackMusicFile(ConvertMiditoWave(FileLocationofGeneraedMelody))
         PlotPitchDistribution(FileLocationofGeneraedMelody)
         #musictrack=music21.converter.parse(FileLocation)
         #DisplayMusicalNotes(musictrack)
         if FileLocationofGeneraedMelody is not None :
           st.session_state.LocationofUploadedorGeneratedFile = FileLocationofGeneraedMelody
-        
+########################################### The second step is to let you personalise generation ####################################################        
 with st.sidebar.expander("Here you can add personalise generation process:"): 
     if st.session_state.LocationofUploadedorGeneratedFile is not None: 
         InputShape=st.slider("Select the Inputshape, in sec",0,300,120) #here should be changed in accordnace with the inputs
