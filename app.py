@@ -130,8 +130,8 @@ with st.sidebar.expander("The first step is listen to you"):
         
         PlayBackMusicFile(ConvertMiditoWave(FileLocationofGeneraedMelody))
         PlotPitchDistribution(FileLocationofGeneraedMelody)
-        #musictrack=music21.converter.parse(FileLocation)
-        #DisplayMusicalNotes(musictrack)
+        musictrack=music21.converter.parse(FileLocation)
+        DisplayMusicalNotes(musictrack)
         if FileLocationofGeneraedMelody is not None :
           st.session_state.LocationofUploadedorGeneratedFile = FileLocationofGeneraedMelody
 ########################################### The second step is to let you personalise generation ####################################################        
