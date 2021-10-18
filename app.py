@@ -6,7 +6,7 @@ import base64
 from InputHandlingandDisplay import StoretheUpoldedFile
 import music21
 from PIL import Image
-from MidiFeatures import DisplayGeneralFeatrues,ConvertMiditoWave,GetNameofAllInstruments,aGenerateMidFile
+from MidiFeatures import DisplayGeneralFeatrues,ConvertMiditoWave,GetNameofAllInstruments,aGenerateMidFile,GetMidFeatures
 import matplotlib.pyplot as plt
 from BackEndPrediction import Prediction
 
