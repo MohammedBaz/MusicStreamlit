@@ -137,17 +137,16 @@ with st.sidebar.expander("The first step is listen to you"):
 ########################################### The second step is to let you personalise generation ####################################################        
 with st.sidebar.expander("Here you can add personalise generation process:"): 
     if st.session_state.LocationofUploadedorGeneratedFile is not None: 
-        InputShape=st.slider("Select the Inputshape, in sec",0,300,120) #here should be changed in accordnace with the inputs
+        Trainingdataset1= GetMidFeatures(st.session_state.LocationofUploadedorGeneratedFile)['pitch']
+        Trainingdataset2= GetMidFeatures(st.session_state.LocationofUploadedorGeneratedFile)['duration']
+        
+        TimeStep=st.slider("Select the Inputshape, in sec",0,len(Trainingdataset1)-1,int(len(Trainingdataset1)/2) #here should be changed in accordnace with the inputs
         FrequecyDomain = st.checkbox('Using frequecy domain')
         PredictionHorizontal = st.number_input("Select the Prediction Horizonal, in seconds",min_value=60, max_value =300,value=120,step=10)
-        Trainingdataset= GetMidFeatures(st.session_state.LocationofUploadedorGeneratedFile)['pitch']
-        results=Prediction(
-            Trainingdataset=numpy.array(Trainingdataset),
-            modelname='StreamlitModel.h5',
-            TrainingStep=1,
-            PredicitonHorizontal=int(PredictionHorizontal)
-        )
-        st.write(results)
+        
+        Trainingdataset1= GetMidFeatures(st.session_state.LocationofUploadedorGeneratedFile)['pitch']
+        OverallAmplitude,OverallScale=Prediction('AmplitudeScaleSavedModel.h5',Trainingdataset1,Trainingdataset2,TimeStep,PredicitonHorizontal)
+        st.write(OverallAmplitude,OverallScale)
         
    
   #if (FileLocationofGeneraedMelody is None):
