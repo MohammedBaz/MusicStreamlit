@@ -53,7 +53,30 @@ def aGenerateMidFile(MinTempo,MaxTempo, lenghtofMelody,listofInstruments):
   pm.write(os.path.join(os.getcwd(),"GeneratedFile.mid"))
   return(os.path.join(os.getcwd(),"GeneratedFile.mid"))
 
+def ConvertMiditoWave(FileLocation, samplerate=44100,AmplitudeQuantizationRange=16):
+  midi_data = pretty_midi.PrettyMIDI(FileLocation)
+  audio_data = midi_data.fluidsynth()## synthesizer the midi file, the output of this is a list of real numbers
+  audio_data = numpy.int16(audio_data / numpy.max(numpy.abs(audio_data)) * 32767 ) # convert the synthesized numbers into another numbers between [-32767,32767]
+  # this range represent 16bis which is selected here to reprsent the readings(amplitudes), other bits format 24 or 8 can be used instant. Some
+  # referneces multiple the 32767 by 0.9 , e.g.,https://share.streamlit.io/andfanilo/streamlit-midi-to-wav/main/app.py whereas others like: 
+  # https://stackoverflow.com/questions/10357992/how-to-generate-audio-from-a-numpy-array applied it without. I canot find a good reason for this multiplication, 
+  # Populate the 16-bits audio data inthe memory, so it can be written to wave files  
+  virtualfile = io.BytesIO()
+  # 44100 is the sample_rate, other sample rate is also possible
+  wavfile.write(os.path.join(os.getcwd(),'virtualfile.wave'), 44100, audio_data)
+  return (os.path.join(os.getcwd(),'virtualfile.wave'))
 
+def DisplayGeneralFeatrues(InputFile):
+  temp=GetMidFeatures(InputFile) 
+  pm= pretty_midi.PrettyMIDI(InputFile)
+  InstrumentName=[]
+  for aInstrumentNo in numpy.unique(temp['InstrumentNo']):
+    InstrumentName.append(pretty_midi.program_to_instrument_class(aInstrumentNo))
+  FinalInstrumentName=numpy.unique(InstrumentName)
+  return(pm.get_end_time(),temp.shape[0],FinalInstrumentName)
+  #st.write('It is interesting truck of {} second'.format(int(pm.get_end_time())),
+  #         'It consists of {} notes'.format(temp.shape[0]),
+  #         'it is played with the follwoing instrument(s) {}:'.format(FinalInstrumentName))
 
 
 
