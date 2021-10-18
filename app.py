@@ -147,40 +147,8 @@ def PlotPitchDistribution(InputFile):
   ax.set_ylabel('Proportion')
   st.pyplot(fig)
   
-        
-#################################################### page layout start here #########################################################
-#st.set_page_config(layout="wide") just change the page to wide mode
-st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidden;} </style> """, unsafe_allow_html=True)
-padding = 0
-st.markdown(f""" <style>
-    .reportview-container .main .block-container{{
-        padding-top: {padding}rem;
-        padding-right: {padding}rem;
-        padding-left: {padding}rem;
-        padding-bottom: {padding}rem;
-    }} </style> """, unsafe_allow_html=True)
-
-st.title("Interactive Music Composition Using Artifical Intelligence")
-st.header("                                                   ")
-#One of the good widgets presented in streamlit is empty. it is a place holder so that we can consider it as template. 
-MainPageDescription = st.empty()
-MainPageDescription.write("""This is a beta version for an ambitious project aiming to promote the interactivity of 
-         generate some musical pieces using Artificial Intelligence (AI) algorithms.
-         Several AI models have been built and trained to match the variety of musical inputs ; furthermore, 
-         the interface has been optimised to allow a user to add personal toutches and then to download the cratfed musical peices. 
-         Wish this can aid the users to recogenise the potential rules that AI can play in art making. 
-         Suggestions and comments are welcomed at: mdbaz01@gmail.com 
-         """)
-if st.button('Have a go!'):
-  GetUserInputs() #ddfdsf
-SubMainPageDescription=st.empty()
-Sub2MainPageDescription=st.empty()
-Sub3MainPageDescription=st.empty()
-
-###############these to control the folw of information 
-#FileLocationofGeneraedMelody=''
-#FileLocation=''
-
+ 
+#####################################################################################################################################
 def GetUserInputs():
   with st.sidebar.expander("The first step is listen to you"):
     MainPageDescription.empty()
@@ -280,3 +248,53 @@ def GetUserInputs():
     #PlayBackMusicFile(FileLocation) # pass the locaiona and extension to PlayBackMusicFile to replay its contents
     #ChecktheCorrectnessofUploadedFile(uploaded_file)
     #GetWavFeatures(ConvertMiditoWave(FileLocation),false)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#################################################### page layout start here #########################################################
+#st.set_page_config(layout="wide") just change the page to wide mode
+st.markdown(""" <style> #MainMenu {visibility: hidden;} footer {visibility: hidden;} </style> """, unsafe_allow_html=True)
+padding = 0
+st.markdown(f""" <style>
+    .reportview-container .main .block-container{{
+        padding-top: {padding}rem;
+        padding-right: {padding}rem;
+        padding-left: {padding}rem;
+        padding-bottom: {padding}rem;
+    }} </style> """, unsafe_allow_html=True)
+
+st.title("Interactive Music Composition Using Artifical Intelligence")
+st.header("                                                   ")
+#One of the good widgets presented in streamlit is empty. it is a place holder so that we can consider it as template. 
+MainPageDescription = st.empty()
+MainPageDescription.write("""This is a beta version for an ambitious project aiming to promote the interactivity of 
+         generate some musical pieces using Artificial Intelligence (AI) algorithms.
+         Several AI models have been built and trained to match the variety of musical inputs ; furthermore, 
+         the interface has been optimised to allow a user to add personal toutches and then to download the cratfed musical peices. 
+         Wish this can aid the users to recogenise the potential rules that AI can play in art making. 
+         Suggestions and comments are welcomed at: mdbaz01@gmail.com 
+         """)
+if st.button('Have a go!'):
+  GetUserInputs() #ddfdsf
+SubMainPageDescription=st.empty()
+Sub2MainPageDescription=st.empty()
+Sub3MainPageDescription=st.empty()
+
+###############these to control the folw of information 
+#FileLocationofGeneraedMelody=''
+#FileLocation=''
+
