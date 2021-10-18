@@ -6,8 +6,8 @@ import base64
 from InputHandlingandDisplay import StoretheUpoldedFile
 import music21
 from PIL import Image
-#from MidiFeatures import GetMidFeatures,GetNameofAllInstruments,aGenerateMidFile,ConvertMiditoWave,DisplayGeneralFeatrues
-from MidiFeatures import DisplayGeneralFeatrues
+#from MidiFeatures import GetMidFeatures,GetNameofAllInstruments,aGenerateMidFile,,DisplayGeneralFeatrues
+from MidiFeatures import DisplayGeneralFeatrues,ConvertMiditoWave
 import matplotlib.pyplot as plt
 from BackEndPrediction import Prediction
 
@@ -110,7 +110,7 @@ with st.sidebar.expander("The first step is listen to you"):
                     DisplayMusicalNotes(musictrack)
             if (option=="Replay the uplodaed file, please wait it may take some times"):
                 with Sub3MainPageDescription:
-                    PlayBackMusicFile(FileLocation)
+                    PlayBackMusicFile(ConvertMiditoWave(FileLocation))
         
             if FileLocation is not None :
                 st.session_state.LocationofUploadedorGeneratedFile = FileLocation
