@@ -57,6 +57,11 @@ def KerasAPImodel(TimeStep):
   return model
 
 
+def HandMadeNormalisation(OriginalArray):
+  OriginalArray=(OriginalArray-min(OriginalArray))/(max(OriginalArray)-min(OriginalArray))
+  return OriginalArray
+
+
 
 def Prediction(modelname,Trainingdataset1,Trainingdataset2,TimeStep,PredicitonHorizontal):
   from keras.models import load_model
@@ -64,8 +69,8 @@ def Prediction(modelname,Trainingdataset1,Trainingdataset2,TimeStep,PredicitonHo
   model =load_model(modelname)  # load the model 
   
   LengthofOriginalTrainingdataset=len(Trainingdataset1)
-  OverallAmplitude=numpy.array(Trainingdataset1)
-  OverallScale=numpy.array(Trainingdataset2)
+  OverallAmplitude=HandMadeNormalisation(numpy.array(Trainingdataset1))
+  OverallScale=HandMadeNormalisation(numpy.array(Trainingdataset2))
   
   if(TimeStep !=2): # if the user attempts to change the timestep from 2 where the model is trained to other values then:
     ModifiedModel=KerasAPImodel(TimeStep) # create new model with the given 
@@ -73,8 +78,8 @@ def Prediction(modelname,Trainingdataset1,Trainingdataset2,TimeStep,PredicitonHo
     model=ModifiedModel
     
   for i in range(PredicitonHorizontal):
-    yhat=model.predict([numpy.array(OverallAmplitude[-TimeStep:]).reshape(1,TimeStep,1),
-                        numpy.array(OverallScale[-TimeStep:]).reshape(1,TimeStep,1)])
+    yhat=model.predict([OverallAmplitude[-TimeStep:].reshape(1,TimeStep,1),
+                        OverallScale[-TimeStep:].reshape(1,TimeStep,1)])
     OverallAmplitude=numpy.append(OverallAmplitude, yhat[0])
     OverallScale=numpy.append(OverallScale, yhat[1])
   return (OverallAmplitude,OverallScale)
