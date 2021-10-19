@@ -140,20 +140,19 @@ with st.sidebar.expander("Here you can add personalise generation process:"):
         Trainingdataset1= GetMidFeatures(st.session_state.LocationofUploadedorGeneratedFile)['pitch']
         Trainingdataset2= GetMidFeatures(st.session_state.LocationofUploadedorGeneratedFile)['duration']
         
-        TimeStep=st.slider("Select the timestep, in sec",
+        TimeStep=st.slider("Select the input timestep,
                            0,
                            len(Trainingdataset1)-1,
                            2)#here should be changed in accordnace with the inputs
         FrequecyDomain = st.checkbox('Using frequecy domain')
-        PredicitonHorizontal = st.number_input("Select the Prediction Horizonal, in seconds",min_value=60, max_value =300,value=120,step=10)
+        PredicitonHorizontal = st.number_input("Select the Prediction Horizonal",min_value=10, max_value =60,value=30,step=1)
         
-        Trainingdataset1= GetMidFeatures(st.session_state.LocationofUploadedorGeneratedFile)['pitch']
-        OverallAmplitude,OverallScale=Prediction('AmplitudeScaleSavedModel.h5',
-                                                 Trainingdataset1,
-                                                 Trainingdataset2,
-                                                 TimeStep,
-                                                 int(PredicitonHorizontal))
-        st.write(OverallAmplitude,OverallScale)
+        OverallAmplitude,OverallScale=Prediction(modelname='AmplitudeScaleSavedModel.h5',
+                                                 Trainingdataset1=Trainingdataset1,
+                                                 Trainingdataset2=Trainingdataset2,
+                                                 TimeStep=TimeStep,
+                                                 PredicitonHorizontal=int(PredicitonHorizontal))
+        #st.write(OverallAmplitude,OverallScale)
         
    
   #if (FileLocationofGeneraedMelody is None):
