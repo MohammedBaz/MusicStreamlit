@@ -152,7 +152,7 @@ with st.sidebar.expander("Here you can add personalise generation process:"):
                                                  Trainingdataset1,
                                                  Trainingdataset2,
                                                  TimeStep,
-                                                 PredicitonHorizontal)
+                                                 int(PredicitonHorizontal))
         st.write(OverallAmplitude,OverallScale)
         
    
