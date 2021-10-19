@@ -135,6 +135,10 @@ with st.sidebar.expander("The first step is listen to you"):
         if FileLocationofGeneraedMelody is not None :
           st.session_state.LocationofUploadedorGeneratedFile = FileLocationofGeneraedMelody
 ########################################### The second step is to let you personalise generation ####################################################        
+def HandMadeNormalisation(OriginalArray):
+  OriginalArray=(OriginalArray-min(OriginalArray))/(max(OriginalArray)-min(OriginalArray))
+  return OriginalArray
+
 with st.sidebar.expander("Here you can add personalise generation process:"): 
     if st.session_state.LocationofUploadedorGeneratedFile is not None: 
         Trainingdataset1= GetMidFeatures(st.session_state.LocationofUploadedorGeneratedFile)['pitch']
@@ -151,8 +155,8 @@ with st.sidebar.expander("Here you can add personalise generation process:"):
         import numpy
         model =load_model('AmplitudeScaleSavedModel.h5')  # load the model 
         LengthofOriginalTrainingdataset=len(Trainingdataset1)
-        OverallAmplitude=numpy.array(Trainingdataset1)
-        OverallScale=numpy.array(Trainingdataset2)
+        OverallAmplitude=HandMadeNormalisation(numpy.array(Trainingdataset1))
+        OverallScale=HandMadeNormalisation(numpy.array(Trainingdataset2))
         for i in range(30):
             yhat=model.predict([OverallAmplitude[-TimeStep:].reshape(1,TimeStep,1),
                         OverallScale[-TimeStep:].reshape(1,TimeStep,1)])
