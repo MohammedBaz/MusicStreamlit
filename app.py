@@ -155,13 +155,14 @@ with st.sidebar.expander("Here you can add personalise generation process:"):
         import numpy
         model =load_model('AmplitudeScaleSavedModel.h5')  # load the model 
         LengthofOriginalTrainingdataset=len(Trainingdataset1)
-        OverallAmplitude=HandMadeNormalisation(numpy.array(Trainingdataset1))
-        OverallScale=HandMadeNormalisation(numpy.array(Trainingdataset2))
+        
+        OverallAmplitude=numpy.array(Trainingdataset1)/127
+        OverallScale=numpy.array(Trainingdataset2)/127
         for i in range(30):
             yhat=model.predict([OverallAmplitude[-TimeStep:].reshape(1,TimeStep,1),
                         OverallScale[-TimeStep:].reshape(1,TimeStep,1)])
             OverallAmplitude=numpy.append(OverallAmplitude, yhat[0])
             OverallScale=numpy.append(OverallScale, yhat[1])
-            st.write (OverallAmplitude,OverallScale)
+        st.write (OverallAmplitude,OverallScale)
     
     
