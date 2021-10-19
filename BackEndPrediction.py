@@ -75,8 +75,8 @@ def Prediction(modelname,Trainingdataset1,Trainingdataset2,TimeStep,PredicitonHo
   for i in range(PredicitonHorizontal):
     yhat=model.predict([numpy.array(OverallAmplitude[-TimeStep:]).reshape(1,TimeStep,1),
                         numpy.array(OverallScale[-TimeStep:]).reshape(1,TimeStep,1)])
-    Predicitonresults1=numpy.append(OverallAmplitude, yhat[0])
-    Predicitonresults2=numpy.append(OverallScale, yhat[1])
+    OverallAmplitude=numpy.append(OverallAmplitude, yhat[0])
+    OverallScale=numpy.append(OverallScale, yhat[1])
   return (OverallAmplitude,OverallScale)
 
 
