@@ -170,6 +170,9 @@ with st.sidebar.expander("Here you can add personalise generation process:"):
                         OverallScale[-TimeStep:].reshape(1,TimeStep,1)])
             OverallAmplitude=numpy.append(OverallAmplitude, yhat[0])
             OverallScale=numpy.append(OverallScale, yhat[1])
-        st.write (OverallAmplitude,OverallScale)
+        fig, ax = plt.subplots()
+        ax.plot(OverallScale, OverallAmplitude)
+        st.pyplot(fig)
+       
     
     
