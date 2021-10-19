@@ -149,7 +149,7 @@ with st.sidebar.expander("Here you can add personalise generation process:"):
         
         from keras.models import load_model
         import numpy
-        model =load_model(modelname)  # load the model 
+        model =load_model(AmplitudeScaleSavedModel.h5)  # load the model 
         LengthofOriginalTrainingdataset=len(Trainingdataset1)
         OverallAmplitude=numpy.array(Trainingdataset1)
         OverallScale=numpy.array(Trainingdataset2)
