@@ -140,7 +140,7 @@ with st.sidebar.expander("Here you can add personalise generation process:"):
         Trainingdataset1= GetMidFeatures(st.session_state.LocationofUploadedorGeneratedFile)['pitch']
         Trainingdataset2= GetMidFeatures(st.session_state.LocationofUploadedorGeneratedFile)['duration']
         
-        TimeStep=st.slider("Select the input timestep,
+        TimeStep=st.slider("Select the input timestep",
                            0,
                            len(Trainingdataset1)-1,
                            2)#here should be changed in accordnace with the inputs
