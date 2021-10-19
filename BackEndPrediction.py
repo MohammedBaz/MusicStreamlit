@@ -82,6 +82,7 @@ def Prediction(modelname,Trainingdataset1,Trainingdataset2,TimeStep,PredicitonHo
                         OverallScale[-TimeStep:].reshape(1,TimeStep,1)])
     OverallAmplitude=numpy.append(OverallAmplitude, yhat[0])
     OverallScale=numpy.append(OverallScale, yhat[1])
+    print(i)
   return (OverallAmplitude,OverallScale)
 
 
