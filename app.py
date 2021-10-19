@@ -152,7 +152,7 @@ with st.sidebar.expander("Here you can add personalise generation process:"):
                                                  Trainingdataset2=Trainingdataset2,
                                                  TimeStep=TimeStep,
                                                  PredicitonHorizontal=int(PredicitonHorizontal))
-        #st.write(OverallAmplitude,OverallScale)
+        st.write(OverallAmplitude,OverallScale)
         
    
   #if (FileLocationofGeneraedMelody is None):
