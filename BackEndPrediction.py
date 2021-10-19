@@ -77,12 +77,11 @@ def Prediction(modelname,Trainingdataset1,Trainingdataset2,TimeStep,PredicitonHo
     ModifiedModel.set_weights(model.get_weights())
     model=ModifiedModel
     
-  for i in range(PredicitonHorizontal):
+  for i in range(30):
     yhat=model.predict([OverallAmplitude[-TimeStep:].reshape(1,TimeStep,1),
                         OverallScale[-TimeStep:].reshape(1,TimeStep,1)])
     OverallAmplitude=numpy.append(OverallAmplitude, yhat[0])
     OverallScale=numpy.append(OverallScale, yhat[1])
-    print(i)
   return (OverallAmplitude,OverallScale)
 
 
