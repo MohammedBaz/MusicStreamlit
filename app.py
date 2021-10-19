@@ -168,8 +168,9 @@ with st.sidebar.expander("Here you can add personalise generation process:"):
         for i in range(30):
             yhat=model.predict([OverallAmplitude[-TimeStep:].reshape(1,TimeStep,1),
                         OverallScale[-TimeStep:].reshape(1,TimeStep,1)])
-            OverallAmplitude=numpy.append(OverallAmplitude, yhat[0])
-            OverallScale=numpy.append(OverallScale, yhat[1])
+            OverallAmplitude=numpy.append(OverallAmplitude, yhat[0])*127
+            OverallScale=numpy.append(OverallScale, yhat[1])*127
+        st.write(OverallAmplitude,OverallScale)
         fig, ax = plt.subplots()
         ax.plot(OverallScale, OverallAmplitude)
         st.pyplot(fig)
