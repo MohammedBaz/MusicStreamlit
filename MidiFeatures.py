@@ -38,7 +38,7 @@ def aGenerateMidFile(MinTempo,MaxTempo, lenghtofMelody,listofInstruments):
   startingPoint=0
   #inst.notes.append(pretty_midi.Note(velocity, random.choice(range(127)), start=0.0, end=EndingPoint))
   while(startingPoint<=lenghtofMelody):
-      randomduration=random.uniform(1/Tempos['MinValue'][MinSelectedTempo], 1/Tempos['MaxValue'][MaxSelectedTempo])
+      randomduration=random.uniform(1/(60*Tempos['MinValue'][MinSelectedTempo]), 1/(60*Tempos['MaxValue'][MaxSelectedTempo]))
       EndingPoint=randomduration+startingPoint
       #pretty_midi.Instrument(program=42,is_drum=False)
       randomInstrument=choice(listofInstruments)
@@ -75,9 +75,17 @@ def DisplayGeneralFeatrues(InputFile):
   #         'it is played with the follwoing instrument(s) {}:'.format(FinalInstrumentName))
 
 
-
-
-
+def bGenerateMidFile(listofPitches,listofTime):
+  pm = pretty_midi.PrettyMIDI()
+  velocity = 100
+  startingPoint=0.0
+  inst = pretty_midi.Instrument(program=pretty_midi.instrument_name_to_program('Electric Piano 1'))
+  pm.instruments.append(inst)
+  for i in range(len(len(listofPitches)):
+    inst.notes.append(pretty_midi.Note(velocity, listofPitches[i], start=startingPoint, end=start+listofTime[i]))
+    startingPoint=start+listofTime[i]
+  pm.write(os.path.join(os.getcwd(),"Overall.mid"))
+  return(os.path.join(os.getcwd(),"Overall.mid"))
  
 ##########################################
 
