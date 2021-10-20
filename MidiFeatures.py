@@ -83,7 +83,7 @@ def bGenerateMidFile(listofPitches,listofTime):
   pm.instruments.append(inst)
   for i in range(len(listofPitches)):
     inst.notes.append(pretty_midi.Note(velocity, listofPitches[i], start=startingPoint, end=startingPoint+listofTime[i]))
-    startingPoint=start+listofTime[i]
+    startingPoint=startingPoint+listofTime[i]
   pm.write(os.path.join(os.getcwd(),"Overall.mid"))
   return(os.path.join(os.getcwd(),"Overall.mid"))
  
