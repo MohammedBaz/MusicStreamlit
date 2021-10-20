@@ -177,7 +177,7 @@ with st.sidebar.expander("Here you can add personalise generation process:"):
         st.write(127*OverallAmplitude,127*OverallScale)
         fig, ax = plt.subplots()
         ax.plot(OverallScale, OverallAmplitude)
-        st.pyplot(fig)
+        st.pyplot(fig)dd
 """       
     
     
