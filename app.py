@@ -153,7 +153,7 @@ with st.sidebar.expander("Here you can add personalise generation process:"):
         PredicitonHorizontal = st.number_input("Select the Prediction Horizonal",min_value=10, max_value =60,value=30,step=1)
         OverallAmplitude,OverallScale=ePrediction(modelname='AmplitudeScaleSavedModel.h5',Trainingdataset1=Trainingdataset1,
                     Trainingdataset2=Trainingdataset2,TimeStep=TimeStep,PredicitonHorizontal=PredicitonHorizontal)
-        OverallAmplitude=int((127*(OverallAmplitude-min(OverallAmplitude)))/(max(OverallAmplitude)-min(OverallAmplitude)))
+        OverallAmplitude=((127*(OverallAmplitude-min(OverallAmplitude)))/(max(OverallAmplitude)-min(OverallAmplitude))).astype(int)
         OverallFileLocation=bGenerateMidFile(OverallAmplitude,OverallScale)
         
         PlayBackMusicFile(OverallFileLocation)
