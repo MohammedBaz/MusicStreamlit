@@ -81,7 +81,7 @@ def ePrediction(modelname,Trainingdataset1,Trainingdataset2,TimeStep,PredicitonH
                         OverallScale[-TimeStep:].reshape(1,TimeStep,1)])
     OverallAmplitude=numpy.append(OverallAmplitude, yhat[0])
     OverallScale=numpy.append(OverallScale, yhat[1])
-return(OverallAmplitude,OverallScale)
+  return(OverallAmplitude,OverallScale)
 
 
 
