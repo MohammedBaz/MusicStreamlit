@@ -151,7 +151,9 @@ with st.sidebar.expander("Here you can add personalise generation process:"):
                            2)#here should be changed in accordnace with the inputs
         FrequecyDomain = st.checkbox('Using frequecy domain')
         PredicitonHorizontal = st.number_input("Select the Prediction Horizonal",min_value=10, max_value =60,value=30,step=1)
-        
+        ePrediction(modelname='AmplitudeScaleSavedModel.h5',Trainingdataset1=Trainingdataset1,
+                    Trainingdataset2=Trainingdataset2,TimeStep=TimeStep,PredicitonHorizontal=PredicitonHorizontal)
+        """
         from keras.models import load_model
         import numpy
         model =load_model('AmplitudeScaleSavedModel.h5')  # load the model 
@@ -170,6 +172,8 @@ with st.sidebar.expander("Here you can add personalise generation process:"):
                         OverallScale[-TimeStep:].reshape(1,TimeStep,1)])
             OverallAmplitude=numpy.append(OverallAmplitude, yhat[0])
             OverallScale=numpy.append(OverallScale, yhat[1])
+        
+         bGenerateMidFile(OverallAmplitude,OverallScale)
         st.write(127*OverallAmplitude,127*OverallScale)
         fig, ax = plt.subplots()
         ax.plot(OverallScale, OverallAmplitude)
