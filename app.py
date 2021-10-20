@@ -158,6 +158,7 @@ with st.sidebar.expander("Here you can add personalise generation process:"):
         
         PlayBackMusicFile(OverallFileLocation)
 """
+
         from keras.models import load_model
         import numpy
         model =load_model('AmplitudeScaleSavedModel.h5')  # load the model 
