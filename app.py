@@ -8,7 +8,7 @@ import music21
 from PIL import Image
 from MidiFeatures import DisplayGeneralFeatrues,ConvertMiditoWave,GetNameofAllInstruments,aGenerateMidFile,GetMidFeatures,bGenerateMidFile
 import matplotlib.pyplot as plt
-from BackEndPrediction import Prediction
+from BackEndPrediction import ePrediction
 from BackEndPrediction import KerasAPImodel
 
 if 'LocationofUploadedorGeneratedFile' not in st.session_state:
