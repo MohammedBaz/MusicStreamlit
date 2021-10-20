@@ -62,6 +62,28 @@ def HandMadeNormalisation(OriginalArray):
   return OriginalArray
 
 
+def ePrediction(modelname,Trainingdataset1,Trainingdataset2,TimeStep,PredicitonHorizontal):
+  from keras.models import load_model
+  import numpy
+  model =load_model(modelname)  # load the model 
+  LengthofOriginalTrainingdataset=len(Trainingdataset1)
+        
+  OverallAmplitude=numpy.array(Trainingdataset1)/127
+  OverallScale=numpy.array(Trainingdataset2)/127
+        
+  if(TimeStep !=2): # if the user attempts to change the timestep from 2 where the model is trained to other values then:
+    ModifiedModel=KerasAPImodel(TimeStep) # create new model with the given 
+    ModifiedModel.set_weights(model.get_weights())
+    model=ModifiedModel
+        
+  for i in range(int(PredicitonHorizontal)):
+    yhat=model.predict([OverallAmplitude[-TimeStep:].reshape(1,TimeStep,1),
+                        OverallScale[-TimeStep:].reshape(1,TimeStep,1)])
+    OverallAmplitude=numpy.append(OverallAmplitude, yhat[0])
+    OverallScale=numpy.append(OverallScale, yhat[1])
+return(OverallAmplitude,OverallScale)
+
+
 
 def Prediction(modelname,Trainingdataset1,Trainingdataset2,TimeStep,PredicitonHorizontal):
   from keras.models import load_model
