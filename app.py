@@ -6,7 +6,7 @@ import base64
 from InputHandlingandDisplay import StoretheUpoldedFile
 import music21
 from PIL import Image
-from MidiFeatures import DisplayGeneralFeatrues,ConvertMiditoWave,GetNameofAllInstruments,aGenerateMidFile,GetMidFeatures
+from MidiFeatures import DisplayGeneralFeatrues,ConvertMiditoWave,GetNameofAllInstruments,aGenerateMidFile,GetMidFeatures,bGenerateMidFile
 import matplotlib.pyplot as plt
 from BackEndPrediction import Prediction
 from BackEndPrediction import KerasAPImodel
@@ -165,7 +165,7 @@ with st.sidebar.expander("Here you can add personalise generation process:"):
             ModifiedModel.set_weights(model.get_weights())
             model=ModifiedModel
         
-        for i in range(30):
+        for i in range(int(PredicitonHorizontal)):
             yhat=model.predict([OverallAmplitude[-TimeStep:].reshape(1,TimeStep,1),
                         OverallScale[-TimeStep:].reshape(1,TimeStep,1)])
             OverallAmplitude=numpy.append(OverallAmplitude, yhat[0])
