@@ -38,7 +38,7 @@ def aGenerateMidFile(MinTempo,MaxTempo, lenghtofMelody,listofInstruments):
   startingPoint=0
   #inst.notes.append(pretty_midi.Note(velocity, random.choice(range(127)), start=0.0, end=EndingPoint))
   while(startingPoint<=lenghtofMelody):
-      randomduration=random.uniform(1/(60*Tempos['MinValue'][MinSelectedTempo]), 1/(60*Tempos['MaxValue'][MaxSelectedTempo]))
+      randomduration=random.uniform(60/(Tempos['MinValue'][MinSelectedTempo]), 60/(Tempos['MaxValue'][MaxSelectedTempo]))
       EndingPoint=randomduration+startingPoint
       #pretty_midi.Instrument(program=42,is_drum=False)
       randomInstrument=choice(listofInstruments)
