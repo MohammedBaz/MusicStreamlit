@@ -151,8 +151,10 @@ with st.sidebar.expander("Here you can add personalise generation process:"):
                            2)#here should be changed in accordnace with the inputs
         FrequecyDomain = st.checkbox('Using frequecy domain')
         PredicitonHorizontal = st.number_input("Select the Prediction Horizonal",min_value=10, max_value =60,value=30,step=1)
-        ePrediction(modelname='AmplitudeScaleSavedModel.h5',Trainingdataset1=Trainingdataset1,
+        OverallAmplitude,OverallScale=ePrediction(modelname='AmplitudeScaleSavedModel.h5',Trainingdataset1=Trainingdataset1,
                     Trainingdataset2=Trainingdataset2,TimeStep=TimeStep,PredicitonHorizontal=PredicitonHorizontal)
+        OverallFileLocation=bGenerateMidFile(OverallAmplitude,OverallScale)
+        PlayBackMusicFile(OverallFileLocation)
 """
         from keras.models import load_model
         import numpy
